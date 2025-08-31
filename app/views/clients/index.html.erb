@@ -1,1 +1,26 @@
-はろー
+<div class="client-list-header" style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.2rem;">
+  <h1 style="margin: 0;">顧客一覧</h1>
+  <%= link_to '新規顧客登録', new_client_path, class: 'btn btn-detail', style: 'margin: 0;' %>
+</div>
+<table class="client-table">
+  <thead>
+    <tr>
+      <th>氏名</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.last_name + client.first_name %></td>
+        <td>
+          <%= link_to '詳細', client_path(client), class: 'btn btn-detail' %>
+          <%= button_to '削除', client_path(client), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="pagination">
+  <%= paginate @clients %>
+</div>

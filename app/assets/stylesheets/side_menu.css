@@ -61,3 +61,220 @@
     padding: 1rem 0.5rem;
   }
 }
+.client-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 2rem;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(33,138,90,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.client-table th, .client-table td {
+  padding: 1rem 1.2rem;
+  text-align: left;
+}
+.client-table th {
+  background: #e6f4ea;
+  color: #218a5a;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-bottom: 2px solid #b2dfdb;
+}
+.client-table tr {
+  transition: background 0.2s;
+}
+.client-table tbody tr:hover {
+  background: #f6fff8;
+}
+.client-table td {
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 1rem;
+}
+
+/* 操作ボタンを横並び・中央寄せにする */
+.client-table td:last-child {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 0;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-detail {
+  background: #e6f4ea;
+  color: #218a5a;
+}
+.btn-detail:hover {
+  background: #b2dfdb;
+  color: #145c36;
+}
+.btn-danger {
+  background: #ffeaea;
+  color: #c62828;
+}
+.btn-danger:hover {
+  background: #ffcccc;
+  color: #a31515;
+}
+.pagination {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.pagination .page, .pagination .current, .pagination .next, .pagination .prev {
+  display: inline-block;
+  margin: 0 0.2rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  background: #e6f4ea;
+  color: #218a5a;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.pagination .current {
+  background: #218a5a;
+  color: #fff;
+}
+
+/* 顧客詳細ページ用スタイル */
+.client-detail-container {
+  max-width: 540px;
+  margin: 2.5rem auto;
+  padding: 2rem 1.5rem;
+  background: #f6fff8;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(33,138,90,0.10);
+}
+.client-detail-container h1 {
+  color: #218a5a;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.client-detail-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(33,138,90,0.06);
+  padding: 1.5rem 1rem 1rem 1rem;
+}
+.client-detail-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 1.5rem;
+}
+.client-detail-table th {
+  background: #e6f4ea;
+  color: #218a5a;
+  font-weight: 700;
+  text-align: left;
+  padding: 0.7rem 1rem;
+  width: 32%;
+  border-bottom: 1px solid #b2dfdb;
+}
+.client-detail-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff;
+}
+.client-detail-table tr:last-child th,
+.client-detail-table tr:last-child td {
+  border-bottom: none;
+}
+.client-detail-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+@media (max-width: 600px) {
+  .client-detail-container {
+    padding: 1rem 0.2rem;
+  }
+  .client-detail-card {
+    padding: 1rem 0.2rem 0.7rem 0.2rem;
+  }
+  .client-detail-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+}
+
+/* 新規顧客登録フォーム用スタイル */
+.client-form-container {
+  padding: 2.5rem 1.5rem;
+}
+.client-form-container h1 {
+  color: #218a5a;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.client-form-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(33,138,90,0.06);
+  padding: 1.5rem 1rem 1rem 1rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+.client-form-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 1.5rem;
+}
+.client-form-table th {
+  background: #e6f4ea;
+  color: #218a5a;
+  font-weight: 700;
+  text-align: left;
+  padding: 0.7rem 1rem;
+  width: 32%;
+  border-bottom: 1px solid #b2dfdb;
+}
+.client-form-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff;
+}
+.client-form-table tr:last-child th,
+.client-form-table tr:last-child td {
+  border-bottom: none;
+}
+.client-form-table input,
+.client-form-table textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #b2dfdb;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f6fff8;
+  box-sizing: border-box;
+}
+.client-form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+@media (max-width: 600px) {
+  .client-form-card {
+    padding: 1rem 0.2rem 0.7rem 0.2rem;
+    max-width: 100%;
+  }
+  .client-form-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+}

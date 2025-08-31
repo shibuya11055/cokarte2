@@ -1,0 +1,22 @@
+<%# filepath: app/views/clients/new.html.erb %>
+<div class="client-form-container">
+  <h1>新規顧客登録</h1>
+  <div class="client-form-card">
+    <%= form_with(model: @client, local: true) do |f| %>
+      <table class="client-form-table">
+        <tr><th>姓</th><td><%= f.text_field :last_name, required: true, autofocus: true %></td></tr>
+        <tr><th>名</th><td><%= f.text_field :first_name, required: true %></td></tr>
+        <tr><th>生年月日</th><td><%= f.date_field :birthday, required: true %></td></tr>
+        <tr><th>メールアドレス</th><td><%= f.email_field :email %></td></tr>
+        <tr><th>郵便番号</th><td><%= f.text_field :postal_code %></td></tr>
+        <tr><th>住所</th><td><%= f.text_field :address %></td></tr>
+        <tr><th>電話番号</th><td><%= f.text_field :phone_number %></td></tr>
+        <tr><th>メモ</th><td><%= f.text_area :memo, rows: 3 %></td></tr>
+      </table>
+      <div class="client-form-actions">
+        <%= f.submit '登録する', class: 'btn btn-detail' %>
+        <%= link_to '一覧へ戻る', clients_path, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
