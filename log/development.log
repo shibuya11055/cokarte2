@@ -100,3 +100,21 @@ FOREIGN KEY ("user_id")
   [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(799889269218015585) /*application='Cokarte2'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+Started GET "/" for ::1 at 2025-08-31 22:21:21 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+Processing by ClientsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | GC: 0.0ms)
+Completed 200 OK in 47ms (Views: 11.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for ::1 at 2025-08-31 22:21:22 +0900
+Started GET "/assets/application-bfcdf840.js" for ::1 at 2025-08-31 22:21:22 +0900
+Started GET "/assets/controllers/hello_controller-708796bd.js" for ::1 at 2025-08-31 22:21:22 +0900
+Started GET "/assets/stimulus.min-4b1e420e.js" for ::1 at 2025-08-31 22:21:22 +0900
+Started GET "/assets/controllers/application-3affb389.js" for ::1 at 2025-08-31 22:21:22 +0900
+Started GET "/assets/turbo.min-3a2e143f.js" for ::1 at 2025-08-31 22:21:22 +0900
+Started GET "/assets/controllers/index-ee64e1f1.js" for ::1 at 2025-08-31 22:21:22 +0900
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for ::1 at 2025-08-31 22:21:22 +0900
