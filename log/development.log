@@ -33,3 +33,23 @@ Migrating to DeviseCreateUsers (20250831124744)
   [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(799889269218015585) /*application='Cokarte2'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+Started GET "/letter_opener" for ::1 at 2025-08-31 22:03:50 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+Processing by LetterOpenerWeb::LettersController#index as HTML
+  Rendering layout /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/layouts/letter_opener_web/letters.html.erb
+  Rendering /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/letter_opener_web/letters/index.html.erb within layouts/letter_opener_web/letters
+  Rendered collection of /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/letter_opener_web/letters/_item.html.erb [0 times] (Duration: 0.0ms | GC: 0.0ms)
+  Rendered /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/letter_opener_web/letters/index.html.erb within layouts/letter_opener_web/letters (Duration: 0.6ms | GC: 0.0ms)
+  Rendered /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/layouts/letter_opener_web/styles/_icon.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/layouts/letter_opener_web/styles/_bootstrap.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/layouts/letter_opener_web/styles/_letters.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/layouts/letter_opener_web/_styles.html.erb (Duration: 1.5ms | GC: 0.0ms)
+  Rendered /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/layouts/letter_opener_web/js/_jquery.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/layouts/letter_opener_web/js/_favcount.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/layouts/letter_opener_web/_javascripts.html.erb (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout /Users/shibuyakyouhei/.rbenv/versions/3.4.1/lib/ruby/gems/3.4.0/gems/letter_opener_web-3.0.0/app/views/layouts/letter_opener_web/letters.html.erb (Duration: 4.5ms | GC: 0.0ms)
+Completed 200 OK in 35ms (Views: 5.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
