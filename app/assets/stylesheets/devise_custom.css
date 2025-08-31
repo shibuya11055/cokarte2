@@ -1,0 +1,67 @@
+/* モダンな緑を基調としたDevise用フォームデザイン・レスポンシブ対応 */
+
+.devise-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 2rem 2rem 1.5rem 2rem;
+  background: #f6fff8;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,64,32,0.08);
+}
+.devise-container h2 {
+  color: #218a5a;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.devise-container .field {
+  margin-bottom: 1.2rem;
+}
+.devise-container label {
+  color: #218a5a;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+.devise-container input[type="email"],
+.devise-container input[type="password"],
+.devise-container input[type="text"] {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  box-sizing: border-box;
+}
+.devise-container .actions {
+  text-align: center;
+}
+.devise-container input[type="submit"] {
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.devise-container input[type="submit"]:hover {
+  background: linear-gradient(90deg, #218a5a 0%, #43e97b 100%);
+}
+#error_explanation {
+  background: #ffeaea;
+  border: 1px solid #ffb3b3;
+  color: #c62828;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+}
+@media (max-width: 600px) {
+  .devise-container {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    max-width: 98vw;
+  }
+}
