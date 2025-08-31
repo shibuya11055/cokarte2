@@ -1,0 +1,63 @@
+/* サイドメニュー用スタイル（目に優しい緑系、グラデなし） */
+.side-menu {
+  width: 180px;
+  min-height: 100vh;
+  background: #e6f4ea;
+  border-right: 1px solid #b2dfdb;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 2rem;
+  z-index: 100;
+}
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.side-menu-link {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: #218a5a;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s;
+  background: none;
+  border: none;
+  text-align: left;
+}
+.side-menu-link:hover, .side-menu-link:focus {
+  background: #c8e6c9;
+  color: #145c36;
+}
+.logout-btn {
+  color: #c62828;
+}
+.main-content {
+  margin-left: 180px;
+  padding: 2rem 1rem;
+}
+@media (max-width: 700px) {
+  .side-menu {
+    width: 100vw;
+    min-height: unset;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid #b2dfdb;
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  .side-menu ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 1rem 0.5rem;
+  }
+}

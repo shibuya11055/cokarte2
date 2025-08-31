@@ -1,0 +1,11 @@
+<!-- サイドメニュー -->
+<aside class="side-menu">
+  <nav class="side-menu">
+    <ul>
+      <li><%= link_to '顧客一覧', root_path, class: 'side-menu-link' %></li>
+      <li>
+        <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'side-menu-link logout-btn' %>
+      </li>
+    </ul>
+  </nav>
+</aside>

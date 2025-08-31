@@ -23,6 +23,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/side_menu' %>
+    <% end %>
+    <main class="main-content">
+      <%= yield %>
+    </main>
   </body>
 </html>

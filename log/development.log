@@ -1121,3 +1121,303 @@ Processing by ClientsController#index as HTML
 Completed 200 OK in 29ms (Views: 0.6ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.1ms)
 
 
+Started GET "/" for ::1 at 2025-08-31 22:49:03 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.2ms)
+Completed 200 OK in 37ms (Views: 4.0ms | ActiveRecord: 3.5ms (1 query, 0 cached) | GC: 4.7ms)
+
+
+Started GET "/assets/application-1c7faa1c.css" for ::1 at 2025-08-31 22:49:03 +0900
+Started GET "/assets/side_menu-5999130d.css" for ::1 at 2025-08-31 22:49:03 +0900
+Started DELETE "/users/sign_out" for ::1 at 2025-08-31 22:49:17 +0900
+Processing by Users::SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='Cokarte2',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 31ms (ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/" for ::1 at 2025-08-31 22:49:17 +0900
+Processing by ClientsController#index as TURBO_STREAM
+Completed 401 Unauthorized in 18ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-08-31 22:49:17 +0900
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.1ms)
+Completed 200 OK in 17ms (Views: 2.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2025-08-31 22:49:22 +0900
+Processing by Users::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "ログイン"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Cokarte2',controller='sessions'*/[0m
+Completed 401 Unauthorized in 223ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "ログイン"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 0.7ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | GC: 0.1ms)
+Completed 200 OK in 184ms (Views: 1.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2025-08-31 22:49:26 +0900
+Processing by Users::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "ログイン"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Cokarte2',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 216ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-08-31 22:49:26 +0900
+Processing by ClientsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 0.6ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:49:38 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/assets/stimulus.min-2395e199.js.map" for ::1 at 2025-08-31 22:49:39 +0900
+Started GET "/assets/turbo.min-5f3b7fda.js.map" for ::1 at 2025-08-31 22:49:39 +0900
+Started GET "/" for ::1 at 2025-08-31 22:51:00 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 3.9ms | ActiveRecord: 3.0ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/assets/side_menu-bf462e5e.css" for ::1 at 2025-08-31 22:51:00 +0900
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:51:00 +0900
+Started GET "/assets/application-057ec8ed.js" for ::1 at 2025-08-31 22:51:00 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/assets/controllers/side_menu-b3815e31.js" for ::1 at 2025-08-31 22:51:00 +0900
+Started GET "/" for ::1 at 2025-08-31 22:51:42 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.8ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 1.1ms)
+Completed 200 OK in 33ms (Views: 3.5ms | ActiveRecord: 5.0ms (1 query, 0 cached) | GC: 3.1ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:51:42 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 22:52:34 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.2ms)
+Completed 200 OK in 35ms (Views: 2.5ms | ActiveRecord: 3.6ms (1 query, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:52:34 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 22:52:36 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.2ms)
+Completed 200 OK in 35ms (Views: 1.3ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:52:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 22:53:13 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 2.2ms | ActiveRecord: 6.9ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:53:13 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 22:53:21 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.0ms)
+Completed 200 OK in 88ms (Views: 6.4ms | ActiveRecord: 45.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:53:21 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 22:54:26 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.5ms)
+Completed 200 OK in 42ms (Views: 2.3ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/assets/side_menu-6a80947f.css" for ::1 at 2025-08-31 22:54:26 +0900
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:54:26 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 22:55:31 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 3.6ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:55:31 +0900
+Started GET "/assets/side_menu-15c716ce.css" for ::1 at 2025-08-31 22:55:31 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 22:56:59 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 4.8ms | ActiveRecord: 6.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:56:59 +0900
+Started GET "/assets/side_menu-78150500.css" for ::1 at 2025-08-31 22:56:59 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 22:57:09 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 1.0ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-08-31 22:57:57 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | GC: 0.4ms)
+Completed 200 OK in 31ms (Views: 2.8ms | ActiveRecord: 4.3ms (1 query, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:57:57 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 22:58:01 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 1.1ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-08-31 22:58:59 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 4.1ms | ActiveRecord: 3.6ms (1 query, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 22:58:59 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 23:00:15 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 4.3ms | ActiveRecord: 5.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:00:15 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 23:00:17 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  Rendered clients/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 1.3ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
