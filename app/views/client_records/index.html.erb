@@ -1,13 +1,16 @@
 <%# filepath: app/views/client_records/index.html.erb %>
 <h1>カルテ一覧</h1>
 
-<form method="get" action="<%= client_records_path %>" class="client-search-form" style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
-  <input type="text" name="q" value="<%= params[:q] %>" placeholder="顧客氏名で検索" style="padding: 0.6rem 1rem; border-radius: 6px; border: 1px solid #b2dfdb; min-width: 220px; font-size: 1rem;">
-  <button type="submit" class="btn btn-detail">検索</button>
-  <% if params[:q].present? %>
-    <%= link_to 'クリア', client_records_path, class: 'btn' %>
-  <% end %>
-</form>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+  <form method="get" action="<%= client_records_path %>" class="client-search-form" style="display: flex; gap: 1rem; align-items: center; margin-bottom: 0;">
+    <input type="text" name="q" value="<%= params[:q] %>" placeholder="顧客氏名で検索" style="padding: 0.6rem 1rem; border-radius: 6px; border: 1px solid #b2dfdb; min-width: 220px; font-size: 1rem;">
+    <button type="submit" class="btn btn-detail">検索</button>
+    <% if params[:q].present? %>
+      <%= link_to 'クリア', client_records_path, class: 'btn' %>
+    <% end %>
+  </form>
+  <%= link_to 'カルテ作成', new_client_record_path, class: 'btn btn-detail', style: 'white-space: nowrap;' %>
+</div>
 
 <table class="client-records-table">
   <thead>

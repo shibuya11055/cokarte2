@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   root to: "clients#index"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get "up" => "rails/health#show", as: :rails_health_check
+  get "user", to: "users#show", as: :user_profile
 end
