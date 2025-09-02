@@ -1,6 +1,11 @@
 class ClientsController < ApplicationController
   def index
-    @clients = Client.order(:id).page(params[:page]).per(20)
+    @clients = Client.all
+    if params[:q].present?
+      q = params[:q].strip
+      @clients = @clients.where("CONCAT(last_name, first_name) LIKE ?", "%#{q}%")
+    end
+    @clients = @clients.order(:id).page(params[:page]).per(20)
   end
 
   def show
