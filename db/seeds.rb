@@ -27,3 +27,15 @@ first_names = %w[太郎 次郎 花子 美咲 大輔 直樹 さくら 拓海 結�
     postal_code: "100-#{sprintf('%04d', i+1)}"
   )
 end
+
+# 各clientに3件のClientRecordを作成
+Client.find_each do |client|
+  3.times do |j|
+    ClientRecord.create!(
+      client: client,
+      visited_at: Time.current - rand(1..365).days - rand(0..23).hours,
+      note: "来店メモ#{j+1} (#{client.last_name}#{client.first_name})",
+      amount: rand(1000..10000)
+    )
+  end
+end

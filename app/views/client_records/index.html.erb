@@ -1,0 +1,30 @@
+<%# filepath: app/views/client_records/index.html.erb %>
+<h1>カルテ一覧</h1>
+<table class="client-records-table">
+  <thead>
+    <tr>
+      <th>日付</th>
+      <th>顧客氏名</th>
+      <th>金額</th>
+      <th>ノート</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @client_records.each do |record| %>
+      <tr>
+        <td><%= record.visited_at&.strftime('%Y/%m/%d %H:%M') %></td>
+        <td><%= record.client&.last_name.to_s + record.client&.first_name.to_s %></td>
+        <td><%= number_to_currency(record.amount, unit: '¥', precision: 0) if record.amount %></td>
+        <td><%= record.note.to_s.length > 30 ? record.note.to_s[0,30] + '...' : record.note.to_s %></td>
+        <td>
+          <%= link_to '詳細', client_record_path(record), class: 'btn btn-detail' %>
+          <%= link_to '編集', edit_client_record_path(record), class: 'btn btn-detail' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="pagination">
+  <%= paginate @client_records %>
+</div>

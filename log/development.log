@@ -2935,3 +2935,1827 @@ Processing by ClientsController#show as HTML
 Completed 200 OK in 37ms (Views: 1.6ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.6ms)
 
 
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(799889269218015585) /*application='Cokarte2'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Cokarte2'*/[0m
+Migrating to CreateClientRecords (20250831142352)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE "client_records" ("id" bigserial NOT NULL PRIMARY KEY, "client_id" bigint NOT NULL, "visited_at" timestamp(6), "note" text, "amount" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ed9e499327"
+FOREIGN KEY ("client_id")
+  REFERENCES "clients" ("id")
+) /*application='Cokarte2'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_client_records_on_client_id" ON "client_records" ("client_id") /*application='Cokarte2'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250831142352') RETURNING "version" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(799889269218015585) /*application='Cokarte2'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClient Create (2.2ms)[0m  [1m[32mINSERT INTO "clients" ("user_id", "birthday", "first_name", "last_name", "postal_code", "address", "phone_number", "memo", "email", "created_at", "updated_at") VALUES (4, '1990-01-01', '太郎', '佐藤', '100-0001', '東京都サンプル区1-1-1', '090-1234-0001', 'メモ1', 'client1@example.com', '2025-08-31 14:26:38.177498', '2025-08-31 14:26:38.177498') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*application='Cokarte2'*/[0m
+  [1m[36mClient Load (1.8ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 1000 /*application='Cokarte2'*/[0m
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 1000 /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (3.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (1, '2025-07-15 07:27:48.078294', '来店メモ1 (佐藤太郎)', 4788, '2025-08-31 14:27:48.092170', '2025-08-31 14:27:48.092170') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (1.0ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (1, '2025-02-17 07:27:48.097426', '来店メモ2 (佐藤太郎)', 3260, '2025-08-31 14:27:48.097654', '2025-08-31 14:27:48.097654') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (1, '2024-09-07 13:27:48.099255', '来店メモ3 (佐藤太郎)', 5646, '2025-08-31 14:27:48.099392', '2025-08-31 14:27:48.099392') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (2, '2024-10-20 09:27:48.100284', '来店メモ1 (鈴木次郎)', 8094, '2025-08-31 14:27:48.100415', '2025-08-31 14:27:48.100415') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (2, '2025-04-24 20:27:48.101465', '来店メモ2 (鈴木次郎)', 9285, '2025-08-31 14:27:48.101616', '2025-08-31 14:27:48.101616') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (2, '2024-09-13 15:27:48.102707', '来店メモ3 (鈴木次郎)', 1036, '2025-08-31 14:27:48.102840', '2025-08-31 14:27:48.102840') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (3, '2025-08-11 06:27:48.103925', '来店メモ1 (高橋花子)', 2056, '2025-08-31 14:27:48.104055', '2025-08-31 14:27:48.104055') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (3, '2025-01-24 02:27:48.104997', '来店メモ2 (高橋花子)', 5111, '2025-08-31 14:27:48.105123', '2025-08-31 14:27:48.105123') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (3, '2025-05-28 03:27:48.106112', '来店メモ3 (高橋花子)', 7805, '2025-08-31 14:27:48.106237', '2025-08-31 14:27:48.106237') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (1.0ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (4, '2025-07-03 12:27:48.107016', '来店メモ1 (田中美咲)', 5623, '2025-08-31 14:27:48.107144', '2025-08-31 14:27:48.107144') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (4, '2024-11-15 17:27:48.109146', '来店メモ2 (田中美咲)', 8808, '2025-08-31 14:27:48.109273', '2025-08-31 14:27:48.109273') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.9ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (4, '2024-11-15 14:27:48.111165', '来店メモ3 (田中美咲)', 8324, '2025-08-31 14:27:48.111304', '2025-08-31 14:27:48.111304') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (5, '2025-04-20 12:27:48.112886', '来店メモ1 (渡辺大輔)', 1999, '2025-08-31 14:27:48.113020', '2025-08-31 14:27:48.113020') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (5, '2025-07-20 20:27:48.113944', '来店メモ2 (渡辺大輔)', 6964, '2025-08-31 14:27:48.114071', '2025-08-31 14:27:48.114071') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (5, '2024-12-16 01:27:48.114862', '来店メモ3 (渡辺大輔)', 6465, '2025-08-31 14:27:48.114988', '2025-08-31 14:27:48.114988') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (6, '2025-08-07 07:27:48.115856', '来店メモ1 (伊藤直樹)', 7049, '2025-08-31 14:27:48.115983', '2025-08-31 14:27:48.115983') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (6, '2025-01-12 00:27:48.116766', '来店メモ2 (伊藤直樹)', 1308, '2025-08-31 14:27:48.116890', '2025-08-31 14:27:48.116890') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (6, '2025-07-08 09:27:48.117568', '来店メモ3 (伊藤直樹)', 6232, '2025-08-31 14:27:48.117693', '2025-08-31 14:27:48.117693') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (7, '2025-03-27 18:27:48.118367', '来店メモ1 (山本さくら)', 8251, '2025-08-31 14:27:48.118495', '2025-08-31 14:27:48.118495') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (7, '2024-12-16 03:27:48.119242', '来店メモ2 (山本さくら)', 7099, '2025-08-31 14:27:48.119363', '2025-08-31 14:27:48.119363') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (7, '2025-03-08 12:27:48.120081', '来店メモ3 (山本さくら)', 4709, '2025-08-31 14:27:48.120192', '2025-08-31 14:27:48.120192') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (8, '2025-02-18 03:27:48.121072', '来店メモ1 (中村拓海)', 3923, '2025-08-31 14:27:48.121190', '2025-08-31 14:27:48.121190') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (8, '2025-04-28 20:27:48.121954', '来店メモ2 (中村拓海)', 9295, '2025-08-31 14:27:48.122092', '2025-08-31 14:27:48.122092') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (8, '2024-11-28 18:27:48.122904', '来店メモ3 (中村拓海)', 6780, '2025-08-31 14:27:48.123026', '2025-08-31 14:27:48.123026') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (9, '2025-04-03 13:27:48.123761', '来店メモ1 (小林結衣)', 7151, '2025-08-31 14:27:48.123879', '2025-08-31 14:27:48.123879') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (9, '2024-11-16 16:27:48.124601', '来店メモ2 (小林結衣)', 3819, '2025-08-31 14:27:48.124714', '2025-08-31 14:27:48.124714') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (9, '2024-11-29 16:27:48.125425', '来店メモ3 (小林結衣)', 6819, '2025-08-31 14:27:48.125537', '2025-08-31 14:27:48.125537') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (10, '2025-08-03 07:27:48.126252', '来店メモ1 (加藤陽菜)', 9276, '2025-08-31 14:27:48.126367', '2025-08-31 14:27:48.126367') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (10, '2024-08-31 14:27:48.127110', '来店メモ2 (加藤陽菜)', 2648, '2025-08-31 14:27:48.127228', '2025-08-31 14:27:48.127228') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (10, '2025-04-14 02:27:48.127881', '来店メモ3 (加藤陽菜)', 3882, '2025-08-31 14:27:48.127991', '2025-08-31 14:27:48.127991') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (11, '2025-02-27 05:27:48.128681', '来店メモ1 (吉田悠斗)', 4902, '2025-08-31 14:27:48.128802', '2025-08-31 14:27:48.128802') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (11, '2025-04-21 14:27:48.129500', '来店メモ2 (吉田悠斗)', 5847, '2025-08-31 14:27:48.129601', '2025-08-31 14:27:48.129601') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (11, '2025-07-11 03:27:48.130239', '来店メモ3 (吉田悠斗)', 7588, '2025-08-31 14:27:48.130343', '2025-08-31 14:27:48.130343') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (12, '2025-02-27 10:27:48.131025', '来店メモ1 (山田葵)', 2986, '2025-08-31 14:27:48.131128', '2025-08-31 14:27:48.131128') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (12, '2025-02-27 09:27:48.131808', '来店メモ2 (山田葵)', 2995, '2025-08-31 14:27:48.131911', '2025-08-31 14:27:48.131911') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (12, '2025-04-29 06:27:48.132570', '来店メモ3 (山田葵)', 2135, '2025-08-31 14:27:48.132672', '2025-08-31 14:27:48.132672') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (13, '2025-04-12 09:27:48.133335', '来店メモ1 (佐々木大地)', 4365, '2025-08-31 14:27:48.133439', '2025-08-31 14:27:48.133439') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (13, '2025-02-20 12:27:48.134136', '来店メモ2 (佐々木大地)', 3377, '2025-08-31 14:27:48.134264', '2025-08-31 14:27:48.134264') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (13, '2024-10-23 02:27:48.136833', '来店メモ3 (佐々木大地)', 1641, '2025-08-31 14:27:48.136984', '2025-08-31 14:27:48.136984') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (14, '2025-06-16 11:27:48.137671', '来店メモ1 (山口愛)', 2457, '2025-08-31 14:27:48.137776', '2025-08-31 14:27:48.137776') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (14, '2024-09-22 20:27:48.138428', '来店メモ2 (山口愛)', 2995, '2025-08-31 14:27:48.138524', '2025-08-31 14:27:48.138524') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (14, '2025-03-30 08:27:48.139151', '来店メモ3 (山口愛)', 3130, '2025-08-31 14:27:48.139246', '2025-08-31 14:27:48.139246') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (15, '2025-04-16 16:27:48.139897', '来店メモ1 (松本菜々子)', 7614, '2025-08-31 14:27:48.139995', '2025-08-31 14:27:48.139995') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (15, '2024-12-31 13:27:48.140653', '来店メモ2 (松本菜々子)', 6756, '2025-08-31 14:27:48.140750', '2025-08-31 14:27:48.140750') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (15, '2025-01-23 09:27:48.141346', '来店メモ3 (松本菜々子)', 2132, '2025-08-31 14:27:48.141441', '2025-08-31 14:27:48.141441') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (16, '2025-06-23 04:27:48.142107', '来店メモ1 (井上海斗)', 3209, '2025-08-31 14:27:48.142206', '2025-08-31 14:27:48.142206') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (16, '2025-07-28 08:27:48.143038', '来店メモ2 (井上海斗)', 3887, '2025-08-31 14:27:48.143132', '2025-08-31 14:27:48.143132') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (16, '2025-08-12 11:27:48.143778', '来店メモ3 (井上海斗)', 3067, '2025-08-31 14:27:48.143872', '2025-08-31 14:27:48.143872') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (17, '2025-01-16 05:27:48.144523', '来店メモ1 (木村陸斗)', 7468, '2025-08-31 14:27:48.144619', '2025-08-31 14:27:48.144619') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (17, '2025-04-27 07:27:48.145265', '来店メモ2 (木村陸斗)', 8306, '2025-08-31 14:27:48.145353', '2025-08-31 14:27:48.145353') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (17, '2025-03-28 01:27:48.145997', '来店メモ3 (木村陸斗)', 2795, '2025-08-31 14:27:48.146085', '2025-08-31 14:27:48.146085') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (18, '2025-02-09 22:27:48.146675', '来店メモ1 (林玲奈)', 2488, '2025-08-31 14:27:48.146765', '2025-08-31 14:27:48.146765') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (18, '2025-04-20 16:27:48.147359', '来店メモ2 (林玲奈)', 2726, '2025-08-31 14:27:48.147446', '2025-08-31 14:27:48.147446') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (18, '2025-08-20 19:27:48.148074', '来店メモ3 (林玲奈)', 4820, '2025-08-31 14:27:48.148162', '2025-08-31 14:27:48.148162') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (19, '2024-12-11 07:27:48.148788', '来店メモ1 (斎藤翼)', 2079, '2025-08-31 14:27:48.148878', '2025-08-31 14:27:48.148878') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (19, '2025-05-18 23:27:48.149645', '来店メモ2 (斎藤翼)', 8230, '2025-08-31 14:27:48.149733', '2025-08-31 14:27:48.149733') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (19, '2025-01-12 15:27:48.150411', '来店メモ3 (斎藤翼)', 9048, '2025-08-31 14:27:48.150499', '2025-08-31 14:27:48.150499') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (20, '2024-10-31 17:27:48.151155', '来店メモ1 (清水颯太)', 1140, '2025-08-31 14:27:48.151240', '2025-08-31 14:27:48.151240') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (20, '2025-01-18 17:27:48.151997', '来店メモ2 (清水颯太)', 5127, '2025-08-31 14:27:48.152079', '2025-08-31 14:27:48.152079') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (20, '2025-02-16 11:27:48.152592', '来店メモ3 (清水颯太)', 4594, '2025-08-31 14:27:48.152672', '2025-08-31 14:27:48.152672') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (21, '2024-10-19 14:27:48.153212', '来店メモ1 (佐藤太郎)', 1669, '2025-08-31 14:27:48.153294', '2025-08-31 14:27:48.153294') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (21, '2025-06-14 16:27:48.153841', '来店メモ2 (佐藤太郎)', 3463, '2025-08-31 14:27:48.153921', '2025-08-31 14:27:48.153921') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (21, '2025-05-02 10:27:48.154461', '来店メモ3 (佐藤太郎)', 3961, '2025-08-31 14:27:48.154542', '2025-08-31 14:27:48.154542') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (22, '2025-02-18 13:27:48.155197', '来店メモ1 (鈴木次郎)', 7351, '2025-08-31 14:27:48.155282', '2025-08-31 14:27:48.155282') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (22, '2025-02-02 23:27:48.155829', '来店メモ2 (鈴木次郎)', 7034, '2025-08-31 14:27:48.155912', '2025-08-31 14:27:48.155912') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (22, '2025-05-18 15:27:48.156456', '来店メモ3 (鈴木次郎)', 6095, '2025-08-31 14:27:48.156540', '2025-08-31 14:27:48.156540') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (23, '2024-11-02 20:27:48.157281', '来店メモ1 (高橋花子)', 6420, '2025-08-31 14:27:48.157367', '2025-08-31 14:27:48.157367') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (23, '2025-06-14 14:27:48.157921', '来店メモ2 (高橋花子)', 1623, '2025-08-31 14:27:48.158004', '2025-08-31 14:27:48.158004') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (23, '2025-04-22 23:27:48.158541', '来店メモ3 (高橋花子)', 2389, '2025-08-31 14:27:48.158624', '2025-08-31 14:27:48.158624') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (24, '2025-05-07 15:27:48.159170', '来店メモ1 (田中美咲)', 7065, '2025-08-31 14:27:48.159255', '2025-08-31 14:27:48.159255') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (24, '2024-10-03 12:27:48.159808', '来店メモ2 (田中美咲)', 2252, '2025-08-31 14:27:48.159891', '2025-08-31 14:27:48.159891') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (24, '2024-10-12 03:27:48.160526', '来店メモ3 (田中美咲)', 9294, '2025-08-31 14:27:48.160610', '2025-08-31 14:27:48.160610') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (25, '2024-12-13 17:27:48.161141', '来店メモ1 (渡辺大輔)', 9306, '2025-08-31 14:27:48.161223', '2025-08-31 14:27:48.161223') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (25, '2024-12-16 00:27:48.161768', '来店メモ2 (渡辺大輔)', 3081, '2025-08-31 14:27:48.161848', '2025-08-31 14:27:48.161848') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (25, '2024-11-26 19:27:48.162395', '来店メモ3 (渡辺大輔)', 8888, '2025-08-31 14:27:48.162481', '2025-08-31 14:27:48.162481') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (26, '2025-05-25 21:27:48.163175', '来店メモ1 (伊藤直樹)', 5722, '2025-08-31 14:27:48.163259', '2025-08-31 14:27:48.163259') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.6ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (26, '2025-05-02 08:27:48.163909', '来店メモ2 (伊藤直樹)', 3597, '2025-08-31 14:27:48.163995', '2025-08-31 14:27:48.163995') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (26, '2025-04-29 18:27:48.164950', '来店メモ3 (伊藤直樹)', 2408, '2025-08-31 14:27:48.165033', '2025-08-31 14:27:48.165033') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (27, '2025-04-30 04:27:48.165544', '来店メモ1 (山本さくら)', 9425, '2025-08-31 14:27:48.165641', '2025-08-31 14:27:48.165641') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (27, '2024-09-19 14:27:48.166146', '来店メモ2 (山本さくら)', 2270, '2025-08-31 14:27:48.166225', '2025-08-31 14:27:48.166225') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (27, '2024-09-14 16:27:48.166775', '来店メモ3 (山本さくら)', 1933, '2025-08-31 14:27:48.166856', '2025-08-31 14:27:48.166856') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (28, '2025-05-05 07:27:48.167314', '来店メモ1 (中村拓海)', 4424, '2025-08-31 14:27:48.167399', '2025-08-31 14:27:48.167399') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (1.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (28, '2024-09-12 01:27:48.167874', '来店メモ2 (中村拓海)', 8983, '2025-08-31 14:27:48.167954', '2025-08-31 14:27:48.167954') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (28, '2024-12-14 01:27:48.169615', '来店メモ3 (中村拓海)', 6108, '2025-08-31 14:27:48.169698', '2025-08-31 14:27:48.169698') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.9ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (29, '2024-12-18 03:27:48.170495', '来店メモ1 (小林結衣)', 3876, '2025-08-31 14:27:48.170577', '2025-08-31 14:27:48.170577') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (29, '2024-12-08 20:27:48.171748', '来店メモ2 (小林結衣)', 7523, '2025-08-31 14:27:48.171830', '2025-08-31 14:27:48.171830') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (29, '2025-02-01 18:27:48.172436', '来店メモ3 (小林結衣)', 2516, '2025-08-31 14:27:48.172518', '2025-08-31 14:27:48.172518') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (30, '2025-04-29 05:27:48.173206', '来店メモ1 (加藤陽菜)', 1166, '2025-08-31 14:27:48.173285', '2025-08-31 14:27:48.173285') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (30, '2025-02-02 14:27:48.174327', '来店メモ2 (加藤陽菜)', 5676, '2025-08-31 14:27:48.174407', '2025-08-31 14:27:48.174407') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.7ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (30, '2025-05-16 17:27:48.175026', '来店メモ3 (加藤陽菜)', 2811, '2025-08-31 14:27:48.175244', '2025-08-31 14:27:48.175244') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (31, '2025-04-13 14:27:48.176619', '来店メモ1 (かつかいしゅう)', 6653, '2025-08-31 14:27:48.176697', '2025-08-31 14:27:48.176697') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (31, '2025-03-25 14:27:48.177691', '来店メモ2 (かつかいしゅう)', 8875, '2025-08-31 14:27:48.177766', '2025-08-31 14:27:48.177766') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Cokarte2'*/[0m
+  [1m[36mClientRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (31, '2025-02-18 02:27:48.178631', '来店メモ3 (かつかいしゅう)', 6169, '2025-08-31 14:27:48.178717', '2025-08-31 14:27:48.178717') RETURNING "id" /*application='Cokarte2'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Cokarte2'*/[0m
+Started GET "/clients/1" for ::1 at 2025-08-31 23:31:21 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+Processing by ClientsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='clients'*/[0m
+  [1m[36mClient Load (1.0ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 1 LIMIT 1 /*action='show',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/controllers/clients_controller.rb:7:in 'ClientsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering clients/show.html.erb within layouts/application
+  Rendered clients/show.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.0ms)
+Completed 200 OK in 53ms (Views: 4.9ms | ActiveRecord: 8.4ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/assets/side_menu-12ccb713.css" for ::1 at 2025-08-31 23:31:21 +0900
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:31:21 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records" for ::1 at 2025-08-31 23:31:22 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (1.5ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClient Load (1.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (18, 16, 3, 6, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22, 30) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClientRecord Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:24
+  Rendered client_records/index.html.erb within layouts/application (Duration: 25.9ms | GC: 2.8ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 26.4ms | GC: 2.8ms)
+Completed 200 OK in 63ms (Views: 21.5ms | ActiveRecord: 9.9ms (4 queries, 0 cached) | GC: 4.9ms)
+
+
+Started GET "/client_records?page=2" for ::1 at 2025-08-31 23:31:43 +0900
+Processing by ClientRecordsController#index as HTML
+  Parameters: {"page" => "2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.5ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 20 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (24, 28, 21, 26, 27, 12, 30, 8, 17, 2, 23, 11, 18, 5, 15, 10, 31, 13, 9) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClientRecord Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:24
+  Rendered client_records/index.html.erb within layouts/application (Duration: 8.4ms | GC: 0.3ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | GC: 0.3ms)
+Completed 200 OK in 43ms (Views: 7.8ms | ActiveRecord: 2.2ms (4 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/client_records?page=2" for ::1 at 2025-08-31 23:34:06 +0900
+Processing by ClientRecordsController#index as HTML
+  Parameters: {"page" => "2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (1.1ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 20 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (24, 28, 21, 26, 27, 12, 30, 8, 17, 2, 23, 11, 18, 5, 15, 10, 31, 13, 9) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:24
+  Rendered client_records/index.html.erb within layouts/application (Duration: 14.5ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | GC: 0.0ms)
+Completed 200 OK in 48ms (Views: 12.7ms | ActiveRecord: 11.2ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:34:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records?page=2" for ::1 at 2025-08-31 23:34:59 +0900
+Processing by ClientRecordsController#index as HTML
+  Parameters: {"page" => "2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.4ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 20 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (24, 28, 21, 26, 27, 12, 30, 8, 17, 2, 23, 11, 18, 5, 15, 10, 31, 13, 9) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:24
+  Rendered client_records/index.html.erb within layouts/application (Duration: 13.3ms | GC: 0.7ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | GC: 0.7ms)
+Completed 200 OK in 43ms (Views: 10.6ms | ActiveRecord: 10.3ms (4 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:34:59 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records?page=2" for ::1 at 2025-08-31 23:36:42 +0900
+Processing by ClientRecordsController#index as HTML
+  Parameters: {"page" => "2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.7ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 20 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (24, 28, 21, 26, 27, 12, 30, 8, 17, 2, 23, 11, 18, 5, 15, 10, 31, 13, 9) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClientRecord Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:24
+  Rendered client_records/index.html.erb within layouts/application (Duration: 11.9ms | GC: 0.4ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | GC: 0.5ms)
+Completed 200 OK in 39ms (Views: 9.5ms | ActiveRecord: 10.0ms (4 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:36:42 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:36:47 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:10
+  Rendered client_records/new.html.erb within layouts/application (Duration: 6.7ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 7.0ms | ActiveRecord: 1.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:37:37 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:10
+  Rendered client_records/new.html.erb within layouts/application (Duration: 10.0ms | GC: 0.6ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | GC: 1.3ms)
+Completed 200 OK in 44ms (Views: 7.8ms | ActiveRecord: 12.1ms (2 queries, 0 cached) | GC: 2.5ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:37:37 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:38:25 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:13
+  Rendered client_records/new.html.erb within layouts/application (Duration: 9.6ms | GC: 2.5ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | GC: 2.9ms)
+Completed 200 OK in 43ms (Views: 8.9ms | ActiveRecord: 10.4ms (2 queries, 0 cached) | GC: 2.9ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:38:25 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:38:44 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:13
+  Rendered client_records/new.html.erb within layouts/application (Duration: 1.9ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 2.1ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:38:44 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:39:25 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 6.4ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 5.5ms | ActiveRecord: 10.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:39:25 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:39:39 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 2.1ms | GC: 0.1ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.1ms)
+Completed 200 OK in 37ms (Views: 2.4ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:39:39 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:40:28 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 7.0ms | GC: 0.3ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.5ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 0.6ms)
+Completed 200 OK in 39ms (Views: 5.5ms | ActiveRecord: 9.7ms (2 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:40:28 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+  [1m[36mClient Pluck (17.3ms)[0m  [1m[34mSELECT "clients"."first_name" FROM "clients" /*application='Cokarte2'*/[0m
+Started POST "/client_records" for ::1 at 2025-08-31 23:41:52 +0900
+Processing by ClientRecordsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "client_record" => {"client_id" => "6", "visited_at" => "2025-08-31T23:41", "amount" => "50000", "note" => "fkpasdojfosjfosajfiojdasofgjdsiajfiodsajfidsjfidsahfiodpshjfiopdsajfiodjsfosajfiodsjfiosajfoidsajfiodsjfiosdajfoidsajfiods"}, "commit" => "登録する"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:12:in 'ClientRecordsController#create'
+  [1m[36mClient Load (1.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 6 LIMIT 1 /*action='create',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:12:in 'ClientRecordsController#create'
+  [1m[36mClientRecord Create (1.9ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (6, '2025-08-31 23:41:00', 'fkpasdojfosjfosajfiojdasofgjdsiajfiodsajfidsjfidsahfiodpshjfiopdsajfiodjsfosajfiodsjfiosajfoidsajfiodsjfiosdajfoidsajfiods', 50000, '2025-08-31 14:41:52.545190', '2025-08-31 14:41:52.545190') RETURNING "id" /*action='create',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:12:in 'ClientRecordsController#create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*action='create',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:12:in 'ClientRecordsController#create'
+Redirected to http://localhost:3000/client_records
+Completed 302 Found in 48ms (ActiveRecord: 4.1ms (3 queries, 0 cached) | GC: 3.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:41:52 +0900
+Processing by ClientRecordsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.4ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:13
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:24
+  Rendered client_records/index.html.erb within layouts/application (Duration: 6.1ms | GC: 0.7ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | GC: 0.7ms)
+Completed 200 OK in 25ms (Views: 5.8ms | ActiveRecord: 1.2ms (4 queries, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:44:42 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 13.8ms | GC: 1.5ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | GC: 1.5ms)
+Completed 200 OK in 43ms (Views: 11.3ms | ActiveRecord: 9.0ms (4 queries, 0 cached) | GC: 1.8ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:44:42 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/54" for ::1 at 2025-08-31 23:44:43 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "54"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 54 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 18 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 2.7ms | ActiveRecord: 1.8ms (3 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/client_records/94" for ::1 at 2025-08-31 23:44:44 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.5ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 6 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.0ms)
+Completed 200 OK in 41ms (Views: 2.5ms | ActiveRecord: 2.0ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/94" for ::1 at 2025-08-31 23:44:46 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 6 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 2.0ms | ActiveRecord: 1.0ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:46:01 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.7ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (1.0ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 9.9ms | GC: 1.3ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | GC: 1.3ms)
+Completed 200 OK in 47ms (Views: 9.2ms | ActiveRecord: 2.7ms (4 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:46:02 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 4.6ms | GC: 0.7ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | GC: 0.7ms)
+Completed 200 OK in 44ms (Views: 4.9ms | ActiveRecord: 1.6ms (2 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:46:04 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.6ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 8.2ms | GC: 1.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | GC: 1.0ms)
+Completed 200 OK in 42ms (Views: 7.7ms | ActiveRecord: 3.2ms (4 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/client_records/94" for ::1 at 2025-08-31 23:46:08 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 6 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.0ms)
+Completed 200 OK in 35ms (Views: 2.0ms | ActiveRecord: 0.8ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/client_records/94" for ::1 at 2025-08-31 23:46:20 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 6 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 3.3ms | ActiveRecord: 1.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:46:20 +0900
+Started GET "/assets/side_menu-32b0e4f4.css" for ::1 at 2025-08-31 23:46:20 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:46:26 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 200 OK in 38ms (Views: 2.6ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:46:30 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.5ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 7.4ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 0.0ms)
+Completed 200 OK in 43ms (Views: 7.4ms | ActiveRecord: 2.0ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:46:32 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.6ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (1.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 8.0ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | GC: 0.0ms)
+Completed 200 OK in 45ms (Views: 6.6ms | ActiveRecord: 3.1ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:46:32 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.5ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 2.1ms | ActiveRecord: 1.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:46:40 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 2.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 2.4ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:48:04 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:13
+  Rendered client_records/new.html.erb within layouts/application (Duration: 8.2ms | GC: 0.4ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | GC: 0.8ms)
+Completed 200 OK in 58ms (Views: 8.0ms | ActiveRecord: 22.7ms (2 queries, 0 cached) | GC: 2.9ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:48:04 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:49:07 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 5.1ms | GC: 0.2ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | GC: 0.3ms)
+Completed 200 OK in 36ms (Views: 5.2ms | ActiveRecord: 6.6ms (2 queries, 0 cached) | GC: 1.5ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:49:07 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records" for ::1 at 2025-08-31 23:49:22 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.6ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 13.5ms | GC: 2.9ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | GC: 3.3ms)
+Completed 200 OK in 39ms (Views: 13.1ms | ActiveRecord: 2.0ms (4 queries, 0 cached) | GC: 3.3ms)
+
+
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:49:24 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 3.3ms | GC: 0.5ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 0.5ms)
+Completed 200 OK in 42ms (Views: 3.6ms | ActiveRecord: 1.8ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/client_records/94" for ::1 at 2025-08-31 23:49:27 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.4ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 6 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 2.6ms | GC: 0.6ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | GC: 0.6ms)
+Completed 200 OK in 36ms (Views: 2.9ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:49:28 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.4ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 2.7ms | GC: 0.5ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.5ms)
+Completed 200 OK in 39ms (Views: 2.9ms | ActiveRecord: 1.7ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:49:28 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/94" for ::1 at 2025-08-31 23:49:32 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 6 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 1.8ms | ActiveRecord: 1.1ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:49:34 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 1.9ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | GC: 0.4ms)
+Completed 200 OK in 32ms (Views: 2.7ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 2.3ms)
+
+
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:49:36 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (1.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 2.7ms | GC: 0.5ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | GC: 0.5ms)
+Completed 200 OK in 40ms (Views: 3.0ms | ActiveRecord: 1.9ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:49:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:50:58 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 6.6ms | GC: 0.6ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 1.0ms)
+Completed 200 OK in 41ms (Views: 6.1ms | ActiveRecord: 11.6ms (3 queries, 0 cached) | GC: 2.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:50:58 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/94" for ::1 at 2025-08-31 23:50:59 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 6 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 2.5ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.0ms)
+Completed 200 OK in 41ms (Views: 3.1ms | ActiveRecord: 1.9ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:51:00 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (1.0ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 15.4ms | GC: 1.5ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | GC: 1.9ms)
+Completed 200 OK in 56ms (Views: 15.3ms | ActiveRecord: 2.7ms (4 queries, 0 cached) | GC: 1.9ms)
+
+
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:51:00 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (1.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 3.2ms | GC: 0.7ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 0.7ms)
+Completed 200 OK in 39ms (Views: 3.0ms | ActiveRecord: 2.1ms (3 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:51:04 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.5ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 7.6ms | GC: 1.1ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | GC: 1.1ms)
+Completed 200 OK in 43ms (Views: 7.2ms | ActiveRecord: 1.7ms (4 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:51:06 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 2.8ms | GC: 0.2ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | GC: 0.2ms)
+Completed 200 OK in 38ms (Views: 3.3ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:51:08 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.6ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 8.4ms | GC: 0.7ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | GC: 0.7ms)
+Completed 200 OK in 49ms (Views: 8.0ms | ActiveRecord: 2.1ms (4 queries, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/client_records/94" for ::1 at 2025-08-31 23:51:09 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.4ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 6 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.8ms | GC: 0.2ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.2ms)
+Completed 200 OK in 39ms (Views: 2.3ms | ActiveRecord: 1.8ms (3 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:51:09 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (1.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 3.3ms | GC: 0.5ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.5ms)
+Completed 200 OK in 42ms (Views: 2.9ms | ActiveRecord: 2.1ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:52:43 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 8.2ms | GC: 2.1ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | GC: 2.4ms)
+Completed 200 OK in 41ms (Views: 7.6ms | ActiveRecord: 10.1ms (3 queries, 0 cached) | GC: 2.4ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:52:43 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/94/edit" for ::1 at 2025-08-31 23:52:44 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "94"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 94 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 2.5ms | GC: 0.1ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | GC: 0.1ms)
+Completed 200 OK in 38ms (Views: 3.0ms | ActiveRecord: 2.0ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-08-31 23:52:44 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/" for ::1 at 2025-08-31 23:53:26 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:13
+  [1m[36mClient Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:25
+  Rendered clients/index.html.erb within layouts/application (Duration: 6.8ms | GC: 0.2ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | GC: 0.2ms)
+Completed 200 OK in 36ms (Views: 6.9ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/clients/1" for ::1 at 2025-08-31 23:53:36 +0900
+Processing by ClientsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='clients'*/[0m
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 1 LIMIT 1 /*action='show',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/controllers/clients_controller.rb:7:in 'ClientsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering clients/show.html.erb within layouts/application
+  Rendered clients/show.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 2.3ms | ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:53:46 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 2.7ms | ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:53:50 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.7ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 18, 16, 3, 10, 5, 1, 11, 4, 14, 21, 23, 26, 19, 22) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 10.6ms | GC: 0.5ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | GC: 0.8ms)
+Completed 200 OK in 50ms (Views: 10.3ms | ActiveRecord: 2.3ms (4 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/" for ::1 at 2025-08-31 23:53:50 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:13
+  [1m[36mClient Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:25
+  Rendered clients/index.html.erb within layouts/application (Duration: 6.4ms | GC: 0.6ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | GC: 0.6ms)
+Completed 200 OK in 46ms (Views: 6.4ms | ActiveRecord: 1.6ms (3 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/clients/new" for ::1 at 2025-08-31 23:53:51 +0900
+Processing by ClientsController#new as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/new.html.erb within layouts/application
+  Rendered clients/new.html.erb within layouts/application (Duration: 2.7ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.0ms)
+Completed 200 OK in 44ms (Views: 4.3ms | ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:53:55 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 1.9ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | GC: 0.4ms)
+Completed 200 OK in 37ms (Views: 2.6ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.4ms)
+
+
+Started POST "/client_records" for ::1 at 2025-08-31 23:54:27 +0900
+Processing by ClientRecordsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "client_record" => {"client_id" => "4", "visited_at" => "2025-08-31T13:57", "amount" => "30000", "note" => "あれとこれ買ってくれた"}, "commit" => "登録する"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:20:in 'ClientRecordsController#create'
+  [1m[36mClient Load (1.0ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 4 LIMIT 1 /*action='create',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:20:in 'ClientRecordsController#create'
+  [1m[36mClientRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "client_records" ("client_id", "visited_at", "note", "amount", "created_at", "updated_at") VALUES (4, '2025-08-31 13:57:00', 'あれとこれ買ってくれた', 30000, '2025-08-31 14:54:27.960270', '2025-08-31 14:54:27.960270') RETURNING "id" /*action='create',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:20:in 'ClientRecordsController#create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*action='create',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:20:in 'ClientRecordsController#create'
+Redirected to http://localhost:3000/client_records
+Completed 302 Found in 39ms (ActiveRecord: 3.7ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:54:27 +0900
+Processing by ClientRecordsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.6ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 5.5ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.0ms)
+Completed 200 OK in 27ms (Views: 4.9ms | ActiveRecord: 1.7ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/95" for ::1 at 2025-08-31 23:54:33 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "95"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 95 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 4 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 1.9ms | ActiveRecord: 0.8ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-08-31 23:54:46 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.6ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 7.6ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | GC: 0.0ms)
+Completed 200 OK in 45ms (Views: 6.7ms | ActiveRecord: 2.6ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:54:50 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 2.7ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.0ms)
+Completed 200 OK in 44ms (Views: 3.6ms | ActiveRecord: 1.5ms (2 queries, 0 cached) | GC: 3.7ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-08-31 23:54:51 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 3.4ms | GC: 0.9ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | GC: 0.9ms)
+Completed 200 OK in 42ms (Views: 4.1ms | ActiveRecord: 1.7ms (2 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/client_records?page=2" for ::1 at 2025-08-31 23:54:55 +0900
+Processing by ClientRecordsController#index as HTML
+  Parameters: {"page" => "2"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.5ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 20 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (22, 30, 24, 28, 21, 26, 27, 12, 8, 17, 2, 23, 11, 18, 5, 15, 10, 31) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 9.5ms | GC: 1.1ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | GC: 1.1ms)
+Completed 200 OK in 43ms (Views: 9.2ms | ActiveRecord: 2.5ms (4 queries, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/client_records?page=3" for ::1 at 2025-08-31 23:54:57 +0900
+Processing by ClientRecordsController#index as HTML
+  Parameters: {"page" => "3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (1.6ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 40 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (13, 9, 14, 17, 7, 31, 12, 11, 22, 8, 1, 20, 18, 30, 29) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 9.5ms | GC: 0.5ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | GC: 0.8ms)
+Completed 200 OK in 48ms (Views: 8.4ms | ActiveRecord: 3.2ms (4 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/client_records/65" for ::1 at 2025-09-03 00:05:38 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "65"}
+  [1m[36mUser Load (16.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.9ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 65 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (1.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 22 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 9.2ms | GC: 5.6ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | GC: 5.6ms)
+Completed 200 OK in 55ms (Views: 9.1ms | ActiveRecord: 28.6ms (3 queries, 0 cached) | GC: 5.6ms)
+
+
+Started GET "/client_records/37" for ::1 at 2025-09-03 00:06:02 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "37"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.6ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 37 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 13 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 2.1ms | ActiveRecord: 1.4ms (3 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/client_records/37/edit" for ::1 at 2025-09-03 00:06:04 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "37"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 37 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 2.4ms | GC: 0.4ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.4ms)
+Completed 200 OK in 39ms (Views: 2.6ms | ActiveRecord: 1.2ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/client_records/37/edit" for ::1 at 2025-09-03 00:07:01 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "37"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 37 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 0.4ms)
+Completed 200 OK in 38ms (Views: 2.8ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-03 00:07:01 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/37/edit" for ::1 at 2025-09-03 00:08:49 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "37"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.6ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 37 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 3.6ms | ActiveRecord: 1.6ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-03 00:08:49 +0900
+Started GET "/assets/side_menu-3daed842.css" for ::1 at 2025-09-03 00:08:49 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records/37/edit" for ::1 at 2025-09-03 00:10:09 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "37"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 37 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | GC: 0.0ms)
+Completed 200 OK in 41ms (Views: 4.2ms | ActiveRecord: 1.6ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-03 00:10:09 +0900
+Started GET "/assets/side_menu-c2b16f08.css" for ::1 at 2025-09-03 00:10:09 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/client_records" for ::1 at 2025-09-03 00:10:23 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (1.7ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 9.0ms | GC: 0.3ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | GC: 0.3ms)
+Completed 200 OK in 44ms (Views: 7.2ms | ActiveRecord: 2.9ms (4 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 00:10:24 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:13
+  [1m[36mClient Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:25
+  Rendered clients/index.html.erb within layouts/application (Duration: 5.4ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | GC: 0.0ms)
+Completed 200 OK in 44ms (Views: 5.7ms | ActiveRecord: 1.5ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/client_records/37/edit" for ::1 at 2025-09-03 00:10:30 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "37"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 37 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 2.5ms | ActiveRecord: 1.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/37" for ::1 at 2025-09-03 00:10:48 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "37"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 37 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 13 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 2.0ms | ActiveRecord: 1.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started PATCH "/client_records/37" for ::1 at 2025-09-03 00:10:49 +0900
+Processing by ClientRecordsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "client_record" => {"client_id" => "13", "visited_at" => "2025-04-12T09:27:48", "amount" => "4365", "note" => "来店メモ1 (佐々木大地)\n\nあああ\n\ndふぁfdさfdふぁsfdさっfdfさfdsfさfさdふぁsfさf"}, "commit" => "更新する", "id" => "37"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='update',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 37 LIMIT 1 /*action='update',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:28:in 'ClientRecordsController#update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='update',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:29:in 'ClientRecordsController#update'
+  [1m[36mClientRecord Update (2.7ms)[0m  [1m[33mUPDATE "client_records" SET "visited_at" = '2025-04-12 09:27:48', "note" = '来店メモ1 (佐々木大地)
+
+あああ
+
+dふぁfdさfdふぁsfdさっfdfさfdsfさfさdふぁsfさf', "updated_at" = '2025-09-02 15:10:49.617381' WHERE "client_records"."id" = 37 /*action='update',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:29:in 'ClientRecordsController#update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*action='update',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:29:in 'ClientRecordsController#update'
+Redirected to http://localhost:3000/client_records/37
+Completed 302 Found in 40ms (ActiveRecord: 4.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/37" for ::1 at 2025-09-03 00:10:49 +0900
+Processing by ClientRecordsController#show as TURBO_STREAM
+  Parameters: {"id" => "37"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 37 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 13 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 1.6ms | ActiveRecord: 0.7ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-09-03 00:10:56 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.5ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (2.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 8.6ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | GC: 1.4ms)
+Completed 200 OK in 45ms (Views: 8.1ms | ActiveRecord: 3.3ms (4 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/client_records/37/edit" for ::1 at 2025-09-03 00:10:59 +0900
+Processing by ClientRecordsController#edit as HTML
+  Parameters: {"id" => "37"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 37 LIMIT 1 /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:15:in 'ClientRecordsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/edit.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='edit',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/edit.html.erb:12
+  Rendered client_records/edit.html.erb within layouts/application (Duration: 2.4ms | GC: 0.6ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.6ms)
+Completed 200 OK in 38ms (Views: 2.6ms | ActiveRecord: 1.1ms (3 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/client_records" for ::1 at 2025-09-03 00:10:59 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.7ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.9ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 9.1ms | GC: 1.3ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | GC: 1.3ms)
+Completed 200 OK in 48ms (Views: 8.2ms | ActiveRecord: 2.5ms (4 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/client_records?page=2" for ::1 at 2025-09-03 00:11:07 +0900
+Processing by ClientRecordsController#index as HTML
+  Parameters: {"page" => "2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.4ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 20 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (22, 30, 24, 28, 21, 26, 27, 12, 8, 17, 2, 23, 11, 18, 5, 15, 10, 31) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 7.9ms | GC: 1.2ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 1.2ms)
+Completed 200 OK in 41ms (Views: 7.4ms | ActiveRecord: 1.8ms (4 queries, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/client_records?page=2" for ::1 at 2025-09-03 00:11:07 +0900
+Processing by ClientRecordsController#index as HTML
+  Parameters: {"page" => "2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.6ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 20 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (22, 30, 24, 28, 21, 26, 27, 12, 8, 17, 2, 23, 11, 18, 5, 15, 10, 31) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 7.3ms | GC: 0.3ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | GC: 0.3ms)
+Completed 200 OK in 45ms (Views: 6.6ms | ActiveRecord: 2.3ms (4 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-09-03 00:11:10 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.4ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 6.5ms | GC: 0.3ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | GC: 0.3ms)
+Completed 200 OK in 38ms (Views: 6.2ms | ActiveRecord: 1.5ms (4 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/client_records/54" for ::1 at 2025-09-03 00:11:24 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "54"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (2.0ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 54 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 18 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.0ms)
+Completed 200 OK in 43ms (Views: 2.2ms | ActiveRecord: 3.0ms (3 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/client_records/54" for ::1 at 2025-09-03 00:11:25 +0900
+Processing by ClientRecordsController#show as HTML
+  Parameters: {"id" => "54"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  [1m[36mClientRecord Load (0.3ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" = 54 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/controllers/client_records_controller.rb:7:in 'ClientRecordsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/show.html.erb within layouts/application
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = 18 LIMIT 1 /*action='show',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/show.html.erb:6
+  Rendered client_records/show.html.erb within layouts/application (Duration: 1.5ms | GC: 0.1ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | GC: 0.1ms)
+Completed 200 OK in 38ms (Views: 2.1ms | ActiveRecord: 1.1ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-09-03 00:11:28 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 1.9ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 2.0ms | ActiveRecord: 2.2ms (2 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/client_records" for ::1 at 2025-09-03 00:11:39 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.8ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 7.9ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 0.0ms)
+Completed 200 OK in 45ms (Views: 6.9ms | ActiveRecord: 2.8ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 00:11:39 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (1.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:13
+  [1m[36mClient Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:25
+  Rendered clients/index.html.erb within layouts/application (Duration: 6.5ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 5.6ms | ActiveRecord: 2.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-09-03 00:11:45 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 2.2ms | ActiveRecord: 4.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-09-03 00:11:49 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (3.0ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 10.3ms | GC: 1.3ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | GC: 1.3ms)
+Completed 200 OK in 46ms (Views: 7.6ms | ActiveRecord: 4.0ms (4 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/client_records" for ::1 at 2025-09-03 00:11:50 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (2.1ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:14
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:29
+  Rendered client_records/index.html.erb within layouts/application (Duration: 9.0ms | GC: 0.8ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | GC: 0.8ms)
+Completed 200 OK in 40ms (Views: 7.0ms | ActiveRecord: 3.3ms (4 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 00:11:51 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:13
+  [1m[36mClient Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:25
+  Rendered clients/index.html.erb within layouts/application (Duration: 4.7ms | GC: 0.4ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.4ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | GC: 0.6ms)
+Completed 200 OK in 39ms (Views: 5.0ms | ActiveRecord: 1.5ms (3 queries, 0 cached) | GC: 1.1ms)
+
+

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     sessions: "users/sessions"
   }
   resources :clients, only: [ :index, :show, :destroy, :new, :create, :edit, :update ]
+  resources :client_records, only: [ :index, :new, :create, :show, :edit, :update ]
   root to: "clients#index"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get "up" => "rails/health#show", as: :rails_health_check

@@ -1,0 +1,17 @@
+<%# filepath: app/views/client_records/show.html.erb %>
+<div class="client-detail-container" style="max-width:none;padding:2.5rem 1.5rem;">
+  <h1>カルテ詳細</h1>
+  <div class="client-detail-card">
+    <table class="client-detail-table">
+      <tr><th>顧客</th><td><%= @client_record.client&.last_name.to_s + @client_record.client&.first_name.to_s %></td></tr>
+      <tr><th>来店日時</th><td><%= @client_record.visited_at&.strftime('%Y/%m/%d %H:%M') %></td></tr>
+      <tr><th>金額</th><td><%= number_to_currency(@client_record.amount, unit: '¥', precision: 0) if @client_record.amount %></td></tr>
+      <tr><th>ノート</th><td><%= simple_format(@client_record.note) %></td></tr>
+      <tr><th>登録日</th><td><%= @client_record.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
+    </table>
+    <div class="client-detail-actions">
+      <%= link_to '一覧へ戻る', client_records_path, class: 'btn btn-detail' %>
+      <%= link_to '編集', edit_client_record_path(@client_record), class: 'btn btn-detail' %>
+    </div>
+  </div>
+</div>

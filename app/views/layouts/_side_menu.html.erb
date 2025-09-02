@@ -3,6 +3,8 @@
   <nav class="side-menu">
     <ul>
       <li><%= link_to '顧客一覧', root_path, class: 'side-menu-link' %></li>
+      <li><%= link_to 'カルテ一覧', client_records_path, class: 'side-menu-link' %></li>
+      <li><%= link_to 'カルテ作成', new_client_record_path, class: 'side-menu-link' %></li>
       <li>
         <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'side-menu-link logout-btn' %>
       </li>

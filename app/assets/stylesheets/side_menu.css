@@ -174,19 +174,34 @@
   border-spacing: 0;
   margin-bottom: 1.5rem;
 }
+/* カルテ詳細テーブルのth, tdを横並び・中央揃えに */
 .client-detail-table th {
   background: #e6f4ea;
   color: #218a5a;
   font-weight: 700;
-  text-align: left;
+  text-align: center;
   padding: 0.7rem 1rem;
-  width: 32%;
+  width: 8em;
+  min-width: 6em;
   border-bottom: 1px solid #b2dfdb;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 .client-detail-table td {
   padding: 0.7rem 1rem;
   border-bottom: 1px solid #f0f0f0;
   background: #fff;
+  vertical-align: middle;
+  word-break: break-all;
+}
+@media (max-width: 600px) {
+  .client-detail-table th, .client-detail-table td {
+    display: table-cell;
+    width: auto;
+    min-width: unset;
+    padding: 0.5rem 0.3rem;
+    font-size: 0.98em;
+  }
 }
 .client-detail-table tr:last-child th,
 .client-detail-table tr:last-child td {
@@ -220,13 +235,20 @@
   text-align: center;
   margin-bottom: 2rem;
 }
+/* .client-form-cardの幅を広げつつ中央寄せを維持 */
 .client-form-card {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 1px 8px rgba(33,138,90,0.06);
   padding: 1.5rem 1rem 1rem 1rem;
-  max-width: 540px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 0 auto 2rem auto;
+}
+@media (max-width: 1000px) {
+  .client-form-card {
+    max-width: 100%;
+    margin: 0 auto 2rem auto;
+  }
 }
 .client-form-table {
   width: 100%;
@@ -277,4 +299,40 @@
     gap: 0.5rem;
     align-items: stretch;
   }
+}
+
+/* カルテ一覧テーブル用スタイル */
+.client-records-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 2rem;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(33,138,90,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.client-records-table th, .client-records-table td {
+  padding: 1rem 1.2rem;
+  text-align: left;
+}
+.client-records-table th {
+  background: #e6f4ea;
+  color: #218a5a;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-bottom: 2px solid #b2dfdb;
+}
+.client-records-table tr {
+  transition: background 0.2s;
+}
+.client-records-table tbody tr:hover {
+  background: #f6fff8;
+}
+.client-records-table td {
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 1rem;
+}
+.client-records-table tr:last-child td {
+  border-bottom: none;
 }
