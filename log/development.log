@@ -8388,3 +8388,631 @@ Processing by ClientsController#show as HTML
 Completed 200 OK in 27ms (Views: 2.0ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.4ms)
 
 
+Started GET "/user" for ::1 at 2025-09-03 01:04:26 +0900
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Cokarte2',controller='users'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.3ms)
+Completed 200 OK in 34ms (Views: 2.5ms | ActiveRecord: 10.7ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2025-09-03 01:04:26 +0900
+Processing by Users::SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='Cokarte2',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 32ms (ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 01:04:26 +0900
+Processing by ClientsController#index as TURBO_STREAM
+Completed 401 Unauthorized in 17ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:04:27 +0900
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | GC: 0.1ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.5ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.1ms)
+Completed 200 OK in 18ms (Views: 2.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:04:48 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 3.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:04:48 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 1.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2025-09-03 01:04:48 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 1.6ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.2ms)
+Completed 200 OK in 33ms (Views: 3.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:04:55 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.2ms)
+Completed 200 OK in 38ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:04:55 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 1.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:05:01 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 2.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:09:15 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Cokarte2'*/[0m
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | GC: 0.0ms)
+Completed 200 OK in 71ms (Views: 15.0ms | ActiveRecord: 15.1ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-03 01:09:15 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/users/sign_up" for ::1 at 2025-09-03 01:09:19 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 2.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:09:22 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 1.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:09:22 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 2.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:09:24 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.1ms)
+Completed 200 OK in 36ms (Views: 1.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:09:25 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 1.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:09:27 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 1.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:09:29 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.4ms)
+Completed 200 OK in 35ms (Views: 2.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:09:29 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | GC: 0.0ms)
+Completed 200 OK in 38ms (Views: 2.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:09:31 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 1.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:09:41 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 1.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:13:23 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.7ms | GC: 0.4ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 2.1ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.4ms)
+Completed 200 OK in 38ms (Views: 6.3ms | ActiveRecord: 3.7ms (0 queries, 0 cached) | GC: 6.9ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-03 01:13:23 +0900
+Started GET "/assets/side_menu-f903b00b.css" for ::1 at 2025-09-03 01:13:23 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:13:25 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 1.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:13:26 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 6.2ms | GC: 5.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | GC: 5.2ms)
+Completed 200 OK in 36ms (Views: 6.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 5.2ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:13:26 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 2.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:13:31 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 1.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2025-09-03 01:13:52 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 30ms (Views: 3.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:13:54 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 1.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:13:55 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 1.4ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.4ms)
+Completed 200 OK in 32ms (Views: 2.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:13:58 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 0.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 1.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:14:01 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 1.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:14:02 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 0.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 26ms (Views: 1.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-03 01:14:04 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/users/sign_up" for ::1 at 2025-09-03 01:14:42 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 9.0ms | ActiveRecord: 3.8ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2025-09-03 01:14:50 +0900
+Processing by Users::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "ログイン"}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Cokarte2',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 215ms (ActiveRecord: 2.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 01:14:50 +0900
+Processing by ClientsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (1.9ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:24
+  [1m[36mClient Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:36
+  Rendered clients/index.html.erb within layouts/application (Duration: 13.9ms | GC: 2.4ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | GC: 2.4ms)
+Completed 200 OK in 32ms (Views: 10.1ms | ActiveRecord: 7.1ms (3 queries, 0 cached) | GC: 2.8ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 01:14:57 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:24
+  [1m[36mClient Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:36
+  Rendered clients/index.html.erb within layouts/application (Duration: 6.1ms | GC: 1.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | GC: 1.0ms)
+Completed 200 OK in 40ms (Views: 6.3ms | ActiveRecord: 1.0ms (3 queries, 0 cached) | GC: 1.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2025-09-03 01:15:10 +0900
+Processing by Users::SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='Cokarte2',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 39ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 01:15:10 +0900
+Processing by ClientsController#index as TURBO_STREAM
+Completed 401 Unauthorized in 18ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:15:10 +0900
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.1ms)
+Completed 200 OK in 16ms (Views: 1.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:17:56 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 6.4ms | ActiveRecord: 18.6ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/side_menu-5d8679fe.css" for ::1 at 2025-09-03 01:17:56 +0900
+Started POST "/users/sign_in" for ::1 at 2025-09-03 01:18:05 +0900
+Processing by Users::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "ログイン"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Cokarte2',controller='sessions'*/[0m
+Completed 401 Unauthorized in 217ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "ログイン"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 0.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 185ms (Views: 1.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2025-09-03 01:18:09 +0900
+Processing by Users::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "ログイン"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Cokarte2',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 222ms (ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 2.8ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 01:18:09 +0900
+Processing by ClientsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:24
+  [1m[36mClient Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:36
+  Rendered clients/index.html.erb within layouts/application (Duration: 8.2ms | GC: 0.7ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | GC: 0.7ms)
+Completed 200 OK in 26ms (Views: 6.5ms | ActiveRecord: 5.2ms (3 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 01:18:12 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:24
+  [1m[36mClient Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:36
+  Rendered clients/index.html.erb within layouts/application (Duration: 5.3ms | GC: 0.2ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | GC: 0.2ms)
+Completed 200 OK in 45ms (Views: 5.1ms | ActiveRecord: 2.0ms (3 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/client_records" for ::1 at 2025-09-03 01:18:12 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (2.2ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:32
+  [1m[36mClient Load (0.9ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:32
+  [1m[36mClientRecord Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:47
+  Rendered client_records/index.html.erb within layouts/application (Duration: 21.8ms | GC: 0.6ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | GC: 0.6ms)
+Completed 200 OK in 67ms (Views: 18.2ms | ActiveRecord: 7.2ms (4 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-09-03 01:18:13 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (1.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 8.9ms | GC: 3.7ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | GC: 4.5ms)
+Completed 200 OK in 51ms (Views: 9.8ms | ActiveRecord: 2.6ms (2 queries, 0 cached) | GC: 5.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-09-03 01:18:16 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[36mClientRecord Load (0.8ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:32
+  [1m[36mClient Load (1.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" IN (6, 4, 18, 16, 3, 10, 5, 1, 11, 14, 21, 23, 26, 19) /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:32
+  [1m[36mClientRecord Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "client_records" /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:47
+  Rendered client_records/index.html.erb within layouts/application (Duration: 15.9ms | GC: 7.8ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.5ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | GC: 8.3ms)
+Completed 200 OK in 49ms (Views: 15.2ms | ActiveRecord: 2.6ms (4 queries, 0 cached) | GC: 10.5ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 01:18:16 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:24
+  [1m[36mClient Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:36
+  Rendered clients/index.html.erb within layouts/application (Duration: 7.0ms | GC: 1.8ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | GC: 1.8ms)
+Completed 200 OK in 44ms (Views: 6.9ms | ActiveRecord: 1.4ms (3 queries, 0 cached) | GC: 3.9ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2025-09-03 01:18:18 +0900
+Processing by Users::SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='Cokarte2',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 40ms (ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/" for ::1 at 2025-09-03 01:18:18 +0900
+Processing by ClientsController#index as TURBO_STREAM
+Completed 401 Unauthorized in 18ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:18:18 +0900
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 16ms (Views: 1.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:18:19 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 200 OK in 35ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2025-09-03 01:18:20 +0900
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/confirmations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/confirmations/new.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.2ms)
+Completed 200 OK in 35ms (Views: 2.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/users/password/new" for ::1 at 2025-09-03 01:18:20 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 1.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-09-03 01:18:21 +0900
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 2.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+

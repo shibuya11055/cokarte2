@@ -1,0 +1,58 @@
+ja:
+  hello: "こんにちは"
+  devise:
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      new:
+        sign_in: "ログイン"
+        email: "メールアドレス"
+        password: "パスワード"
+        remember_me: "ログイン状態を保持"
+        submit: "ログイン"
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
+      updated: "アカウント情報を変更しました。"
+      destroyed: "アカウントを削除しました。"
+      new:
+        sign_up: "新規登録"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+        submit: "登録"
+    passwords:
+      send_instructions: "パスワード再設定用のメールを送信しました。"
+      updated: "パスワードが変更されました。"
+      new:
+        forgot_password: "パスワードをお忘れですか？"
+        email: "メールアドレス"
+        submit: "パスワード再設定用メールを送信"
+      edit:
+        change_password: "パスワード変更"
+        password: "新しいパスワード"
+        password_confirmation: "新しいパスワード（確認）"
+        submit: "パスワードを変更"
+    confirmations:
+      send_instructions: "確認メールを送信しました。"
+      new:
+        resend_confirmation: "確認メールが届いていませんか？"
+        email: "メールアドレス"
+        submit: "確認メールを再送信"
+    unlocks:
+      send_instructions: "ロック解除メールを送信しました。"
+      new:
+        resend_unlock: "アカウントのロック解除メールが届いていませんか？"
+        email: "メールアドレス"
+        submit: "ロック解除メールを再送信"
+  errors:
+    messages:
+      not_found: "見つかりませんでした"
+      already_confirmed: "すでに確認済みです"
+      not_locked: "ロックされていません"
+      invalid: "無効です"
+      blank: "入力してください"
+      too_short: "%{count}文字以上で入力してください"
+      too_long: "%{count}文字以内で入力してください"
+      confirmation: "%{attribute}が一致しません"
+      taken: "すでに使用されています"
+      not_saved: "保存できませんでした"
