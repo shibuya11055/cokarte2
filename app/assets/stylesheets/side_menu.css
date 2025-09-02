@@ -7,7 +7,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 2rem;
+  padding-top: 1rem;
   z-index: 100;
 }
 .side-menu ul {
@@ -37,7 +37,7 @@
 }
 .main-content {
   margin-left: 180px;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
 }
 @media (max-width: 700px) {
   .side-menu {
@@ -72,7 +72,7 @@
   overflow: hidden;
 }
 .client-table th, .client-table td {
-  padding: 1rem 1.2rem;
+  padding: 0.6rem 0.8rem;
   text-align: left;
 }
 .client-table th {
@@ -313,7 +313,7 @@
   overflow: hidden;
 }
 .client-records-table th, .client-records-table td {
-  padding: 1rem 1.2rem;
+  padding: 0.6rem 0.8rem;
   text-align: left;
 }
 .client-records-table th {
@@ -335,4 +335,22 @@
 }
 .client-records-table tr:last-child td {
   border-bottom: none;
+}
+
+/* サイドメニュータイトル用スタイル */
+.side-menu-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #218a5a;
+  letter-spacing: 0.1em;
+  z-index: 2;
+  background: #e6f4ea;
+  position: relative;
+  padding: 1.2rem 0 0.7rem 0;
+  box-sizing: border-box;
+}
+.side-menu nav.side-menu {
+  position: relative;
+  z-index: 1;
 }

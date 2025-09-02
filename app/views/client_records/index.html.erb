@@ -12,9 +12,15 @@
 <table class="client-records-table">
   <thead>
     <tr>
-      <th>日付</th>
+      <th>
+        <%= link_to '日付', client_records_path(q: params[:q], sort: params[:sort] == 'visited_at_desc' ? 'visited_at_asc' : 'visited_at_desc'), class: (params[:sort]&.start_with?('visited_at') ? 'active-sort' : '') %>
+        <% if params[:sort] == 'visited_at_desc' %>▼<% elsif params[:sort] == 'visited_at_asc' %>▲<% end %>
+      </th>
       <th>顧客氏名</th>
-      <th>金額</th>
+      <th>
+        <%= link_to '金額', client_records_path(q: params[:q], sort: params[:sort] == 'amount_desc' ? 'amount_asc' : 'amount_desc'), class: (params[:sort]&.start_with?('amount') ? 'active-sort' : '') %>
+        <% if params[:sort] == 'amount_desc' %>▼<% elsif params[:sort] == 'amount_asc' %>▲<% end %>
+      </th>
       <th>ノート</th>
       <th>操作</th>
     </tr>

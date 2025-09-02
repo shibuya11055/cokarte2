@@ -5,7 +5,19 @@ class ClientRecordsController < ApplicationController
       q = params[:q].strip
       @client_records = @client_records.joins(:client).where("CONCAT(clients.last_name, clients.first_name) LIKE ?", "%#{q}%")
     end
-    @client_records = @client_records.order(visited_at: :desc).page(params[:page]).per(20)
+    case params[:sort]
+    when "visited_at_asc"
+      @client_records = @client_records.order(visited_at: :asc)
+    when "visited_at_desc"
+      @client_records = @client_records.order(visited_at: :desc)
+    when "amount_asc"
+      @client_records = @client_records.order(amount: :asc)
+    when "amount_desc"
+      @client_records = @client_records.order(amount: :desc)
+    else
+      @client_records = @client_records.order(visited_at: :desc)
+    end
+    @client_records = @client_records.page(params[:page]).per(20)
   end
 
   def show
