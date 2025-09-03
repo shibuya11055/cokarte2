@@ -6,6 +6,8 @@ class ClientsController < ApplicationController
       @clients = @clients.where("CONCAT(last_name, first_name) LIKE ?", "%#{q}%")
     end
     @clients = @clients.order(:id).page(params[:page]).per(20)
+    # 各顧客の最新カルテを事前取得
+    @latest_records = ClientRecord.where(id: ClientRecord.select("MAX(id)").where(client_id: @clients.pluck(:id)).group(:client_id)).index_by(&:client_id)
   end
 
   def show

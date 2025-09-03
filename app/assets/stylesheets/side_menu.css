@@ -111,7 +111,7 @@
   }
   .side-menu-link {
     padding: 0.7rem 0.9rem;
-    font-size: 0.98rem;
+    font-size: 0.9rem;
     border-radius: 7px;
   }
   .main-content {
@@ -136,7 +136,7 @@
 .client-table th {
   background: #e6f4ea;
   color: #218a5a;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   border-bottom: 2px solid #b2dfdb;
 }
@@ -148,7 +148,7 @@
 }
 .client-table td {
   border-bottom: 1px solid #f0f0f0;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 /* 操作ボタンを横並び・中央寄せにする */
@@ -168,7 +168,7 @@
   margin-right: 0;
   border: none;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: background 0.2s, color 0.2s;
 }
 .btn-detail {
@@ -258,7 +258,7 @@
     width: auto;
     min-width: unset;
     padding: 0.5rem 0.3rem;
-    font-size: 0.98em;
+    font-size: 0.8em;
   }
 }
 .client-detail-table tr:last-child th,
@@ -338,7 +338,7 @@
   padding: 0.5rem;
   border: 1px solid #b2dfdb;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.7rem;
   background: #f6fff8;
   box-sizing: border-box;
 }
@@ -377,7 +377,7 @@
 .client-records-table th {
   background: #e6f4ea;
   color: #218a5a;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   border-bottom: 2px solid #b2dfdb;
 }
@@ -389,7 +389,7 @@
 }
 .client-records-table td {
   border-bottom: 1px solid #f0f0f0;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .client-records-table tr:last-child td {
   border-bottom: none;
@@ -555,7 +555,7 @@
 
 /* h1全体のデフォルトサイズを小さく */
 h1 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
 }
 

@@ -12,7 +12,7 @@
       <tr><th>登録日</th><td><%= @client.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
     </table>
     <div class="client-detail-actions">
-      <%= link_to '一覧へ戻る', clients_path, class: 'btn btn-detail' %>
+      <%= link_to '顧客一覧へ戻る', clients_path, class: 'btn btn-detail' %>
       <%= link_to '編集', edit_client_path(@client), class: 'btn btn-detail' %>
       <%= button_to '削除', client_path(@client), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
     </div>

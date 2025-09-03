@@ -17,6 +17,7 @@
   <thead>
     <tr>
       <th>氏名</th>
+      <th>最近のカルテ</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -24,6 +25,14 @@
     <% @clients.each do |client| %>
       <tr>
         <td><%= client.last_name + client.first_name %></td>
+        <td>
+          <% record = @latest_records[client.id] %>
+          <% if record %>
+            <%= link_to(record.visited_at&.strftime('%Y/%m/%d %H:%M'), client_record_path(record), style: 'font-size:0.92em; color:#218a5a; text-decoration:underline;') %>
+          <% else %>
+            <span style="color:#bbb;">-</span>
+          <% end %>
+        </td>
         <td>
           <%= link_to '詳細', client_path(client), class: 'btn btn-detail' %>
           <%= button_to '削除', client_path(client), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>

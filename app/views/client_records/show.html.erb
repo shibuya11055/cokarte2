@@ -10,7 +10,7 @@
       <tr><th>登録日</th><td><%= @client_record.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
     </table>
     <div class="client-detail-actions">
-      <%= link_to '一覧へ戻る', client_records_path, class: 'btn btn-detail' %>
+      <%= link_to 'カルテ一覧へ戻る', client_records_path, class: 'btn btn-detail' %>
       <%= link_to '編集', edit_client_record_path(@client_record), class: 'btn btn-detail' %>
     </div>
   </div>

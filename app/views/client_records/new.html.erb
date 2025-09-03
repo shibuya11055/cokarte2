@@ -33,6 +33,10 @@
 <script>
 function activateClientSelect2() {
   if (window.jQuery && $('.client-select').length) {
+    // select2の重複初期化防止
+    if ($('.client-select').hasClass('select2-hidden-accessible')) {
+      $('.client-select').select2('destroy');
+    }
     $('.client-select').select2({
       width: '100%',
       placeholder: '選択してください',
@@ -45,4 +49,5 @@ function activateClientSelect2() {
 }
 document.addEventListener('DOMContentLoaded', activateClientSelect2);
 document.addEventListener('turbo:load', activateClientSelect2);
+document.addEventListener('turbo:frame-load', activateClientSelect2);
 </script>
