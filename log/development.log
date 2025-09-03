@@ -11614,3 +11614,74 @@ Processing by ClientRecordsController#index as HTML
 Completed 200 OK in 40ms (Views: 2.1ms | ActiveRecord: 1.7ms (2 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/client_records/new" for ::1 at 2025-09-04 00:27:33 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 1.8ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records" for ::1 at 2025-09-04 00:27:35 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT "client_records"."id" AS t0_r0, "client_records"."client_id" AS t0_r1, "client_records"."visited_at" AS t0_r2, "client_records"."note" AS t0_r3, "client_records"."amount" AS t0_r4, "client_records"."created_at" AS t0_r5, "client_records"."updated_at" AS t0_r6, "clients"."id" AS t1_r0, "clients"."user_id" AS t1_r1, "clients"."birthday" AS t1_r2, "clients"."first_name" AS t1_r3, "clients"."last_name" AS t1_r4, "clients"."postal_code" AS t1_r5, "clients"."address" AS t1_r6, "clients"."phone_number" AS t1_r7, "clients"."memo" AS t1_r8, "clients"."email" AS t1_r9, "clients"."created_at" AS t1_r10, "clients"."updated_at" AS t1_r11 FROM "client_records" INNER JOIN "clients" ON "clients"."id" = "client_records"."client_id" WHERE "clients"."user_id" = 5 ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:32
+  Rendered client_records/index.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 1.9ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/client_records/new" for ::1 at 2025-09-04 00:27:35 +0900
+Processing by ClientRecordsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/new.html.erb within layouts/application
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT "clients".* FROM "clients" /*action='new',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/new.html.erb:12
+  Rendered client_records/new.html.erb within layouts/application (Duration: 3.4ms | GC: 0.8ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | GC: 0.8ms)
+Completed 200 OK in 40ms (Views: 3.7ms | ActiveRecord: 1.6ms (2 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/client_records" for ::1 at 2025-09-04 00:27:37 +0900
+Processing by ClientRecordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering client_records/index.html.erb within layouts/application
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT "client_records"."id" AS t0_r0, "client_records"."client_id" AS t0_r1, "client_records"."visited_at" AS t0_r2, "client_records"."note" AS t0_r3, "client_records"."amount" AS t0_r4, "client_records"."created_at" AS t0_r5, "client_records"."updated_at" AS t0_r6, "clients"."id" AS t1_r0, "clients"."user_id" AS t1_r1, "clients"."birthday" AS t1_r2, "clients"."first_name" AS t1_r3, "clients"."last_name" AS t1_r4, "clients"."postal_code" AS t1_r5, "clients"."address" AS t1_r6, "clients"."phone_number" AS t1_r7, "clients"."memo" AS t1_r8, "clients"."email" AS t1_r9, "clients"."created_at" AS t1_r10, "clients"."updated_at" AS t1_r11 FROM "client_records" INNER JOIN "clients" ON "clients"."id" = "client_records"."client_id" WHERE "clients"."user_id" = 5 ORDER BY "client_records"."visited_at" DESC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='client_records'*/[0m
+  ↳ app/views/client_records/index.html.erb:32
+  Rendered client_records/index.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 1.9ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for ::1 at 2025-09-04 00:27:37 +0900
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  [1m[36mClient Pluck (0.3ms)[0m  [1m[34mSELECT "clients"."id" FROM "clients" WHERE "clients"."user_id" = 4 ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/controllers/clients_controller.rb:10:in 'ClientsController#index'
+  [1m[36mClientRecord Load (1.1ms)[0m  [1m[34mSELECT "client_records".* FROM "client_records" WHERE "client_records"."id" IN (SELECT MAX(id) FROM "client_records" WHERE "client_records"."client_id" IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) GROUP BY "client_records"."client_id") /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/controllers/clients_controller.rb:10:in 'ClientsController#index'
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."user_id" = 4 ORDER BY "clients"."id" ASC LIMIT 20 OFFSET 0 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:25
+  [1m[36mClient Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" WHERE "clients"."user_id" = 4 /*action='index',application='Cokarte2',controller='clients'*/[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 6.2ms | GC: 0.6ms)
+  Rendered layouts/_side_menu.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | GC: 0.6ms)
+Completed 200 OK in 46ms (Views: 6.3ms | ActiveRecord: 2.9ms (5 queries, 0 cached) | GC: 0.9ms)
+
+
