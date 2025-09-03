@@ -1,6 +1,6 @@
 class ClientRecordsController < ApplicationController
   def index
-    @client_records = ClientRecord.includes(:client)
+    @client_records = client_records.includes(:client)
     if params[:q].present?
       q = params[:q].strip
       @client_records = @client_records.joins(:client).where("CONCAT(clients.last_name, clients.first_name) LIKE ?", "%#{q}%")
@@ -21,7 +21,7 @@ class ClientRecordsController < ApplicationController
   end
 
   def show
-    @client_record = ClientRecord.find(params[:id])
+    @client_record = client_records.find(params[:id])
   end
 
   def new
@@ -29,7 +29,7 @@ class ClientRecordsController < ApplicationController
   end
 
   def edit
-    @client_record = ClientRecord.find(params[:id])
+    @client_record = client_records.find(params[:id])
   end
 
   def create
@@ -42,7 +42,7 @@ class ClientRecordsController < ApplicationController
   end
 
   def update
-    @client_record = ClientRecord.find(params[:id])
+    @client_record = client_records.find(params[:id])
     if @client_record.update(client_record_params)
       redirect_to client_record_path(@client_record), notice: "\u30AB\u30EB\u30C6\u60C5\u5831\u3092\u66F4\u65B0\u3057\u307E\u3057\u305F"
     else
@@ -54,5 +54,9 @@ class ClientRecordsController < ApplicationController
 
   def client_record_params
     params.require(:client_record).permit(:client_id, :visited_at, :note, :amount)
+  end
+
+  def client_records
+    @client_records ||= ClientRecord.joins(:client).where(clients: { user_id: current_user.id })
   end
 end
