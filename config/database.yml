@@ -84,6 +84,7 @@ production:
     database: cokarte2_production
     username: cokarte2
     password: <%= ENV["COKARTE2_DATABASE_PASSWORD"] %>
+    url: <%= ENV["COKARTE2_DATABASE_URL"] %>
   cache:
     <<: *primary_production
     database: cokarte2_production_cache
