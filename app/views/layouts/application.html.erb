@@ -24,6 +24,16 @@
 
   <body<% unless user_signed_in? %> class="no-side-menu"<% end %>>
     <% if user_signed_in? %>
+      <div class="app-topbar" data-controller="sidebar">
+        <button type="button" class="hamburger" aria-label="メニュー"
+                data-action="click->sidebar#toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="topbar-title">cokarte</div>
+      </div>
+      <div class="side-overlay" data-controller="sidebar" data-action="click->sidebar#close"></div>
       <%= render 'layouts/side_menu' %>
     <% end %>
     <main class="main-content">
