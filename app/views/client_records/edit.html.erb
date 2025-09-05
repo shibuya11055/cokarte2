@@ -7,7 +7,8 @@
         <tr>
           <th>顧客</th>
           <td>
-            <select name="client_record[client_id]" id="client-select" class="client-select" required style="width:350px;max-width:100%;min-width:220px;">
+            <select name="client_record[client_id]" id="client-select" class="client-select" required style="width:350px;max-width:100%;min-width:220px;"
+                    data-controller="select2" data-select2-placeholder-value="選択してください" data-select2-width-value="100%">
               <option value="">選択してください</option>
               <% Client.all.each do |c| %>
                 <option value="<%= c.id %>" <%= 'selected' if defined?(@client_record) && c.id == @client_record.client_id %>><%= c.last_name + c.first_name %></option>
@@ -26,27 +27,3 @@
     <% end %>
   </div>
 </div>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script>
-function activateClientSelect2() {
-  if (window.jQuery && $('.client-select').length) {
-    // select2の重複初期化防止
-    if ($('.client-select').hasClass('select2-hidden-accessible')) {
-      $('.client-select').select2('destroy');
-    }
-    $('.client-select').select2({
-      width: '100%',
-      placeholder: '選択してください',
-      allowClear: true,
-      language: {
-        noResults: function() { return '該当なし'; }
-      }
-    });
-  }
-}
-document.addEventListener('DOMContentLoaded', activateClientSelect2);
-document.addEventListener('turbo:load', activateClientSelect2);
-document.addEventListener('turbo:frame-load', activateClientSelect2);
-</script>
