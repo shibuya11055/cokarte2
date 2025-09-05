@@ -667,17 +667,33 @@ body.side-menu-open {
   .main-content {
     padding: calc(48px + var(--safe-top)) 0.5rem 0.75rem 0.5rem;
   }
-  /* Client index search area */
+  /* Search area: input on first row, compact buttons */
   .client-search-form {
-    flex-direction: column !important;
-    align-items: stretch !important;
+    display: grid !important;
+    grid-template-columns: 1fr;
     gap: 0.6rem !important;
+    align-items: stretch !important;
+  }
+  .client-search-main {
+    display: grid !important;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 0.5rem !important;
   }
   .client-search-form input[type="text"] {
     min-width: 0 !important;
     width: 100% !important;
   }
-  .client-search-form .btn { width: 100%; }
+  .client-search-form .btn {
+    width: auto !important;
+    padding: 0.45rem 0.8rem !important;
+    font-size: 0.9rem !important;
+    white-space: nowrap;
+  }
+  .client-search-side {
+    display: flex;
+    justify-content: flex-end;
+  }
   /* Tables: enable horizontal scroll rather than overflow */
   .client-table {
     display: block;
