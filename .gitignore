@@ -1,0 +1,25 @@
+# Rails standard ignores
+/.bundle
+/log/*
+!/log/.keep
+/tmp/*
+!/tmp/.keep
+/storage/*
+!/storage/.keep
+/public/assets
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+/.byebug_history
+/vendor/bundle
+*.swp
+*.swo
+.DS_Store
+/coverage
+/spec/examples.txt
+/config/master.key
+/.env
+/.env.*
+# Bootsnap caches (already under tmp/, but explicit for clarity)
+/tmp/cache/bootsnap/*
