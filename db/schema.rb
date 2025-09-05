@@ -36,6 +36,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_31_142352) do
     t.string "email", comment: "メールアドレス"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name_kana"
+    t.string "last_name_kana"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["user_id"], name: "index_clients_on_user_id"
   end

@@ -1,6 +1,13 @@
 <%# filepath: app/views/clients/show.html.erb %>
 <div class="client-detail-container" style="max-width:none;padding:2.5rem 1.5rem;">
-  <h1><%= @client.last_name + @client.first_name %></h1>
+  <h1>
+    <%= @client.last_name + @client.first_name %>
+    <% if @client.last_name_kana.present? || @client.first_name_kana.present? %>
+      <span style="display:block; font-size:0.9em; color:#777; margin-top:0.2rem;">
+        (<%= [@client.last_name_kana, @client.first_name_kana].compact.join %>)
+      </span>
+    <% end %>
+  </h1>
   <div class="client-detail-card">
     <table class="client-detail-table">
       <tr><th>生年月日</th><td><%= @client.birthday.strftime('%Y年%m月%d日') if @client.birthday %></td></tr>
@@ -8,6 +15,9 @@
       <tr><th>郵便番号</th><td><%= @client.postal_code %></td></tr>
       <tr><th>住所</th><td><%= @client.address %></td></tr>
       <tr><th>電話番号</th><td><%= @client.phone_number %></td></tr>
+      <% if @client.last_name_kana.present? || @client.first_name_kana.present? %>
+        <tr><th>フリガナ</th><td><%= [@client.last_name_kana, @client.first_name_kana].compact.join %></td></tr>
+      <% end %>
       <tr><th>メモ</th><td><%= simple_format(@client.memo) %></td></tr>
       <tr><th>登録日</th><td><%= @client.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
     </table>

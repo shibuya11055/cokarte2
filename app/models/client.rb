@@ -2,18 +2,20 @@
 #
 # Table name: clients
 #
-#  id           :integer          not null, primary key
-#  user_id      :integer          not null
-#  birthday     :date             not null
-#  first_name   :string           not null
-#  last_name    :string           not null
-#  postal_code  :string
-#  address      :string
-#  phone_number :string
-#  memo         :text
-#  email        :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id              :integer          not null, primary key
+#  user_id         :integer          not null
+#  birthday        :date             not null
+#  first_name      :string           not null
+#  last_name       :string           not null
+#  postal_code     :string
+#  address         :string
+#  phone_number    :string
+#  memo            :text
+#  email           :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  first_name_kana :string
+#  last_name_kana  :string
 #
 # Indexes
 #

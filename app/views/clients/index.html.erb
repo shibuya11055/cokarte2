@@ -3,7 +3,7 @@
 </div>
 <form method="get" action="<%= clients_path %>" class="client-search-form" style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
   <div style="display: flex; gap: 1rem; align-items: center; flex: 1 1 auto;">
-    <input type="text" name="q" value="<%= params[:q] %>" placeholder="氏名で検索" style="padding: 0.6rem 1rem; border-radius: 6px; border: 1px solid #b2dfdb; min-width: 220px; font-size: 1rem;">
+    <input type="text" name="q" value="<%= params[:q] %>" placeholder="氏名・フリガナで検索" style="padding: 0.6rem 1rem; border-radius: 6px; border: 1px solid #b2dfdb; min-width: 220px; font-size: 1rem;">
     <button type="submit" class="btn btn-detail">検索</button>
     <% if params[:q].present? %>
       <%= link_to 'クリア', clients_path, class: 'btn' %>
@@ -24,7 +24,14 @@
   <tbody>
     <% @clients.each do |client| %>
       <tr>
-        <td><%= client.last_name + client.first_name %></td>
+        <td>
+          <div><%= client.last_name + client.first_name %></div>
+          <% if client.last_name_kana.present? || client.first_name_kana.present? %>
+            <div style="color:#777; font-size: 0.9em;">
+              (<%= [client.last_name_kana, client.first_name_kana].compact.join %>)
+            </div>
+          <% end %>
+        </td>
         <td>
           <% record = @latest_records[client.id] %>
           <% if record %>

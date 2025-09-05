@@ -3,7 +3,10 @@ class ClientsController < ApplicationController
     @clients = clients
     if params[:q].present?
       q = params[:q].strip
-      @clients = @clients.where("CONCAT(last_name, first_name) LIKE ?", "%#{q}%")
+      @clients = @clients.where(
+        "CONCAT(last_name, first_name) LIKE :q OR CONCAT(last_name_kana, first_name_kana) LIKE :q",
+        q: "%#{q}%"
+      )
     end
     @clients = @clients.order(:id).page(params[:page]).per(20)
     # 各顧客の最新カルテを事前取得
