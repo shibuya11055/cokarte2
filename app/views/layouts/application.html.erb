@@ -22,18 +22,18 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body<% unless user_signed_in? %> class="no-side-menu"<% end %>>
+  <body<% unless user_signed_in? %> class="no-side-menu"<% end %><% if user_signed_in? %> data-controller="sidebar"<% end %>>
     <% if user_signed_in? %>
-      <div class="app-topbar" data-controller="sidebar">
-        <button type="button" class="hamburger" aria-label="メニュー"
-                data-action="click->sidebar#toggle">
+      <div class="app-topbar">
+        <button type="button" class="hamburger" aria-label="メニュー" aria-controls="app-side-menu" aria-expanded="false"
+                data-sidebar-target="toggle" data-action="click->sidebar#toggle">
           <span></span>
           <span></span>
           <span></span>
         </button>
         <div class="topbar-title">cokarte</div>
       </div>
-      <div class="side-overlay" data-controller="sidebar" data-action="click->sidebar#close"></div>
+      <div class="side-overlay" data-sidebar-target="overlay" data-action="click->sidebar#close" aria-hidden="true"></div>
       <%= render 'layouts/side_menu' %>
     <% end %>
     <main class="main-content">
