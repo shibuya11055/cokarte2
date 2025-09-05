@@ -1,15 +1,15 @@
-<div class="client-list-header" style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.2rem;">
+<div class="client-list-header">
   <h1>顧客一覧</h1>
 </div>
-<form method="get" action="<%= clients_path %>" class="client-search-form" style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
-  <div style="display: flex; gap: 1rem; align-items: center; flex: 1 1 auto;">
-    <input type="text" name="q" value="<%= params[:q] %>" placeholder="氏名・フリガナで検索" style="padding: 0.6rem 1rem; border-radius: 6px; border: 1px solid #b2dfdb; min-width: 220px; font-size: 1rem;">
+<form method="get" action="<%= clients_path %>" class="client-search-form">
+  <div class="client-search-main">
+    <input type="text" name="q" value="<%= params[:q] %>" placeholder="氏名・フリガナで検索">
     <button type="submit" class="btn btn-detail">検索</button>
     <% if params[:q].present? %>
       <%= link_to 'クリア', clients_path, class: 'btn' %>
     <% end %>
   </div>
-  <div style="flex: 0 0 auto; margin-left: auto;">
+  <div class="client-search-side">
     <%= link_to '新規顧客登録', new_client_path, class: 'btn btn-detail' %>
   </div>
 </form>

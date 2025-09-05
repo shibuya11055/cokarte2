@@ -93,6 +93,33 @@ html, body { margin: 0; padding: 0; }
 .app-topbar {
   display: none;
 }
+/* Client index header and search spacing */
+.client-list-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.6rem;
+}
+.client-search-form {
+  margin-bottom: 1.6rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.client-search-main {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  flex: 1 1 auto;
+}
+.client-search-side { margin-left: auto; }
+.client-search-form input[type="text"] {
+  padding: 0.55rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #b2dfdb;
+  min-width: 240px;
+  font-size: 0.95rem;
+}
 @media (max-width: 700px) {
   /* Preserve spacing tweaks for extra small screens; off-canvas overrides below will take precedence */
   .main-content { padding: 1rem 0.5rem; }
@@ -108,13 +135,13 @@ html, body { margin: 0; padding: 0; }
   overflow: hidden;
 }
 .client-table th, .client-table td {
-  padding: 0.6rem 0.8rem;
+  padding: 0.5rem 0.7rem;
   text-align: left;
 }
 .client-table th {
   background: #e6f4ea;
   color: #218a5a;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   border-bottom: 2px solid #b2dfdb;
 }
@@ -126,13 +153,14 @@ html, body { margin: 0; padding: 0; }
 }
 .client-table td {
   border-bottom: 1px solid #f0f0f0;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  line-height: 1.25;
 }
 
 /* 操作ボタンを横並び・中央寄せにする */
 .client-table td:last-child {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   align-items: center;
   justify-content: flex-start;
 }
@@ -277,7 +305,7 @@ html, body { margin: 0; padding: 0; }
   border-radius: 12px;
   box-shadow: 0 1px 8px rgba(33,138,90,0.06);
   padding: 1.5rem 1rem 1rem 1rem;
-  max-width: 900px;
+  max-width: 1040px;
   margin: 0 auto 2rem auto;
 }
 @media (max-width: 1000px) {
@@ -295,10 +323,11 @@ html, body { margin: 0; padding: 0; }
 .client-form-table th {
   background: #e6f4ea;
   color: #218a5a;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 0.95rem;
   text-align: left;
   padding: 0.7rem 1rem;
-  width: 32%;
+  width: 26%;
   border-bottom: 1px solid #b2dfdb;
 }
 .client-form-table td {
@@ -629,3 +658,74 @@ body.side-menu-open {
 }
 
 /* サイドメニュータイトルや個別ページで上書きしたい場合は個別指定で調整可 */
+
+/* Smartphone tweaks */
+@media (max-width: 480px) {
+  .app-topbar {
+    height: 48px;
+  }
+  .main-content {
+    padding: calc(48px + var(--safe-top)) 0.5rem 0.75rem 0.5rem;
+  }
+  /* Client index search area */
+  .client-search-form {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.6rem !important;
+  }
+  .client-search-form input[type="text"] {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .client-search-form .btn { width: 100%; }
+  /* Tables: enable horizontal scroll rather than overflow */
+  .client-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+  .client-table th, .client-table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.86rem;
+  }
+  .client-table td:last-child {
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  /* Detail cards/containers tighten spacing */
+  .client-detail-container,
+  .client-form-container,
+  .record-form-container,
+  .user-detail-container {
+    margin: 1rem auto;
+    padding: 1rem 0.5rem;
+    max-width: 100%;
+  }
+  .client-detail-card,
+  .client-form-card,
+  .record-form-card,
+  .user-detail-card {
+    padding: 0.8rem 0.5rem 0.6rem 0.5rem;
+  }
+  .client-detail-table th, .client-detail-table td { padding: 0.5rem 0.4rem; }
+  /* Forms */
+  .client-form-table th, .client-form-table td {
+    padding: 0.5rem 0.4rem;
+  }
+  .client-form-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  .client-form-actions .btn { width: 100%; }
+  input[type="text"], input[type="email"], input[type="number"], input[type="date"], input[type="datetime-local"], textarea, select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  /* Pagination compaction */
+  .pagination .page, .pagination .current, .pagination .next, .pagination .prev {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.9rem;
+  }
+}
