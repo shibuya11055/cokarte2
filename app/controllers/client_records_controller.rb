@@ -40,7 +40,7 @@ class ClientRecordsController < ApplicationController
     end
 
     if @client_record.save
-      @client_record.photos.attach(files) if files.present?
+      attach_files_with_custom_key(@client_record, files) if files.present?
       redirect_to client_records_path, notice: "\u30AB\u30EB\u30C6\u3092\u767B\u9332\u3057\u307E\u3057\u305F"
     else
       render :new, status: :unprocessable_entity
@@ -60,7 +60,7 @@ class ClientRecordsController < ApplicationController
     if @client_record.update(client_record_params)
       ActiveRecord::Base.transaction do
         to_remove.each(&:purge)
-        @client_record.photos.attach(files) if files.present?
+        attach_files_with_custom_key(@client_record, files) if files.present?
       end
       redirect_to client_record_path(@client_record), notice: "\u30AB\u30EB\u30C6\u60C5\u5831\u3092\u66F4\u65B0\u3057\u307E\u3057\u305F"
     else
@@ -102,6 +102,32 @@ class ClientRecordsController < ApplicationController
     ids = Array(params[:remove_photo_ids])
     return [] if ids.blank?
     record.photos.attachments.select { |a| ids.include?(a.signed_id) }
+  end
+
+  # Build and attach blobs with custom S3 object keys like "user_id/client_id/filename-xxxx.jpg"
+  def attach_files_with_custom_key(record, files)
+    user_id = current_user.id
+    client_id = record.client_id
+    blobs = files.map do |file|
+      original = file.original_filename.to_s
+      basename = File.basename(original, File.extname(original))
+      ext = File.extname(original).downcase.presence || ".jpg"
+      safe_name = sanitize_filename(basename)
+      # add short random suffix to avoid accidental overwrite with same name
+      key = [user_id, client_id, "#{safe_name}-#{SecureRandom.hex(4)}#{ext}"].join("/")
+      ActiveStorage::Blob.create_and_upload!(
+        io: file,
+        filename: original,
+        content_type: file.content_type,
+        key: key
+      )
+    end
+    record.photos.attach(blobs)
+  end
+
+  def sanitize_filename(name)
+    # allow alphanumerics, dash, underscore; replace others with _
+    name.to_s.gsub(/[^a-zA-Z0-9_\-]+/, "_").gsub(/^_+|_+$/, "")
   end
 
   def client_records
