@@ -127,7 +127,8 @@ class ClientRecordsController < ApplicationController
 
   def sanitize_filename(name)
     # allow alphanumerics, dash, underscore; replace others with _
-    name.to_s.gsub(/[^a-zA-Z0-9_\-]+/, "_").gsub(/^_+|_+$/, "")
+    sanitized = name.to_s.gsub(/[^a-zA-Z0-9_\-]+/, "_").gsub(/^_+|_+$/, "")
+    sanitized.present? ? sanitized : "image"
   end
 
   def client_records
