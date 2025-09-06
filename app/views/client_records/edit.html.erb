@@ -2,7 +2,16 @@
 <div class="client-form-container">
   <h1>カルテ編集</h1>
   <div class="client-form-card">
-    <%= form_with(model: @client_record, local: true) do |f| %>
+    <%= form_with(model: @client_record, local: true, html: { multipart: true }) do |f| %>
+      <% if @client_record.errors.any? %>
+        <div class="form-errors">
+          <ul>
+            <% @client_record.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <table class="client-form-table">
         <tr>
           <th>顧客</th>
@@ -19,6 +28,26 @@
         <tr><th>来店日時</th><td><%= f.datetime_field :visited_at, required: true %></td></tr>
         <tr><th>金額</th><td><%= f.number_field :amount, min: 0 %></td></tr>
         <tr><th>ノート</th><td><%= f.text_area :note, rows: 3 %></td></tr>
+        <tr>
+          <th>写真</th>
+          <td>
+            <%= f.file_field :photos, multiple: true, accept: 'image/*' %>
+            <div class="form-hint">画像のみ、最大3枚・1枚あたり5MBまで（既存の画像は下の詳細で確認）</div>
+            <% if @client_record.photos.attached? %>
+              <div class="photo-remove-list">
+                <% @client_record.photos.each do |photo| %>
+                  <label class="photo-remove-item">
+                    <%= image_tag photo, class: 'photo-remove-thumb' %>
+                    <span class="photo-remove-check">
+                      <%= check_box_tag 'remove_photo_ids[]', photo.signed_id, false %>
+                      <span>削除</span>
+                    </span>
+                  </label>
+                <% end %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
       </table>
       <div class="client-form-actions">
         <%= f.submit '更新する', class: 'btn btn-detail' %>

@@ -34,7 +34,13 @@ class ClientRecordsController < ApplicationController
 
   def create
     @client_record = ClientRecord.new(client_record_params)
+    files = photo_files
+    if files.present? && !validate_photo_files(files, existing_count: 0)
+      render :new, status: :unprocessable_entity and return
+    end
+
     if @client_record.save
+      @client_record.photos.attach(files) if files.present?
       redirect_to client_records_path, notice: "\u30AB\u30EB\u30C6\u3092\u767B\u9332\u3057\u307E\u3057\u305F"
     else
       render :new, status: :unprocessable_entity
@@ -43,7 +49,19 @@ class ClientRecordsController < ApplicationController
 
   def update
     @client_record = client_records.find(params[:id])
+    files = photo_files
+    to_remove = attachments_to_remove(@client_record)
+    effective_existing = @client_record.photos.count - to_remove.size
+
+    if files.present? && !validate_photo_files(files, existing_count: effective_existing)
+      render :edit, status: :unprocessable_entity and return
+    end
+
     if @client_record.update(client_record_params)
+      ActiveRecord::Base.transaction do
+        to_remove.each(&:purge)
+        @client_record.photos.attach(files) if files.present?
+      end
       redirect_to client_record_path(@client_record), notice: "\u30AB\u30EB\u30C6\u60C5\u5831\u3092\u66F4\u65B0\u3057\u307E\u3057\u305F"
     else
       render :edit, status: :unprocessable_entity
@@ -54,6 +72,36 @@ class ClientRecordsController < ApplicationController
 
   def client_record_params
     params.require(:client_record).permit(:client_id, :visited_at, :note, :amount)
+  end
+
+  def photo_files
+    Array(params.dig(:client_record, :photos)).compact_blank
+  end
+
+  def validate_photo_files(files, existing_count: 0)
+    max_photos = ClientRecord::MAX_PHOTOS
+    max_size = ClientRecord::MAX_PHOTO_SIZE_MB.megabytes
+    if existing_count + files.size > max_photos
+      @client_record.errors.add(:base, "画像は最大#{max_photos}枚まで保存できます")
+      return false
+    end
+    files.each do |file|
+      unless file.respond_to?(:content_type) && file.content_type.to_s.start_with?("image/")
+        @client_record.errors.add(:base, "画像ファイルを選択してください")
+        return false
+      end
+      if file.size.to_i > max_size
+        @client_record.errors.add(:base, "画像は1枚#{ClientRecord::MAX_PHOTO_SIZE_MB}MB以下にしてください")
+        return false
+      end
+    end
+    true
+  end
+
+  def attachments_to_remove(record)
+    ids = Array(params[:remove_photo_ids])
+    return [] if ids.blank?
+    record.photos.attachments.select { |a| ids.include?(a.signed_id) }
   end
 
   def client_records

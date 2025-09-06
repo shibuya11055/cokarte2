@@ -9,6 +9,20 @@
       <tr><th>ノート</th><td><%= simple_format(@client_record.note) %></td></tr>
       <tr><th>登録日</th><td><%= @client_record.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
     </table>
+    <% if @client_record.photos.attached? %>
+      <div class="photos-grid" data-controller="image-viewer">
+        <% @client_record.photos.each do |photo| %>
+          <div class="photo-item">
+            <%= image_tag photo, alt: 'photo', data: { action: 'click->image-viewer#open' } %>
+          </div>
+        <% end %>
+        <div class="image-overlay" data-image-viewer-target="overlay" hidden>
+          <div class="image-overlay-backdrop" data-action="click->image-viewer#close"></div>
+          <img data-image-viewer-target="image">
+          <button type="button" class="image-overlay-close" data-action="click->image-viewer#close" aria-label="閉じる">×</button>
+        </div>
+      </div>
+    <% end %>
     <div class="client-detail-actions">
       <%= link_to 'カルテ一覧へ戻る', client_records_path, class: 'btn btn-detail' %>
       <%= link_to '編集', edit_client_record_path(@client_record), class: 'btn btn-detail' %>

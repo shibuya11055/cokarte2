@@ -276,6 +276,105 @@ html, body { margin: 0; padding: 0; }
   gap: 1rem;
   justify-content: flex-end;
 }
+/* Photos grid for client record */
+.photos-grid {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+.photo-item {
+  background: transparent; /* remove white card background */
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+.photo-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Form error box */
+.form-errors {
+  background: #ffeaea;
+  color: #b71c1c;
+  border: 1px solid #ffcdd2;
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  margin-bottom: 0.8rem;
+}
+.form-errors ul { margin: 0; padding-left: 1.1rem; }
+
+/* Photo remove list (edit) */
+.photo-remove-list {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.photo-remove-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+.photo-remove-thumb {
+  max-width: 120px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.photo-remove-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #555;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+@media (max-width: 480px) {
+  .photo-remove-thumb { max-width: 100px; }
+  .photo-remove-check { font-size: 0.86rem; }
+}
+
+/* Lightbox overlay */
+.image-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+}
+.image-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+.image-overlay img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 8px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+}
+.image-overlay-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+  cursor: pointer;
+}
 @media (max-width: 600px) {
   .client-detail-container {
     padding: 1rem 0.2rem;
