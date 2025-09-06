@@ -68,3 +68,6 @@ group :test do
 end
 
 gem "kaminari", "~> 1.2"
+
+# Use Amazon S3 for Active Storage in production
+gem "aws-sdk-s3", require: false
