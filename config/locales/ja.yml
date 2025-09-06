@@ -1,5 +1,12 @@
 ja:
   hello: "こんにちは"
+  views:
+    pagination:
+      first: "最初"
+      last: "最後"
+      previous: "前へ"
+      next: "次へ"
+      truncate: "…"
   devise:
     sessions:
       signed_in: "ログインしました。"
