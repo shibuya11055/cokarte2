@@ -14,11 +14,11 @@ module PlanQuota
   }.freeze
 
   def client_limit
-    CLIENT_LIMIT[plan_tier.to_s] || CLIENT_LIMIT["free"]
+    CLIENT_LIMIT.fetch(plan_tier.to_s, CLIENT_LIMIT["free"]) # allow nil for pro(unlimited)
   end
 
   def photos_per_record
-    PHOTOS_PER_RECORD[plan_tier.to_s] || PHOTOS_PER_RECORD["free"]
+    PHOTOS_PER_RECORD.fetch(plan_tier.to_s, PHOTOS_PER_RECORD["free"])
   end
 
   def remaining_clients
@@ -27,4 +27,3 @@ module PlanQuota
     [limit - clients_count.to_i, 0].max
   end
 end
-

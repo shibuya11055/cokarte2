@@ -79,7 +79,12 @@ class ClientRecordsController < ApplicationController
   end
 
   def validate_photo_files(files, existing_count: 0)
-    max_photos = ClientRecord::MAX_PHOTOS
+    # プランで定義された画像枚数上限があればそれを優先して使用する
+    max_photos = if @client_record.client&.user&.respond_to?(:photos_per_record)
+                   @client_record.client.user.photos_per_record
+                 else
+                   ClientRecord::MAX_PHOTOS
+                 end
     max_size = ClientRecord::MAX_PHOTO_SIZE_MB.megabytes
     if existing_count + files.size > max_photos
       @client_record.errors.add(:base, "画像は最大#{max_photos}枚まで保存できます")
