@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   resources :client_records, only: [ :index, :new, :create, :show, :edit, :update ]
   root to: "clients#index"
   get "pricing", to: "pages#pricing"
+  namespace :billing do
+    post :checkout, to: "checkouts#create"
+    post :portal,   to: "portal_sessions#create"
+  end
+  namespace :stripe do
+    post :webhook, to: "webhooks#create"
+  end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get "up" => "rails/health#show", as: :rails_health_check
   get "user", to: "users#show", as: :user_profile

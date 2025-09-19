@@ -54,7 +54,13 @@ group :development, :test do
 
   # RSpec for Rails
   gem "rspec-rails", "~> 6.1"
+
+  # .env を読み込む（開発/テストのみ）
+  gem "dotenv-rails"
 end
+
+# Stripe (サブスク課金)
+gem "stripe"
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

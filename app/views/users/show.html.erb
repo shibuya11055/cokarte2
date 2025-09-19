@@ -2,6 +2,9 @@
 <div class="user-detail-container">
   <h1>ユーザー情報</h1>
   <div class="user-detail-card">
+    <div style="margin-bottom: 0.8rem;">
+      <%= plan_badge(current_user) %>
+    </div>
     <table class="user-detail-table">
       <tr><th>氏名</th><td><%= current_user.last_name + current_user.first_name %></td></tr>
       <tr><th>メールアドレス</th><td><%= current_user.email %></td></tr>

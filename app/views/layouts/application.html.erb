@@ -20,6 +20,10 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%# Webフォント（Noto Sans JP）でデバイス間のフォント差異を解消 %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <%# Select2 and jQuery for searchable selects %>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" data-turbo-track="reload" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" data-turbo-track="reload"></script>
@@ -41,9 +45,6 @@
       <%= render 'layouts/side_menu' %>
     <% end %>
     <main class="main-content">
-      <% if user_signed_in? %>
-        <%= plan_badge(current_user) %>
-      <% end %>
       <%= yield %>
     </main>
   </body>
