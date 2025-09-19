@@ -1,5 +1,23 @@
 ja:
   hello: "こんにちは"
+  activerecord:
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+        first_name: "名"
+        last_name: "姓"
+        tos_accepted_at: "利用規約"
+  activemodel:
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+        first_name: "名"
+        last_name: "姓"
+        tos_accepted_at: "利用規約"
   views:
     pagination:
       first: "最初"
@@ -16,6 +34,27 @@ ja:
       unconfirmed: "アカウントの確認が必要です。確認メールをご確認ください。"
       locked: "アカウントはロックされています。"
       last_attempt: "あと1回でアカウントがロックされます。"
+    registrations:
+      signed_up: "アカウント登録が完了しました。ようこそ！"
+      signed_up_but_unconfirmed: "確認メールを送信しました。メールの手順に従ってアカウントを有効化してください。"
+      updated: "アカウント情報を更新しました。"
+      destroyed: "アカウントを削除しました。ご利用ありがとうございました。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+    confirmations:
+      send_instructions: "確認メールを送信しました。"
+      confirmed: "メールアドレスの確認が完了しました。ログインしてください。"
+      user:
+        send_instructions: "確認メールを送信しました。"
+        confirmed: "メールアドレスの確認が完了しました。ログインしてください。"
+    passwords:
+      send_instructions: "パスワード再設定用のメールを送信しました。"
+      updated: "パスワードを変更しました。"
+      updated_not_active: "パスワードを変更しました。"
+    unlocks:
+      send_instructions: "ロック解除メールを送信しました。"
+      unlocked: "アカウントのロックを解除しました。"
     sessions:
       signed_in: "ログインしました。"
       signed_out: "ログアウトしました。"

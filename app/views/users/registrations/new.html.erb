@@ -26,6 +26,17 @@
       <%= f.label :first_name, '名' %>
       <%= f.text_field :first_name, autocomplete: "given-name" %>
     </div>
+    <div class="field" style="margin-top:0.8rem;">
+      <label style="display:flex; gap:0.5rem; align-items:center;">
+        <%= check_box_tag :tos_agree, '1', false, name: 'user[tos_agree]' %>
+        <span>
+          <%= link_to '利用規約', terms_path, target: '_blank', rel: 'noopener' %>・
+          <%= link_to 'プライバシーポリシー', privacy_path, target: '_blank', rel: 'noopener' %>・
+          <%= link_to '特定商取引法に基づく表示', legal_path, target: '_blank', rel: 'noopener' %>
+          に同意します
+        </span>
+      </label>
+    </div>
     <div class="actions">
       <%= f.submit "登録" %>
     </div>

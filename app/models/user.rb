@@ -25,4 +25,7 @@ class User < ApplicationRecord
     totp = ROTP::TOTP.new(otp_secret, issuer: 'cokarte')
     totp.verify(code.to_s, drift_behind: 30, drift_ahead: 30)
   end
+
+  # 規約同意（新規登録時に必須）
+  validates :tos_accepted_at, presence: { message: 'への同意が必要です' }, on: :create
 end
