@@ -114,16 +114,19 @@ class ClientRecordsController < ApplicationController
     user_id = current_user.id
     client_id = record.client_id
     blobs = files.map do |file|
+      # 画像の最適化（失敗時はオリジナルを使用）
+      optimized = ImageOptimizer.optimize(file)
+
       original = file.original_filename.to_s
       basename = File.basename(original, File.extname(original))
-      ext = File.extname(original).downcase.presence || ".jpg"
+      ext = File.extname(optimized.filename).downcase.presence || ".jpg"
       safe_name = sanitize_filename(basename)
       # add short random suffix to avoid accidental overwrite with same name
       key = [user_id, client_id, "#{safe_name}-#{SecureRandom.hex(4)}#{ext}"].join("/")
       ActiveStorage::Blob.create_and_upload!(
-        io: file,
-        filename: original,
-        content_type: file.content_type,
+        io: optimized.io,
+        filename: optimized.filename,
+        content_type: optimized.content_type,
         key: key
       )
     end
