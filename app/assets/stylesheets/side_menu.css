@@ -404,6 +404,11 @@ body {
   color: #218a5a;
 }
 .plan-badge .btn-upgrade.subtle { color: #6c8f7f; }
+
+/* フッター */
+.app-footer { margin-top: 2rem; padding: 1rem 0; text-align: center; color: #6c8f7f; }
+.app-footer a { color: #218a5a; text-decoration: underline; }
+.app-footer-inner { display: inline-flex; gap: 0.4rem; align-items: center; }
 @media (max-width: 600px) {
   .client-detail-container {
     padding: 1rem 0.2rem;

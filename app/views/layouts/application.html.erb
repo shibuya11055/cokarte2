@@ -50,5 +50,14 @@
       <% end %>
       <%= yield %>
     </main>
+    <footer class="app-footer">
+      <div class="app-footer-inner">
+        <%= link_to '利用規約', terms_path %>
+        <span>・</span>
+        <%= link_to 'プライバシーポリシー', privacy_path %>
+        <span>・</span>
+        <%= link_to '特定商取引法に基づく表示', legal_path %>
+      </div>
+    </footer>
   </body>
 </html>

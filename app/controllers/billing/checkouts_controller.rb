@@ -18,7 +18,8 @@ class Billing::CheckoutsController < ApplicationController
       cancel_url: cancel_url,
       customer: customer_id,
       client_reference_id: (customer_id ? nil : current_user.id),
-      allow_promotion_codes: true
+      allow_promotion_codes: true,
+      consent_collection: { terms_of_service: 'required', privacy_policy: 'required' }
     )
 
     redirect_to session.url, allow_other_host: true
@@ -26,4 +27,3 @@ class Billing::CheckoutsController < ApplicationController
     redirect_to pricing_path, alert: "決済の開始に失敗しました: #{e.message}"
   end
 end
-

@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :client_records, only: [ :index, :new, :create, :show, :edit, :update ]
   root to: "clients#index"
   get "pricing", to: "pages#pricing"
+  get "terms",   to: "pages#terms"
+  get "privacy", to: "pages#privacy"
+  get "legal",   to: "pages#legal"
   namespace :billing do
     post :checkout, to: "checkouts#create"
     post :portal,   to: "portal_sessions#create"
