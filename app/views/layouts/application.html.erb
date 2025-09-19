@@ -41,6 +41,9 @@
       <%= render 'layouts/side_menu' %>
     <% end %>
     <main class="main-content">
+      <% if user_signed_in? %>
+        <%= plan_badge(current_user) %>
+      <% end %>
       <%= yield %>
     </main>
   </body>

@@ -375,6 +375,28 @@ html, body { margin: 0; padding: 0; }
   text-align: center;
   cursor: pointer;
 }
+
+/* プラン/上限バッジ */
+.plan-badge {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  background: #f6fff8;
+  border: 1px solid #b2dfdb;
+  color: #218a5a;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+.plan-badge.warn { background: #fff8f0; border-color: #ffcc80; color: #e65100; }
+.plan-badge .sep::before { content: "|"; margin: 0 0.5rem; color: #b2dfdb; }
+.plan-badge .btn-upgrade {
+  margin-left: 0.2rem;
+  text-decoration: underline;
+  color: #218a5a;
+}
+.plan-badge .btn-upgrade.subtle { color: #6c8f7f; }
 @media (max-width: 600px) {
   .client-detail-container {
     padding: 1rem 0.2rem;
