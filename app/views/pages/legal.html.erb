@@ -2,9 +2,15 @@
   <h1>特定商取引法に基づく表示</h1>
   <div class="client-form-card">
     <table class="user-detail-table">
-      <tr><th>事業者名</th><td>（事業者名を記載）</td></tr>
-      <tr><th>所在地</th><td>（住所を記載）</td></tr>
-      <tr><th>連絡先</th><td>（メールアドレス等を記載）</td></tr>
+      <tr><th>事業者名</th><td>cokarte</td></tr>
+      <tr><th>責任者</th><td><%= ENV['BUSINESS_NAME'].presence || '（氏名または屋号を.envに設定）' %></td></tr>
+      <tr><th>所在地</th><td><%= ENV['BUSINESS_ADDRESS'].presence || '（住所を.envに設定）' %></td></tr>
+      <tr><th>連絡先（メール）</th><td><%= ENV['BUSINESS_EMAIL'].presence || '（メールアドレスを.envに設定）' %></td></tr>
+      <% if ENV['BUSINESS_PHONE'].present? %>
+        <tr><th>連絡先（電話）</th><td><%= ENV['BUSINESS_PHONE'] %></td></tr>
+      <% else %>
+        <tr><th>連絡先（電話）</th><td>※電話番号はご請求があれば遅滞なく開示いたします。まずはメールにてご連絡ください。</td></tr>
+      <% end %>
       <tr><th>販売価格</th><td>料金ページに表示（消費税込）</td></tr>
       <tr><th>支払方法</th><td>クレジットカード（Stripe）</td></tr>
       <tr><th>支払時期</th><td>月額課金・毎月自動課金</td></tr>
@@ -14,4 +20,3 @@
     </table>
   </div>
 </div>
-
