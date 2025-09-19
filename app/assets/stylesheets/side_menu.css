@@ -694,6 +694,47 @@ h1 {
   font-weight: 700;
 }
 
+/* 料金プラン */
+.pricing-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 0.5rem;
+}
+.pricing-container h1 { text-align: center; margin-bottom: 1.4rem; }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 720px) {
+  .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.plan-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #e0f2f1;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(33,138,90,0.08);
+  padding: 1rem 1rem 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.plan-card .plan-header { text-align: center; }
+.plan-card h2 { margin: 0.2rem 0 0.6rem 0; color: #218a5a; font-size: 1.3rem; }
+.plan-card .price { font-size: 1.8rem; font-weight: 800; color: #145c36; }
+.plan-card .price span { font-size: 0.9rem; color: #6c8f7f; margin-left: 0.15rem; }
+.plan-card .features { list-style: none; margin: 1rem 0; padding: 0; color: #356b57; }
+.plan-card .features li { padding: 0.35rem 0; border-bottom: 1px dashed #e0f2f1; }
+.plan-card .features li:last-child { border-bottom: none; }
+.plan-card .plan-actions { margin-top: auto; text-align: center; }
+.plan-card .badge {
+  position: absolute; top: 12px; right: 12px;
+  background: #ffecb3; color: #7c4d00; font-weight: 700;
+  padding: 0.2rem 0.5rem; border-radius: 999px; font-size: 0.8rem;
+}
+.plan-card.featured { border-color: #b2dfdb; box-shadow: 0 10px 28px rgba(33,138,90,0.12); }
+.pricing-portal { text-align: center; margin-top: 1rem; }
+
 /* Off-canvas sidebar for iPad and below */
 @media (max-width: 1024px) {
   .app-topbar {

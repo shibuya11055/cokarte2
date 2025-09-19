@@ -1,18 +1,67 @@
-<div class="client-form-container">
+<div class="pricing-container">
   <h1>料金プラン</h1>
-  <div class="client-form-card">
-    <p>顧客数と1カルテあたりの画像枚数でプランを選べます。</p>
-    <table class="client-detail-table">
-      <tr><th>Free</th><td>顧客 50 名 / 画像 1 枚/カルテ</td></tr>
-      <tr><th>Basic</th><td>顧客 150 名 / 画像 3 枚/カルテ</td></tr>
-      <tr><th>Pro</th><td>顧客 無制限 / 画像 3 枚/カルテ</td></tr>
-    </table>
-    <div class="client-detail-actions">
-      <%= button_to 'Basic にアップグレード', billing_checkout_path(plan: 'basic'), method: :post, class: 'btn btn-detail', data: { turbo: false } %>
-      <%= button_to 'Pro にアップグレード',   billing_checkout_path(plan: 'pro'),   method: :post, class: 'btn btn-detail', data: { turbo: false } %>
-      <% if current_user&.stripe_customer_id.present? %>
-        <%= button_to 'お支払い情報の変更 / 解約', billing_portal_path, method: :post, class: 'btn', data: { turbo: false } %>
-      <% end %>
+  <div class="pricing-grid">
+    <% current = current_user&.plan_tier %>
+
+    <div class="plan-card">
+      <div class="plan-header">
+        <h2>Free</h2>
+        <div class="price">¥0<span>/月</span></div>
+      </div>
+      <ul class="features">
+        <li>顧客 50 名まで</li>
+        <li>1カルテにつき画像を1枚まで登録可能</li>
+      </ul>
+      <div class="plan-actions">
+        <% if current == 'free' %>
+          <button class="btn" disabled>現在のプラン</button>
+        <% else %>
+          <%= link_to 'このプランを利用', pricing_path, class: 'btn' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="plan-card featured">
+      <div class="plan-header">
+        <h2>Basic</h2>
+        <div class="price">¥500<span>/月</span></div>
+      </div>
+      <ul class="features">
+        <li>顧客 150 名まで</li>
+        <li>1カルテにつき画像を3枚まで登録可能</li>
+      </ul>
+      <div class="plan-actions">
+        <% if current == 'basic' %>
+          <button class="btn btn-detail" disabled>現在のプラン</button>
+        <% else %>
+          <%= button_to 'Basic にアップグレード', billing_checkout_path(plan: 'basic'), method: :post, class: 'btn btn-detail', data: { turbo: false } %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="plan-card">
+      <div class="badge">おすすめ</div>
+      <div class="plan-header">
+        <h2>Pro</h2>
+        <div class="price">¥1,000<span>/月</span></div>
+      </div>
+      <ul class="features">
+        <li>顧客 無制限</li>
+        <li>1カルテにつき画像を3枚まで登録可能</li>
+      </ul>
+      <div class="plan-actions">
+        <% if current == 'pro' %>
+          <button class="btn btn-detail" disabled>現在のプラン</button>
+        <% else %>
+          <%= button_to 'Pro にアップグレード', billing_checkout_path(plan: 'pro'), method: :post, class: 'btn btn-detail', data: { turbo: false } %>
+        <% end %>
+      </div>
     </div>
   </div>
+
+  <% if current_user&.stripe_customer_id.present? %>
+    <div class="pricing-portal">
+      <%= button_to 'お支払い情報の変更 / 解約', billing_portal_path, method: :post, class: 'btn', data: { turbo: false } %>
+    </div>
+  <% end %>
 </div>
