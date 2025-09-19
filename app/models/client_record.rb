@@ -29,8 +29,9 @@ class ClientRecord < ApplicationRecord
   def validate_photos
     return unless photos.attached?
 
-    if photos.attachments.size > MAX_PHOTOS
-      errors.add(:base, "画像は最大#{MAX_PHOTOS}枚まで保存できます")
+    max_per_record = client&.user&.respond_to?(:photos_per_record) ? client.user.photos_per_record : MAX_PHOTOS
+    if photos.attachments.size > max_per_record
+      errors.add(:base, "画像は最大#{max_per_record}枚まで保存できます")
     end
 
     photos.attachments.each do |attachment|

@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+  before_action :ensure_client_quota!, only: [:create]
   def index
     @clients = clients
     if params[:q].present?
@@ -69,5 +70,13 @@ class ClientsController < ApplicationController
 
   def clients
     @clients ||= current_user.clients
+  end
+
+  def ensure_client_quota!
+    limit = current_user.respond_to?(:client_limit) ? current_user.client_limit : nil
+    return if limit.nil? # 無制限
+    if current_user.clients_count.to_i >= limit
+      redirect_to clients_path, alert: "プランの上限に達しました。上位プランへのアップグレードをご検討ください。" and return
+    end
   end
 end

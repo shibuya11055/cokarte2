@@ -32,7 +32,7 @@
           <th>写真</th>
           <td>
             <%= f.file_field :photos, multiple: true, accept: 'image/*' %>
-            <div class="form-hint">画像のみ、最大3枚・1枚あたり5MBまで（既存の画像は下の詳細で確認）</div>
+            <div class="form-hint">画像のみ、最大<%= current_user.photos_per_record %>枚・1枚あたり5MBまで（既存の画像は下の詳細で確認）</div>
             <% if @client_record.photos.attached? %>
               <div class="photo-remove-list">
                 <% @client_record.photos.each do |photo| %>
