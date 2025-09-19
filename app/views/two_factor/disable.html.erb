@@ -1,0 +1,16 @@
+<div class="client-form-container">
+  <h1>二要素認証を無効化</h1>
+  <div class="client-form-card">
+    <p>無効化には現在のパスワードを入力してください。</p>
+    <%= form_with url: two_factor_disable_path, method: :post, local: true do |f| %>
+      <table class="client-form-table">
+        <tr><th>現在のパスワード</th><td><%= password_field_tag :current_password, nil, required: true %></td></tr>
+      </table>
+      <div class="client-form-actions" style="justify-content:flex-start;">
+        <%= f.submit '無効化する', class: 'btn btn-danger' %>
+        <%= link_to 'キャンセル', user_profile_path, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

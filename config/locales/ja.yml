@@ -8,6 +8,14 @@ ja:
       next: "次へ"
       truncate: "…"
   devise:
+    failure:
+      unauthenticated: "ログインが必要です。"
+      invalid: "メールアドレスまたはパスワードが正しくありません。"
+      not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
+      already_authenticated: "すでにログインしています。"
+      unconfirmed: "アカウントの確認が必要です。確認メールをご確認ください。"
+      locked: "アカウントはロックされています。"
+      last_attempt: "あと1回でアカウントがロックされます。"
     sessions:
       signed_in: "ログインしました。"
       signed_out: "ログアウトしました。"

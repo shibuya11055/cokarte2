@@ -61,6 +61,8 @@ end
 
 # Stripe (サブスク課金)
 gem "stripe"
+gem "rotp"
+gem "rqrcode"
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

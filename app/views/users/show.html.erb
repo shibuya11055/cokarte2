@@ -20,6 +20,11 @@
       <% if current_user.stripe_customer_id.present? %>
         <%= button_to 'お支払い情報の変更 / 解約', billing_portal_path, method: :post, class: 'btn', data: { turbo: false } %>
       <% end %>
+      <% if current_user.otp_required_for_login %>
+        <%= link_to '二要素認証を無効化', two_factor_disable_form_path, class: 'btn' %>
+      <% else %>
+        <%= link_to '二要素認証を設定', two_factor_setup_path, class: 'btn btn-detail' %>
+      <% end %>
     </div>
   </div>
 </div>

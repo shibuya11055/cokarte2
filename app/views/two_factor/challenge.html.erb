@@ -1,0 +1,16 @@
+<div class="client-form-container">
+  <h1>二要素認証</h1>
+  <div class="client-form-card">
+    <p>認証アプリ（Google Authenticator 等）に表示される6桁コードを入力してください。</p>
+    <%= form_with url: two_factor_verify_path, method: :post, local: true do |f| %>
+      <table class="client-form-table">
+        <tr><th>ワンタイムコード</th><td><%= text_field_tag :otp_code, nil, autocomplete: 'one-time-code', required: true %></td></tr>
+      </table>
+      <div class="client-form-actions" style="justify-content:flex-start;">
+        <%= f.submit '認証してログイン', class: 'btn btn-detail' %>
+        <%= link_to '戻る', new_user_session_path, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

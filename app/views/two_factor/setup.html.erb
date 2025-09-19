@@ -1,0 +1,23 @@
+<div class="client-form-container">
+  <h1>二要素認証を有効化</h1>
+  <div class="client-form-card">
+    <p>認証アプリ（Google Authenticator / Microsoft Authenticator 等）でQRコードを読み取り、表示される6桁コードを入力して有効化してください。</p>
+    <%# QRコード %>
+    <% require 'rqrcode' %>
+    <% qr = RQRCode::QRCode.new(current_user.provisioning_uri) %>
+    <div style="text-align:center;margin:1rem 0;">
+      <%= raw qr.as_svg(module_size: 4, standalone: true) %>
+      <div style="font-size:0.9rem;color:#6c8f7f;">手動設定キー: <%= current_user.otp_secret %></div>
+    </div>
+    <%= form_with url: two_factor_enable_path, method: :post, local: true do |f| %>
+      <table class="client-form-table">
+        <tr><th>ワンタイムコード</th><td><%= text_field_tag :otp_code, nil, autocomplete: 'one-time-code', required: true %></td></tr>
+      </table>
+      <div class="client-form-actions" style="justify-content:flex-start;">
+        <%= f.submit '有効化する', class: 'btn btn-detail' %>
+        <%= link_to 'キャンセル', user_profile_path, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
