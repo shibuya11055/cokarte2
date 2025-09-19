@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "terms",   to: "pages#terms"
   get "privacy", to: "pages#privacy"
   get "legal",   to: "pages#legal"
+  get "guide",   to: "pages#guide"
   namespace :billing do
     post :checkout, to: "checkouts#create"
     post :portal,   to: "portal_sessions#create"

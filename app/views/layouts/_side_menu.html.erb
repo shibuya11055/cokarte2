@@ -8,6 +8,7 @@
       <li><%= link_to 'カルテ作成', new_client_record_path, class: "side-menu-link #{controller_name == 'client_records' && action_name == 'new' ? 'active' : ''}" %></li>
       <li><%= link_to 'ユーザー情報', user_profile_path, class: "side-menu-link #{controller_name == 'users' && action_name == 'show' ? 'active' : ''}" %></li>
       <li><%= link_to '料金プラン', pricing_path, class: 'side-menu-link' %></li>
+      <li><%= link_to '使い方', guide_path, class: 'side-menu-link' %></li>
       <li>
         <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'side-menu-link logout-btn' %>
       </li>
