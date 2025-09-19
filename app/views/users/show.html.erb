@@ -10,5 +10,16 @@
       <tr><th>メールアドレス</th><td><%= current_user.email %></td></tr>
       <tr><th>登録日</th><td><%= current_user.created_at.strftime('%Y/%m/%d %H:%M') %></td></tr>
     </table>
+
+    <div class="client-detail-actions" style="justify-content:flex-start; gap:0.6rem;">
+      <%= link_to '料金プランを見る', pricing_path, class: 'btn' %>
+      <% if current_user.plan_tier == 'free' %>
+        <%= button_to 'Basic にアップグレード', billing_checkout_path(plan: 'basic'), method: :post, class: 'btn btn-detail', data: { turbo: false } %>
+        <%= button_to 'Pro にアップグレード',   billing_checkout_path(plan: 'pro'),   method: :post, class: 'btn btn-detail', data: { turbo: false } %>
+      <% end %>
+      <% if current_user.stripe_customer_id.present? %>
+        <%= button_to 'お支払い情報の変更 / 解約', billing_portal_path, method: :post, class: 'btn', data: { turbo: false } %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -8,10 +8,10 @@
       <tr><th>Pro</th><td>顧客 無制限 / 画像 3 枚/カルテ</td></tr>
     </table>
     <div class="client-detail-actions">
-      <%= button_to 'Basic にアップグレード', billing_checkout_path(plan: 'basic'), method: :post, class: 'btn btn-detail' %>
-      <%= button_to 'Pro にアップグレード',   billing_checkout_path(plan: 'pro'),   method: :post, class: 'btn btn-detail' %>
+      <%= button_to 'Basic にアップグレード', billing_checkout_path(plan: 'basic'), method: :post, class: 'btn btn-detail', data: { turbo: false } %>
+      <%= button_to 'Pro にアップグレード',   billing_checkout_path(plan: 'pro'),   method: :post, class: 'btn btn-detail', data: { turbo: false } %>
       <% if current_user&.stripe_customer_id.present? %>
-        <%= button_to 'お支払い情報の変更 / 解約', billing_portal_path, method: :post, class: 'btn' %>
+        <%= button_to 'お支払い情報の変更 / 解約', billing_portal_path, method: :post, class: 'btn', data: { turbo: false } %>
       <% end %>
     </div>
   </div>

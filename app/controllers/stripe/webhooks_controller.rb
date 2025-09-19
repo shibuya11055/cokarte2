@@ -1,6 +1,7 @@
 class Stripe::WebhooksController < ApplicationController
-  # WebhookはCSRF対象外
+  # WebhookはCSRF/ログイン認証の対象外
   skip_forgery_protection
+  skip_before_action :authenticate_user!
 
   def create
     payload = request.body.read
@@ -34,6 +35,16 @@ class Stripe::WebhooksController < ApplicationController
     return unless user
     customer_id = session.customer
     user.update!(stripe_customer_id: customer_id) if customer_id.present? && user.stripe_customer_id.blank?
+
+    # Checkout完了直後に購読が付与されている場合は、その場で購読情報を取り込み
+    if session.respond_to?(:subscription) && session.subscription.present?
+      begin
+        subscription = Stripe::Subscription.retrieve(session.subscription)
+        on_subscription_updated(subscription)
+      rescue Stripe::StripeError
+        # 購読取得に失敗しても致命的ではない（後続のsubscription.updatedで反映される）
+      end
+    end
   end
 
   def on_subscription_updated(sub)
@@ -69,4 +80,3 @@ class Stripe::WebhooksController < ApplicationController
     end
   end
 end
-

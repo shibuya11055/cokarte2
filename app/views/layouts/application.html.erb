@@ -45,6 +45,9 @@
       <%= render 'layouts/side_menu' %>
     <% end %>
     <main class="main-content">
+      <% flash.each do |k, v| %>
+        <div class="form-errors"><%= v %></div>
+      <% end %>
       <%= yield %>
     </main>
   </body>
