@@ -55,5 +55,12 @@
 
     <h3>8. お問い合わせ</h3>
     <p>ご不明点や不具合は <%= ENV['BUSINESS_EMAIL'].presence || '（メールアドレスを.envに設定）' %> までご連絡ください。</p>
+
+    <h3>9. リーガル</h3>
+    <ul>
+      <li><%= link_to '利用規約', terms_path %></li>
+      <li><%= link_to 'プライバシーポリシー', privacy_path %></li>
+      <li><%= link_to '特定商取引法に基づく表示', legal_path %></li>
+    </ul>
   </div>
 </div>
