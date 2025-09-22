@@ -110,3 +110,6 @@ ja:
       confirmation: "%{attribute}が一致しません"
       taken: "すでに使用されています"
       not_saved: "保存できませんでした"
+  flash:
+    checkout:
+      failed: "決済を開始できませんでした。しばらくしてからお試しください。"
