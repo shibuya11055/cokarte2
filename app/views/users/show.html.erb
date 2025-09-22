@@ -18,7 +18,8 @@
         <%= button_to 'Pro にアップグレード',   billing_checkout_path(plan: 'pro'),   method: :post, class: 'btn btn-detail', data: { turbo: false } %>
       <% end %>
       <% if current_user.stripe_customer_id.present? %>
-        <%= button_to 'お支払い情報の変更 / 解約', billing_portal_path, method: :post, class: 'btn', data: { turbo: false } %>
+        <%= button_to '請求履歴・領収書のダウンロード（Customer Portal）', billing_portal_path, method: :post, class: 'btn', data: { turbo: false } %>
+        <div style="font-size:0.85rem; color:#6c8f7f;">※ ポータルから過去の請求書閲覧や領収書（PDF）のダウンロード、支払い方法の変更・解約ができます。</div>
       <% end %>
       <% if current_user.otp_required_for_login %>
         <%= link_to '二要素認証を無効化', two_factor_disable_form_path, class: 'btn' %>
