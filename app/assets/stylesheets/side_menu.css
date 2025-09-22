@@ -554,47 +554,59 @@ body {
 
 /* ユーザー情報ページ用スタイル */
 .user-detail-container {
-  max-width: 540px;
+  max-width: 900px;
   margin: 2.5rem auto;
-  padding: 2rem 1.5rem;
+  padding: 2.2rem 1.25rem;
   background: #f6fff8;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(33,138,90,0.10);
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(33,138,90,0.10);
 }
 .user-detail-container h1 {
   color: #218a5a;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
 }
 .user-detail-card {
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 1px 8px rgba(33,138,90,0.06);
-  padding: 1.5rem 1rem 1rem 1rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(33,138,90,0.08);
+  padding: 1.4rem 1.1rem 1rem 1.1rem;
 }
 .user-detail-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .user-detail-table th {
   background: #e6f4ea;
   color: #218a5a;
   font-weight: 700;
   text-align: left;
-  padding: 0.7rem 1rem;
-  width: 32%;
+  padding: 0.9rem 1rem;
+  width: 28%;
   border-bottom: 1px solid #b2dfdb;
 }
 .user-detail-table td {
-  padding: 0.7rem 1rem;
+  padding: 0.9rem 1rem;
   border-bottom: 1px solid #f0f0f0;
   background: #fff;
 }
 .user-detail-table tr:last-child th,
 .user-detail-table tr:last-child td {
   border-bottom: none;
+}
+
+/* ユーザー情報ページ内のボタン群をゆったり配置 */
+.client-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: flex-start;
+}
+.client-detail-actions .btn { white-space: nowrap; }
+@media (max-width: 700px) {
+  .client-detail-actions .btn { width: 100%; white-space: normal; }
 }
 
 /* deviseフォーム共通デザイン */
