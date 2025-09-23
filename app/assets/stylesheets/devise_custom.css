@@ -1,7 +1,7 @@
 /* モダンな緑を基調としたDevise用フォームデザイン・レスポンシブ対応 */
 
 .devise-container {
-  max-width: 400px;
+  max-width: 480px;
   margin: 40px auto;
   padding: 2rem 2rem 1.5rem 2rem;
   background: #f6fff8;
@@ -12,6 +12,11 @@
   color: #218a5a;
   text-align: center;
   margin-bottom: 1.5rem;
+}
+.devise-app-logo {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
 }
 .devise-container .field {
   margin-bottom: 1.2rem;
