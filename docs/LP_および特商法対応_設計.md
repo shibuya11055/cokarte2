@@ -22,7 +22,7 @@
   - 顧客一覧は `/clients` を正とする（ログイン後の主動線）。
   - ログイン済みユーザーの優先遷移（任意・将来対応）：`authenticated :user do; root to: 'clients#index', as: :authenticated_root ; end`
 - 公開アクション
-  - `PagesController`: `home`, `pricing`, `terms`, `privacy`, `legal`, `guide`, `commerce_disclosure`（特商法）
+  - `PagesController`: `home`のみ。特商法ページなどは存在するためそのリンクを設置する。
   - `skip_before_action :authenticate_user!` を上記アクションに付与。
   - 既存で `ApplicationController` に `before_action :authenticate_user!` があるため、公開ページ側でのスキップが必須。
 
@@ -31,6 +31,7 @@
 - セクション構成（最小）
   - ヒーロー：サービスの一文コピー、主要価値、CTA（`ログイン`・`無料で始める`）。
   - サービス概要：顧客管理/カルテ作成/写真/二要素認証/サブスク課金対応 など。
+    - シンプルな機能に絞っている・複雑な機能はない・その分安いことをアピール
   - 料金プラン概要：Free/Basic/Pro の価格・主な上限（既存 `PlanQuota` を反映）。詳細は `/pricing` へリンク。
   - セキュリティ/信頼：2FA対応、Stripe決済、データ保護への簡単な言及。
   - フッター：リンク集（`/pricing`, `/terms`, `/privacy`, `/legal`, `/commerce_disclosure`, `/guide`, `ログイン`, `新規登録`）。
@@ -42,69 +43,27 @@
   - サービスの詳細：機能概要、提供形態（SaaS/デジタル役務）を簡潔に記載。
 
 ## 特定商取引法に基づく表記（pages#commerce_disclosure）要件
-- ページタイトル：`特定商取引法に基づく表記`（推奨。代替：`通信販売に関する表示事項`）
-- 必須項目（例：SaaS/デジタル役務向け）
-  - 販売事業者（社名/屋号）
-  - 代表者/運営責任者
-  - 所在地（住所）
-  - 連絡先（電話番号・メールアドレス）
-  - ホームページURL
-  - 販売価格（役務の対価）・付帯費用（消費税/通信料/振込手数料 等）
-  - 代金の支払時期・方法（Stripe/クレジットカード、引落タイミング）
-  - サービス提供時期（決済後すぐ/アカウント有効化後 等）
-  - 返品・キャンセル（役務の特性上の可否、日割/中途解約、返金ポリシー）
-  - 動作環境（対応ブラウザ 等）
-  - 表現・商品に関する注意書き（結果を保証しない旨 等）
-  - 特別な販売条件（最低利用期間/制限事項 があれば）
-- 導線：LPヘッダー/フッター、`/pricing`、決済直前画面（将来追加）からリンク。
+app/views/pages/legal.html.erb にある。
 
 ## 既存ページとの関係
-- 既存ルート：`/pricing`, `/terms`, `/privacy`, `/legal`, `/guide` は維持。
-- サイドメニュー（ログイン後）には追加不要だが、フッター/LPのナビに外部公開リンクを配置。
+既存ページへ遷移する動線はない
 
 ## レイアウト/UI方針
 - 未ログイン時はサイドメニューを表示せず、LP用の軽量セクションを表示。
-- 既存 `application.html.erb` にフッターを追加し、公開リンクを集約（もしくはLP専用簡易レイアウトを導入）。
 - 画像アセットはPropshaftで配信（`app/assets/images` + manifest済）。
 
-## ナビゲーション構成（ヘッダー/フッター）
-- ヘッダー（未ログイン時：LP/公開ページ）
-  - 左：ロゴ（`root_path`）。
-  - 右：
-    - `料金` → `pricing_path`
-    - `使い方` → `guide_path`
-    - `特定商取引法に基づく表記` → `commerce_disclosure_path`
-    - 仕切り
-    - `ログイン` → `new_user_session_path`
-    - `無料で始める`（強調CTA） → `new_user_registration_path`
-- ヘッダー（ログイン時：アプリ内）
-  - 既存のトップバー＋ハンバーガー（サイドメニュー）を継続。
-  - サイドメニューに主導線：`ダッシュボード`（任意）、`顧客一覧`（`clients_path`）、`カルテ一覧`、`カルテ作成`、`ユーザー情報`、`料金プラン`、`使い方`、`二要素認証`、`ログアウト`。
-  - `root_path` はLPのため、アプリ内ホーム導線は `clients_path`（または`dashboard_path`）を利用。
-- フッター（全ページ共通推奨。少なくとも公開ページには必須）
-  - `ホーム` → `root_path`
-  - `料金` → `pricing_path`
-  - `特定商取引法に基づく表記` → `commerce_disclosure_path`
-  - `利用規約` → `terms_path`
-  - `プライバシー` → `privacy_path`
-  - `法的情報` → `legal_path`
-  - `使い方` → `guide_path`
-  - （右端）`ログイン` → `new_user_session_path` / `新規登録` → `new_user_registration_path`（未ログイン時のみ表示。ログイン時は省略可）
-
 ### ルート・ヘルパ整理
-- 追加ルート：`get 'commerce_disclosure', to: 'pages#commerce_disclosure', as: :commerce_disclosure`
 - 既存：`pricing_path`, `terms_path`, `privacy_path`, `legal_path`, `guide_path`
 - 認証系：`new_user_session_path`, `new_user_registration_path`
-- アプリ内：`clients_path`, `dashboard_path`（導入時）
 
 ## 受け入れ条件（AC）
 1. 未ログインで `/` にアクセスするとLPが表示される（200）。
 2. LP内にサービス概要と価格が明示され、`ログイン`・`新規登録` のCTAがある。
 3. `特定商取引法に基づく表記` ページが存在し、フッターまたはナビから1クリックで到達可能。
-4. `/pricing`, `/terms`, `/privacy`, `/legal`, `/guide` へLPから遷移できる。
+4. `/terms`, `/privacy`, `/legal`, `/guide` へLPから遷移できる。
 5. ログイン後は業務画面（例：顧客一覧 or ダッシュボード）へ導線がある。
-6. 公開ページは `authenticate_user!` によってブロックされない。
-7. ヘッダー/フッターから「特定商取引法に基づく表記」へ1クリックで遷移できる（LPおよび決済導線上のページ）。
+6. LPページは `authenticate_user!` によってブロックされない。
+7. フッターから「特定商取引法に基づく表記」へ1クリックで遷移できる（LPおよび決済導線上のページ）。
 
 ## 実装タスク（工程）
 1) ルート/コントローラ
@@ -132,7 +91,10 @@
 - LP公開に伴うサイドメニュー・トップバーの表示条件（未ログイン時は非表示）を維持。
 - 価格/表記はStripe審査に影響するため、曖昧な表現を避ける（決済タイミング・返金可否を明記）。
 
-## 将来拡張
-- 決済直前ページやチェックアウトにも特商法/規約リンクを明示。
-- LPのA/Bテストや簡易コンバージョントラッキング。
-- FAQ/お問い合わせフォーム追加。
+## デザイン
+- アプリの色合いやデザインを踏襲しつつ、個人事業主の方がワクワクするような登録したくなるようなモダンなデザインにする
+- 明るいイメージの色合いにする
+
+## 注意
+CSSの影響はLPページにとどめる。
+この実装で他画面へのデザインの影響はないようにする。
