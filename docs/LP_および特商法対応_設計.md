@@ -67,6 +67,36 @@
 - 既存 `application.html.erb` にフッターを追加し、公開リンクを集約（もしくはLP専用簡易レイアウトを導入）。
 - 画像アセットはPropshaftで配信（`app/assets/images` + manifest済）。
 
+## ナビゲーション構成（ヘッダー/フッター）
+- ヘッダー（未ログイン時：LP/公開ページ）
+  - 左：ロゴ（`root_path`）。
+  - 右：
+    - `料金` → `pricing_path`
+    - `使い方` → `guide_path`
+    - `特定商取引法に基づく表記` → `commerce_disclosure_path`
+    - 仕切り
+    - `ログイン` → `new_user_session_path`
+    - `無料で始める`（強調CTA） → `new_user_registration_path`
+- ヘッダー（ログイン時：アプリ内）
+  - 既存のトップバー＋ハンバーガー（サイドメニュー）を継続。
+  - サイドメニューに主導線：`ダッシュボード`（任意）、`顧客一覧`（`clients_path`）、`カルテ一覧`、`カルテ作成`、`ユーザー情報`、`料金プラン`、`使い方`、`二要素認証`、`ログアウト`。
+  - `root_path` はLPのため、アプリ内ホーム導線は `clients_path`（または`dashboard_path`）を利用。
+- フッター（全ページ共通推奨。少なくとも公開ページには必須）
+  - `ホーム` → `root_path`
+  - `料金` → `pricing_path`
+  - `特定商取引法に基づく表記` → `commerce_disclosure_path`
+  - `利用規約` → `terms_path`
+  - `プライバシー` → `privacy_path`
+  - `法的情報` → `legal_path`
+  - `使い方` → `guide_path`
+  - （右端）`ログイン` → `new_user_session_path` / `新規登録` → `new_user_registration_path`（未ログイン時のみ表示。ログイン時は省略可）
+
+### ルート・ヘルパ整理
+- 追加ルート：`get 'commerce_disclosure', to: 'pages#commerce_disclosure', as: :commerce_disclosure`
+- 既存：`pricing_path`, `terms_path`, `privacy_path`, `legal_path`, `guide_path`
+- 認証系：`new_user_session_path`, `new_user_registration_path`
+- アプリ内：`clients_path`, `dashboard_path`（導入時）
+
 ## 受け入れ条件（AC）
 1. 未ログインで `/` にアクセスするとLPが表示される（200）。
 2. LP内にサービス概要と価格が明示され、`ログイン`・`新規登録` のCTAがある。
@@ -74,6 +104,7 @@
 4. `/pricing`, `/terms`, `/privacy`, `/legal`, `/guide` へLPから遷移できる。
 5. ログイン後は業務画面（例：顧客一覧 or ダッシュボード）へ導線がある。
 6. 公開ページは `authenticate_user!` によってブロックされない。
+7. ヘッダー/フッターから「特定商取引法に基づく表記」へ1クリックで遷移できる（LPおよび決済導線上のページ）。
 
 ## 実装タスク（工程）
 1) ルート/コントローラ
