@@ -36,8 +36,8 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" data-turbo-track="reload"></script>
   </head>
 
-  <body<% unless user_signed_in? %> class="no-side-menu"<% end %><% if user_signed_in? %> data-controller="sidebar"<% end %>>
-    <% if user_signed_in? %>
+  <body<% if (controller_name == 'pages' && action_name == 'home') || !user_signed_in? %> class="no-side-menu"<% end %><% if user_signed_in? && !(controller_name == 'pages' && action_name == 'home') %> data-controller="sidebar"<% end %>>
+    <% if user_signed_in? && !(controller_name == 'pages' && action_name == 'home') %>
       <div class="app-topbar">
         <button type="button" class="hamburger" aria-label="メニュー" aria-controls="app-side-menu" aria-expanded="false"
                 data-sidebar-target="toggle" data-action="click->sidebar#toggle">
@@ -56,5 +56,25 @@
       <% end %>
       <%= yield %>
     </main>
+    <% if controller_name == 'pages' && action_name == 'home' %>
+      <footer class="site-footer" style="border-top:1px solid #eee; margin-top:24px;">
+        <div class="footer-container" style="max-width:980px; margin:0 auto; display:flex; gap:16px; align-items:center; justify-content:space-between; padding:12px 16px; font-size:0.95em;">
+          <div class="links">
+            <%= link_to 'ホーム', root_path %>
+            <%= link_to '料金', pricing_path %>
+            <%= link_to '特定商取引法に基づく表記', legal_path %>
+            <%= link_to '利用規約', terms_path %>
+            <%= link_to 'プライバシー', privacy_path %>
+            <%= link_to '使い方', guide_path %>
+          </div>
+          <div class="auth">
+            <% unless user_signed_in? %>
+              <%= link_to 'ログイン', new_user_session_path %>
+              <%= link_to '新規登録', new_user_registration_path, style: 'padding:6px 10px; border:1px solid #218a5a; border-radius:8px; margin-left:8px;' %>
+            <% end %>
+          </div>
+        </div>
+      </footer>
+    <% end %>
   </body>
 </html>

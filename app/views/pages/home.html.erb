@@ -1,0 +1,72 @@
+<%# LP用CSSはこのページでのみ読み込む %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'pages_home', "data-turbo-track": "reload" %>
+<% end %>
+
+<header class="public-header">
+  <div class="container">
+    <div class="brand">
+      <%= link_to root_path, aria: { label: 'cokarte' } do %>
+        <%# 画像が無い環境でもエラーにならないように例外処理 %>
+        <% begin %>
+          <%= image_tag 'cokarte_logo.png', alt: 'cokarte', class: 'logo' %>
+        <% rescue Propshaft::MissingAssetError %>
+          <span style="font-weight:700;">cokarte</span>
+        <% end %>
+      <% end %>
+    </div>
+    <nav>
+      <%= link_to '料金', pricing_path %>
+      <%= link_to '使い方', guide_path %>
+      <%= link_to '特定商取引法に基づく表記', legal_path %>
+      <span class="spacer"></span>
+      <%= link_to 'ログイン', new_user_session_path, class: 'btn link' %>
+      <%= link_to '無料で始める', new_user_registration_path, class: 'btn cta' %>
+    </nav>
+  </div>
+  </header>
+
+<section class="hero">
+  <div class="container">
+    <h1>シンプルでちょうどいい。サロン向け顧客管理・カルテアプリ</h1>
+    <p>必要な機能だけをギュッと。だから使いやすく、だから手頃。</p>
+    <div class="actions">
+      <%= link_to '無料で始める', new_user_registration_path, class: 'btn cta' %>
+      <%= link_to 'ログイン', new_user_session_path, class: 'btn link' %>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <h2>主な機能</h2>
+    <ul class="feature-list">
+      <li>顧客一覧・検索（ふりがな対応）</li>
+      <li>カルテ作成・編集（来店日時・金額・ノート）</li>
+      <li>写真添付（プランに応じて最大3枚/カルテ）</li>
+      <li>二要素認証で安心のセキュリティ</li>
+      <li>Stripeによる安全な決済</li>
+    </ul>
+  </div>
+</section>
+
+<section class="pricing-summary">
+  <div class="container">
+    <h2>料金プラン</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Free</h3>
+        <p>顧客上限: 50 / 写真: 1枚/カルテ</p>
+      </div>
+      <div class="plan">
+        <h3>Basic</h3>
+        <p>顧客上限: 150 / 写真: 3枚/カルテ</p>
+      </div>
+      <div class="plan">
+        <h3>Pro</h3>
+        <p>顧客上限: 無制限 / 写真: 3枚/カルテ</p>
+      </div>
+    </div>
+    <p class="more"><%= link_to '詳しい料金を見る', pricing_path %></p>
+  </div>
+</section>
