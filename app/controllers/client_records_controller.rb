@@ -7,15 +7,15 @@ class ClientRecordsController < ApplicationController
     end
     case params[:sort]
     when "visited_at_asc"
-      @client_records = @client_records.order(visited_at: :asc)
+      @client_records = @client_records.order(Arel.sql('client_records.visited_at ASC, client_records.id ASC'))
     when "visited_at_desc"
-      @client_records = @client_records.order(visited_at: :desc)
+      @client_records = @client_records.order(Arel.sql('client_records.visited_at DESC, client_records.id DESC'))
     when "amount_asc"
-      @client_records = @client_records.order(amount: :asc)
+      @client_records = @client_records.order(Arel.sql('client_records.amount ASC, client_records.id ASC'))
     when "amount_desc"
-      @client_records = @client_records.order(amount: :desc)
+      @client_records = @client_records.order(Arel.sql('client_records.amount DESC, client_records.id DESC'))
     else
-      @client_records = @client_records.order(visited_at: :desc)
+      @client_records = @client_records.order(Arel.sql('client_records.visited_at DESC, client_records.id DESC'))
     end
     @client_records = @client_records.page(params[:page]).per(20)
   end
@@ -33,7 +33,19 @@ class ClientRecordsController < ApplicationController
   end
 
   def create
+    # Ensure the client belongs to current_user. If client_id is missing, let validation return 422.
+    client_id = params.dig(:client_record, :client_id)
     @client_record = ClientRecord.new(client_record_params)
+    if client_id.present?
+      if Client.exists?(id: client_id)
+        client = current_user.clients.find_by(id: client_id)
+        return head :not_found unless client
+        @client_record.client = client
+      else
+        # client_idが不正（存在しない）場合はバリデーションで422にする
+        # （@client_recordにclient_idは渡っているため、must existのエラーが付与される）
+      end
+    end
     files = photo_files
     if files.present? && !validate_photo_files(files, existing_count: 0)
       render :new, status: :unprocessable_entity and return
@@ -49,6 +61,12 @@ class ClientRecordsController < ApplicationController
 
   def update
     @client_record = client_records.find(params[:id])
+    # If client_id is provided, ensure it belongs to current_user, then reassign
+    if params.dig(:client_record, :client_id).present?
+      new_client = current_user.clients.find_by(id: params[:client_record][:client_id])
+      return head :not_found unless new_client
+      @client_record.client = new_client
+    end
     files = photo_files
     to_remove = attachments_to_remove(@client_record)
     effective_existing = @client_record.photos.count - to_remove.size

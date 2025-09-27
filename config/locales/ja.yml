@@ -1,115 +1,27 @@
 ja:
-  hello: "こんにちは"
+  errors:
+    format: "%{attribute}%{message}"
   activerecord:
     attributes:
-      user:
-        email: "メールアドレス"
-        password: "パスワード"
-        password_confirmation: "パスワード（確認）"
-        first_name: "名"
-        last_name: "姓"
-        tos_accepted_at: "利用規約"
-  activemodel:
-    attributes:
-      user:
-        email: "メールアドレス"
-        password: "パスワード"
-        password_confirmation: "パスワード（確認）"
-        first_name: "名"
-        last_name: "姓"
-        tos_accepted_at: "利用規約"
-  views:
-    pagination:
-      first: "最初"
-      last: "最後"
-      previous: "前へ"
-      next: "次へ"
-      truncate: "…"
-  devise:
-    failure:
-      unauthenticated: "ログインが必要です。"
-      invalid: "メールアドレスまたはパスワードが正しくありません。"
-      not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
-      already_authenticated: "すでにログインしています。"
-      unconfirmed: "アカウントの確認が必要です。確認メールをご確認ください。"
-      locked: "アカウントはロックされています。"
-      last_attempt: "あと1回でアカウントがロックされます。"
-    registrations:
-      signed_up: "アカウント登録が完了しました。ようこそ！"
-      signed_up_but_unconfirmed: "確認メールを送信しました。メールの手順に従ってアカウントを有効化してください。"
-      updated: "アカウント情報を更新しました。"
-      destroyed: "アカウントを削除しました。ご利用ありがとうございました。"
-    sessions:
-      signed_in: "ログインしました。"
-      signed_out: "ログアウトしました。"
-    confirmations:
-      send_instructions: "確認メールを送信しました。"
-      confirmed: "メールアドレスの確認が完了しました。ログインしてください。"
-      user:
-        send_instructions: "確認メールを送信しました。"
-        confirmed: "メールアドレスの確認が完了しました。ログインしてください。"
-    passwords:
-      send_instructions: "パスワード再設定用のメールを送信しました。"
-      updated: "パスワードを変更しました。"
-      updated_not_active: "パスワードを変更しました。"
-    unlocks:
-      send_instructions: "ロック解除メールを送信しました。"
-      unlocked: "アカウントのロックを解除しました。"
-    sessions:
-      signed_in: "ログインしました。"
-      signed_out: "ログアウトしました。"
-      new:
-        sign_in: "ログイン"
-        email: "メールアドレス"
-        password: "パスワード"
-        remember_me: "ログイン状態を保持"
-        submit: "ログイン"
-    registrations:
-      signed_up: "アカウント登録が完了しました。"
-      updated: "アカウント情報を変更しました。"
-      destroyed: "アカウントを削除しました。"
-      new:
-        sign_up: "新規登録"
-        email: "メールアドレス"
-        password: "パスワード"
-        password_confirmation: "パスワード（確認）"
-        submit: "登録"
-    passwords:
-      send_instructions: "パスワード再設定用のメールを送信しました。"
-      updated: "パスワードが変更されました。"
-      new:
-        forgot_password: "パスワードをお忘れですか？"
-        email: "メールアドレス"
-        submit: "パスワード再設定用メールを送信"
-      edit:
-        change_password: "パスワード変更"
-        password: "新しいパスワード"
-        password_confirmation: "新しいパスワード（確認）"
-        submit: "パスワードを変更"
-    confirmations:
-      send_instructions: "確認メールを送信しました。"
-      new:
-        resend_confirmation: "確認メールが届いていませんか？"
-        email: "メールアドレス"
-        submit: "確認メールを再送信"
-    unlocks:
-      send_instructions: "ロック解除メールを送信しました。"
-      new:
-        resend_unlock: "アカウントのロック解除メールが届いていませんか？"
-        email: "メールアドレス"
-        submit: "ロック解除メールを再送信"
-  errors:
-    messages:
-      not_found: "見つかりませんでした"
-      already_confirmed: "すでに確認済みです"
-      not_locked: "ロックされていません"
-      invalid: "無効です"
-      blank: "入力してください"
-      too_short: "%{count}文字以上で入力してください"
-      too_long: "%{count}文字以内で入力してください"
-      confirmation: "%{attribute}が一致しません"
-      taken: "すでに使用されています"
-      not_saved: "保存できませんでした"
-  flash:
-    checkout:
-      failed: "決済を開始できませんでした。しばらくしてからお試しください。"
+      client:
+        first_name: 名
+        last_name: 姓
+        first_name_kana: メイ
+        last_name_kana: セイ
+        birthday: 生年月日
+        email: メールアドレス
+        postal_code: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        memo: メモ
+      client_record:
+        client: 顧客
+        visited_at: 来店日時
+        note: ノート
+        amount: 金額
+    errors:
+      messages:
+        blank: "を入力してください"
+        taken: "は既に登録されています"
+        required: "が存在しません"
+        not_a_number: "は数値で入力してください"

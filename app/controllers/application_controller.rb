@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
   def render_not_found
     head :not_found
   end
+
+  # Devise: ログイン後の遷移先をアプリ全体で統一
+  def after_sign_in_path_for(resource)
+    clients_path
+  end
 end
