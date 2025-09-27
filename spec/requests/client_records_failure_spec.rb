@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'カルテCRUDの失敗系', type: :request do
   def create_user(email: 'failr@example.com')
-    User.create!(first_name: 'U', last_name: 'A', email: email, password: 'Password1!', confirmed_at: Time.current, tos_accepted_at: Time.current)
+    create(:user, email: email)
   end
 
   it '登録: client_idなしは422になる' do
@@ -28,4 +28,3 @@ RSpec.describe 'カルテCRUDの失敗系', type: :request do
     expect(response.status).to eq 422
   end
 end
-

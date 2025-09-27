@@ -10,14 +10,14 @@ RSpec.describe 'Stripe関連エンドポイント', type: :request do
   end
 
   it 'ログイン済み: 不正なプラン指定のCheckoutは料金ページへリダイレクト' do
-    user = User.create!(first_name: 'U', last_name: 'A', email: 'st1@example.com', password: 'Password1!', confirmed_at: Time.current, tos_accepted_at: Time.current)
+    user = create(:user, email: 'st1@example.com')
     login_as user, scope: :user
     post billing_checkout_path, params: { plan: 'invalid' }
     expect(response).to redirect_to(pricing_path)
   end
 
   it 'ログイン済み: Portalは顧客IDが無ければ料金ページへ' do
-    user = User.create!(first_name: 'U', last_name: 'A', email: 'st2@example.com', password: 'Password1!', confirmed_at: Time.current, tos_accepted_at: Time.current)
+    user = create(:user, email: 'st2@example.com')
     login_as user, scope: :user
     post billing_portal_path
     expect(response).to redirect_to(pricing_path)
@@ -28,7 +28,7 @@ RSpec.describe 'Stripe関連エンドポイント', type: :request do
     expect(response.status).to eq 400
 
     # 購読削除イベント（署名検証なしでconstruct_from分岐に入る前提）
-    u = User.create!(first_name: 'U', last_name: 'A', email: 'st3@example.com', password: 'Password1!', confirmed_at: Time.current, tos_accepted_at: Time.current, stripe_customer_id: 'cus_123')
+    u = create(:user, email: 'st3@example.com', stripe_customer_id: 'cus_123')
     payload = {
       type: 'customer.subscription.deleted',
       data: { object: { customer: 'cus_123' } }
@@ -39,4 +39,3 @@ RSpec.describe 'Stripe関連エンドポイント', type: :request do
     expect(u.subscription_status).to eq 'canceled'
   end
 end
-

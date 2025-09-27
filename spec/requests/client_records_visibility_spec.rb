@@ -2,16 +2,16 @@ require 'rails_helper'
 
 RSpec.describe 'カルテデータの可視性', type: :request do
   def create_user(email)
-    User.create!(first_name: 'U', last_name: 'A', email: email, password: 'Password1!', confirmed_at: Time.current, tos_accepted_at: Time.current)
+    create(:user, email: email)
   end
 
   it 'カルテ一覧に他ユーザーのカルテは表示されない' do
     user_a = create_user('ra@example.com')
     user_b = create_user('rb@example.com')
-    ca = Client.create!(user_id: user_a.id, first_name: 'A', last_name: '顧客A', birthday: '1990-01-01')
-    cb = Client.create!(user_id: user_b.id, first_name: 'B', last_name: '顧客B', birthday: '1992-02-02')
-    ClientRecord.create!(client: ca, visited_at: Time.current, amount: 1000)
-    ClientRecord.create!(client: cb, visited_at: Time.current, amount: 2000)
+    ca = create(:client, user: user_a, last_name: '顧客A', first_name: 'A')
+    cb = create(:client, user: user_b, last_name: '顧客B', first_name: 'B')
+    create(:client_record, client: ca, amount: 1000)
+    create(:client_record, client: cb, amount: 2000)
 
     login_as user_a, scope: :user
     get client_records_path
@@ -23,10 +23,10 @@ RSpec.describe 'カルテデータの可視性', type: :request do
   it '他ユーザーのカルテ詳細・編集は404になる' do
     user_a = create_user('ra2@example.com')
     user_b = create_user('rb2@example.com')
-    ca = Client.create!(user_id: user_a.id, first_name: 'A', last_name: '顧客A2', birthday: '1990-01-01')
-    cb = Client.create!(user_id: user_b.id, first_name: 'B', last_name: '顧客B2', birthday: '1992-02-02')
-    own_record = ClientRecord.create!(client: ca, visited_at: Time.current, amount: 1500)
-    other_record = ClientRecord.create!(client: cb, visited_at: Time.current, amount: 2500)
+    ca = create(:client, user: user_a, last_name: '顧客A2', first_name: 'A')
+    cb = create(:client, user: user_b, last_name: '顧客B2', first_name: 'B')
+    own_record = create(:client_record, client: ca, amount: 1500)
+    other_record = create(:client_record, client: cb, amount: 2500)
 
     login_as user_a, scope: :user
     get client_record_path(own_record)

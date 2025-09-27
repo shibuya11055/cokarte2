@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe '顧客検索', type: :request do
   def user(email)
-    User.create!(first_name: 'U', last_name: 'A', email: email, password: 'Password1!', confirmed_at: Time.current, tos_accepted_at: Time.current)
+    create(:user, email: email)
   end
 
   it '氏名で検索でき、他ユーザーの顧客は含まれない' do
@@ -20,7 +20,7 @@ RSpec.describe '顧客検索', type: :request do
 
   it 'カナで検索できる' do
     ua = user('s3@example.com')
-    Client.create!(user_id: ua.id, last_name: '佐藤', first_name: '花子', last_name_kana: 'サトウ', first_name_kana: 'ハナコ', birthday: '1992-02-02')
+    create(:client, user: ua, last_name: '佐藤', first_name: '花子', last_name_kana: 'サトウ', first_name_kana: 'ハナコ', birthday: '1992-02-02')
 
     login_as ua, scope: :user
     get clients_path, params: { q: 'サトウハナコ' }
@@ -28,4 +28,3 @@ RSpec.describe '顧客検索', type: :request do
     expect(response.body).to include('佐藤花子')
   end
 end
-

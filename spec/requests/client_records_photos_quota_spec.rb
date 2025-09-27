@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "カルテの画像枚数クォータ", type: :request do
   def create_user(plan: 'free', count: 0)
-    User.create!(first_name: 'Test', last_name: 'User', email: "#{plan}-photos@example.com", password: 'Password1!', confirmed_at: Time.current, tos_accepted_at: Time.current, plan_tier: plan, clients_count: count)
+    create(:user, plan_tier: plan, clients_count: count)
   end
 
   def uploaded_image(name: 'test.jpg')
@@ -14,8 +14,8 @@ RSpec.describe "カルテの画像枚数クォータ", type: :request do
   it 'Freeプランでは1カルテあたり1枚の上限が適用される' do
     user = create_user(plan: 'free')
     login_as user, scope: :user
-    client = Client.create!(user_id: user.id, first_name: '太郎', last_name: '山田', birthday: '1990-01-01')
-    record = ClientRecord.create!(client: client, visited_at: Time.current)
+    client = create(:client, user: user)
+    record = create(:client_record, client: client)
 
     # 1枚追加 → 成功
     patch client_record_path(record), params: { client_record: { note: 'n', photos: [uploaded_image(name: 'a.jpg')] } }

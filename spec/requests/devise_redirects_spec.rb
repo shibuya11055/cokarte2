@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe '認証ページの挙動', type: :request do
   it 'ログイン済みでログインページを開くと/clientsへ' do
-    user = User.create!(first_name: 'U', last_name: 'A', email: 'redir@example.com', password: 'Password1!', confirmed_at: Time.current, tos_accepted_at: Time.current)
+    user = create(:user, email: 'redir@example.com')
     login_as user, scope: :user
     get new_user_session_path
     expect(response).to redirect_to(clients_path)
@@ -19,4 +19,3 @@ RSpec.describe '認証ページの挙動', type: :request do
     expect(response).to have_http_status(:ok)
   end
 end
-
