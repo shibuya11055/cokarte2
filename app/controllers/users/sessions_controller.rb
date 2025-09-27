@@ -1,4 +1,11 @@
 class Users::SessionsController < Devise::SessionsController
+  # 既にログイン済みでログインページへ来た場合は顧客一覧へ誘導
+  def new
+    if user_signed_in?
+      redirect_to clients_path and return
+    end
+    super
+  end
   # パスワード認証 → 2FA 必須ならワンタイムコード入力へ誘導
   def create
     self.resource = User.find_for_database_authentication(email: params.dig(:user, :email))
@@ -20,6 +27,6 @@ class Users::SessionsController < Devise::SessionsController
 
   protected
   def after_sign_in_path_for(resource)
-    root_path
+    clients_path
   end
 end
