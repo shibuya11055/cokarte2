@@ -19,8 +19,8 @@
 #
 # Indexes
 #
-#  index_clients_on_email    (email) UNIQUE
-#  index_clients_on_user_id  (user_id)
+#  index_clients_on_user_id            (user_id)
+#  index_clients_on_user_id_and_email  (user_id,email) UNIQUE
 #
 
 class Client < ApplicationRecord
@@ -30,8 +30,8 @@ class Client < ApplicationRecord
   # 入力が空の場合はNULLへ、空白や大文字を正規化
   before_validation :normalize_email
 
-  # メールは任意だが、指定された場合のみ一意性を担保
-  validates :email, uniqueness: { allow_blank: true }
+  # メールは任意だが、指定された場合のみ一意性を担保（ユーザー内でユニーク）
+  validates :email, uniqueness: { allow_blank: true, scope: :user_id }
 
   private
   def normalize_email
