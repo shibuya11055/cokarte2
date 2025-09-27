@@ -28,8 +28,16 @@ class ClientsController < ApplicationController
     if @client.save
       redirect_to client_path(@client), notice: "\u9867\u5BA2\u3092\u767B\u9332\u3057\u307E\u3057\u305F"
     else
+      if @client.errors[:email].present?
+        flash.now[:alert] = 'このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。'
+      end
       render :new, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotUnique
+    # DB制約違反（レース等）でも丁寧に案内
+    @client.errors.add(:email, 'は既に登録されています')
+    flash.now[:alert] = 'このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。'
+    render :new, status: :unprocessable_entity
   end
 
   def edit
@@ -41,8 +49,15 @@ class ClientsController < ApplicationController
     if @client.update(client_params)
       redirect_to client_path(@client), notice: "\u9867\u5BA2\u60C5\u5831\u3092\u66F4\u65B0\u3057\u307E\u3057\u305F"
     else
+      if @client.errors[:email].present?
+        flash.now[:alert] = 'このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。'
+      end
       render :edit, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotUnique
+    @client.errors.add(:email, 'は既に登録されています')
+    flash.now[:alert] = 'このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。'
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy

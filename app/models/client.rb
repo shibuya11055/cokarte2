@@ -26,4 +26,15 @@
 class Client < ApplicationRecord
   belongs_to :user, counter_cache: true
   has_many :client_records
+
+  # 入力が空の場合はNULLへ、空白や大文字を正規化
+  before_validation :normalize_email
+
+  # メールは任意だが、指定された場合のみ一意性を担保
+  validates :email, uniqueness: { allow_blank: true }
+
+  private
+  def normalize_email
+    self.email = email.to_s.strip.downcase.presence
+  end
 end
