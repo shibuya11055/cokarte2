@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "顧客数クォータ", type: :request do
   def create_user(plan: 'free', count: 0)
-    User.create!(first_name: 'Test', last_name: 'User', email: "#{plan}-user@example.com", password: 'Password1!', confirmed_at: Time.current, plan_tier: plan, clients_count: count)
+    User.create!(first_name: 'Test', last_name: 'User', email: "#{plan}-user@example.com", password: 'Password1!', confirmed_at: Time.current, tos_accepted_at: Time.current, plan_tier: plan, clients_count: count)
   end
 
   it 'Freeプランで上限(50件)到達時は作成をブロックする' do
