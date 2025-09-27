@@ -16,8 +16,6 @@
       <% end %>
     </div>
     <nav>
-      <%= link_to '料金', pricing_path %>
-      <%= link_to '使い方', guide_path %>
       <%= link_to '特定商取引法に基づく表記', legal_path %>
       <span class="spacer"></span>
       <%= link_to 'ログイン', new_user_session_path, class: 'btn link' %>
@@ -55,18 +53,50 @@
     <h2>料金プラン</h2>
     <div class="plans">
       <div class="plan">
-        <h3>Free</h3>
-        <p>顧客上限: 50 / 写真: 1枚/カルテ</p>
+        <div class="plan-header">
+          <h3>Free</h3>
+          <span class="plan-tag">はじめての方向け</span>
+        </div>
+        <div class="plan-price">
+          <span class="amount free">無料</span><span class="per">/ 月 (税込)</span>
+        </div>
+        <ul class="plan-features">
+          <li>顧客上限: 50</li>
+          <li>写真: 1枚/カルテ</li>
+          <li>基本機能をお試し</li>
+        </ul>
+      </div>
+      <div class="plan recommended">
+        <div class="plan-badge">おすすめ</div>
+        <div class="plan-header">
+          <h3>Basic</h3>
+          <span class="plan-tag">多くの方にちょうどいい</span>
+        </div>
+        <div class="plan-price">
+          <span class="amount"><%= number_to_currency(500, unit: '¥', precision: 0) %></span>
+          <span class="per">/ 月 (税込)</span>
+        </div>
+        <ul class="plan-features">
+          <li>顧客上限: 150</li>
+          <li>写真: 3枚/カルテ</li>
+          <li>使いやすさと機能のバランス</li>
+        </ul>
       </div>
       <div class="plan">
-        <h3>Basic</h3>
-        <p>顧客上限: 150 / 写真: 3枚/カルテ</p>
-      </div>
-      <div class="plan">
-        <h3>Pro</h3>
-        <p>顧客上限: 無制限 / 写真: 3枚/カルテ</p>
+        <div class="plan-header">
+          <h3>Pro</h3>
+          <span class="plan-tag">しっかり使いたい方へ</span>
+        </div>
+        <div class="plan-price">
+          <span class="amount"><%= number_to_currency(1000, unit: '¥', precision: 0) %></span>
+          <span class="per">/ 月 (税込)</span>
+        </div>
+        <ul class="plan-features">
+          <li>顧客上限: 無制限</li>
+          <li>写真: 3枚/カルテ</li>
+          <li>ヘビーユースにも安心</li>
+        </ul>
       </div>
     </div>
-    <p class="more"><%= link_to '詳しい料金を見る', pricing_path %></p>
   </div>
 </section>
