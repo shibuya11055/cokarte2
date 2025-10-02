@@ -8,6 +8,6 @@ RSpec.configure do |config|
   end
 
   config.filter_run_when_matching :focus
-  config.example_status_persistence_file_path = ".rspec_status"
+  # Disable example status persistence (no .rspec_status updates)
+  # config.example_status_persistence_file_path = ".rspec_status"
 end
-
