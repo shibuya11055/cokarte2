@@ -1,0 +1,59 @@
+ja:
+  devise:
+    confirmations:
+      confirmed: "メールアドレスの確認が完了しました。"
+      send_instructions: "確認メールを送信しました。メールをご確認ください。"
+      send_paranoid_instructions: "（登録されている場合）確認メールを送信しました。"
+    failure:
+      already_authenticated: "すでにログインしています。"
+      inactive: "アカウントが有効化されていません。"
+      invalid: "メールアドレスまたはパスワードが正しくありません。"
+      locked: "アカウントがロックされています。"
+      last_attempt: "もう一度失敗するとアカウントがロックされます。"
+      not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
+      timeout: "一定時間が経過したため、再度ログインしてください。"
+      unauthenticated: "続行するにはログインが必要です。"
+      unconfirmed: "続行するにはメールアドレスの確認が必要です。"
+      user:
+        already_authenticated: "すでにログインしています。"
+    mailer:
+      confirmation_instructions:
+        subject: "メールアドレスの確認"
+      reset_password_instructions:
+        subject: "パスワード再設定のご案内"
+      unlock_instructions:
+        subject: "アカウントのロック解除"
+      email_changed:
+        subject: "メールアドレス変更の通知"
+      password_change:
+        subject: "パスワード変更の通知"
+    omniauth_callbacks:
+      success: "%{kind} アカウントでログインしました。"
+      failure: "%{kind} から認証できませんでした。理由: %{reason}"
+    passwords:
+      no_token: "このページへはパスワード再設定メールのリンクからアクセスしてください。"
+      send_instructions: "パスワード再設定のメールを送信しました。"
+      send_paranoid_instructions: "（登録されている場合）パスワード再設定のメールを送信しました。"
+      updated: "パスワードを変更しました。"
+      updated_not_active: "パスワードを変更しました。アカウントは未有効です。"
+    registrations:
+      destroyed: "アカウントを削除しました。またのご利用をお待ちしています。"
+      signed_up: "登録が完了しました。"
+      signed_up_but_inactive: "登録は完了しました。アカウントは未有効です。"
+      signed_up_but_locked: "登録は完了しましたが、アカウントはロックされています。"
+      signed_up_but_unconfirmed: "登録は完了しました。メールのリンクからアカウントを有効化してください。"
+      update_needs_confirmation: "アカウントを更新しました。新しいメールアドレスの確認が必要です。"
+      updated: "アカウント情報を更新しました。"
+      updated_but_not_signed_in: "アカウント情報を更新しました。再度ログインしてください。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "すでにログアウト済みです。"
+    unlocks:
+      send_instructions: "ロック解除手順をメールで送信しました。"
+      send_paranoid_instructions: "（登録されている場合）ロック解除手順を送信しました。"
+      unlocked: "アカウントのロックを解除しました。"
+  errors:
+    messages:
+      already_confirmed: "はすでに確認済みです。ログインしてください。"
+      confirmation_period_expired: "の確認期限が切れています。新たに要求してください。"

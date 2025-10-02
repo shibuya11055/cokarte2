@@ -74,7 +74,7 @@ Rails.application.configure do
 
   # letter_opener_web 用の保存ディレクトリを事前に作成（存在しない場合のエラー回避）
   config.to_prepare do
-    dir = Rails.root.join('tmp', 'letter_opener')
+    dir = Rails.root.join("tmp", "letter_opener")
     FileUtils.mkdir_p(dir) unless Dir.exist?(dir)
   end
 
