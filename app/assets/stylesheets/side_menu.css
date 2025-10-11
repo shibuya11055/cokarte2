@@ -313,6 +313,29 @@ body {
 }
 .form-errors ul { margin: 0; padding-left: 1.1rem; }
 
+.flash-message {
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.9rem;
+  font-weight: 600;
+  display: block;
+}
+.flash-success {
+  background: #e6f4ea;
+  border: 1px solid #b7dfc6;
+  color: #1f7a4d;
+}
+.flash-alert {
+  background: #ffeaea;
+  border: 1px solid #ffcdd2;
+  color: #b71c1c;
+}
+.flash-info {
+  background: #e8f1fd;
+  border: 1px solid #c0d9ff;
+  color: #1a4b8c;
+}
+
 /* Photo remove list (edit) */
 .photo-remove-list {
   margin-top: 0.6rem;

@@ -51,8 +51,17 @@
       <%= render 'layouts/side_menu' %>
     <% end %>
     <main class="main-content">
-      <% flash.each do |k, v| %>
-        <div class="form-errors"><%= v %></div>
+      <% flash.each do |type, message| %>
+        <% next if message.blank? %>
+        <% flash_class = case type.to_sym
+                         when :notice, :success
+                           "flash-message flash-success"
+                         when :alert, :error
+                           "flash-message flash-alert"
+                         else
+                           "flash-message flash-info"
+                         end %>
+        <div class="<%= flash_class %>"><%= message %></div>
       <% end %>
       <%= yield %>
     </main>
