@@ -54,7 +54,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_27_001000) do
 
   create_table "clients", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.date "birthday", null: false, comment: "生年月日"
+    t.date "birthday", comment: "生年月日"
     t.string "first_name", null: false, comment: "名"
     t.string "last_name", null: false, comment: "姓"
     t.string "postal_code", comment: "郵便番号"

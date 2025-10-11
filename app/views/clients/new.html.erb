@@ -13,11 +13,11 @@
         </div>
       <% end %>
       <table class="client-form-table">
-        <tr><th>姓</th><td><%= f.text_field :last_name, required: true, autofocus: true %></td></tr>
-        <tr><th>名</th><td><%= f.text_field :first_name, required: true %></td></tr>
+        <tr><th>姓 <span class="required-mark">必須</span></th><td><%= f.text_field :last_name, required: true, autofocus: true %></td></tr>
+        <tr><th>名 <span class="required-mark">必須</span></th><td><%= f.text_field :first_name, required: true %></td></tr>
         <tr><th>セイ</th><td><%= f.text_field :last_name_kana, placeholder: 'ヤマダ' %></td></tr>
         <tr><th>メイ</th><td><%= f.text_field :first_name_kana, placeholder: 'タロウ' %></td></tr>
-        <tr><th>生年月日</th><td><%= f.date_field :birthday, required: true %></td></tr>
+        <tr><th>生年月日</th><td><%= f.date_field :birthday %></td></tr>
         <tr><th>メールアドレス</th><td><%= f.email_field :email %></td></tr>
         <tr><th>郵便番号</th><td><%= f.text_field :postal_code %></td></tr>
         <tr><th>住所</th><td><%= f.text_field :address %></td></tr>

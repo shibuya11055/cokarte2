@@ -468,6 +468,18 @@ body {
   border-bottom: 1px solid #f0f0f0;
   background: #fff;
 }
+.required-mark {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.08rem 0.5rem;
+  margin-left: 0.4rem;
+  border-radius: 999px;
+  background: #ffe6e9;
+  color: #d94a4a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
 .client-form-table tr:last-child th,
 .client-form-table tr:last-child td {
   border-bottom: none;

@@ -4,7 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  user_id         :integer          not null
-#  birthday        :date             not null
+#  birthday        :date
 #  first_name      :string           not null
 #  last_name       :string           not null
 #  postal_code     :string
