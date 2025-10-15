@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   }
   resources :clients, only: [ :index, :show, :destroy, :new, :create, :edit, :update ]
   resources :client_records, only: [ :index, :new, :create, :show, :edit, :update ]
-  root to: "pages#home"
+  root to: "root#index"
+  get "lp", to: "pages#home", as: :lp
   get "pricing", to: "pages#pricing"
   get "terms",   to: "pages#terms"
   get "privacy", to: "pages#privacy"
