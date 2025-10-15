@@ -24,7 +24,7 @@
     <div class="plan-card featured">
       <div class="plan-header">
         <h2>Basic</h2>
-        <div class="price">¥500<span>/月</span></div>
+        <div class="price"><%= number_to_currency(1500, unit: '¥', precision: 0) %><span>/月</span></div>
       </div>
       <ul class="features">
         <li>顧客 150 名まで</li>
@@ -43,7 +43,7 @@
       <div class="badge">おすすめ</div>
       <div class="plan-header">
         <h2>Pro</h2>
-        <div class="price">¥1,000<span>/月</span></div>
+        <div class="price"><%= number_to_currency(2480, unit: '¥', precision: 0) %><span>/月</span></div>
       </div>
       <ul class="features">
         <li>顧客 無制限</li>
