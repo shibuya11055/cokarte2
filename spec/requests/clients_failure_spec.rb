@@ -38,4 +38,26 @@ RSpec.describe '顧客CRUDの失敗系', type: :request do
     delete client_path(other)
     expect(response.status).to eq 404
   end
+
+  it '登録: 姓名が空だと422になる' do
+    user = create_user(email: 'failc4@example.com')
+    login_as user, scope: :user
+
+    expect {
+      post clients_path, params: { client: { first_name: '', last_name: '' } }
+    }.not_to change(Client, :count)
+
+    expect(response.status).to eq 422
+  end
+
+  it '登録: 不正なメール形式は422になる' do
+    user = create_user(email: 'failc5@example.com')
+    login_as user, scope: :user
+
+    expect {
+      post clients_path, params: { client: { first_name: '花子', last_name: '佐藤', email: 'not-an-email' } }
+    }.not_to change(Client, :count)
+
+    expect(response.status).to eq 422
+  end
 end

@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :ensure_client_quota!, only: [:create]
+  before_action :ensure_client_quota!, only: [ :create ]
   def index
     @clients = clients
     if params[:q].present?
@@ -11,7 +11,11 @@ class ClientsController < ApplicationController
     end
     @clients = @clients.order(:id).page(params[:page]).per(20)
     # 各顧客の最新カルテを事前取得
-    @latest_records = ClientRecord.where(id: ClientRecord.select("MAX(id)").where(client_id: @clients.pluck(:id)).group(:client_id)).index_by(&:client_id)
+    @latest_records = ClientRecord
+      .select("DISTINCT ON (client_id) client_records.*")
+      .where(client_id: @clients.select(:id))
+      .order(Arel.sql("client_id, visited_at DESC NULLS LAST, id DESC"))
+      .index_by(&:client_id)
   end
 
   def show
@@ -29,15 +33,15 @@ class ClientsController < ApplicationController
       redirect_to client_path(@client), notice: "\u9867\u5BA2\u3092\u767B\u9332\u3057\u307E\u3057\u305F"
     else
       if @client.errors[:email].present?
-        flash.now[:alert] = 'このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。'
+        flash.now[:alert] = "このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。"
       end
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   rescue ActiveRecord::RecordNotUnique
     # DB制約違反（レース等）でも丁寧に案内
-    @client.errors.add(:email, 'は既に登録されています')
-    flash.now[:alert] = 'このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。'
-    render :new, status: :unprocessable_entity
+    @client.errors.add(:email, "は既に登録されています")
+    flash.now[:alert] = "このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。"
+    render :new, status: :unprocessable_content
   end
 
   def edit
@@ -50,14 +54,14 @@ class ClientsController < ApplicationController
       redirect_to client_path(@client), notice: "\u9867\u5BA2\u60C5\u5831\u3092\u66F4\u65B0\u3057\u307E\u3057\u305F"
     else
       if @client.errors[:email].present?
-        flash.now[:alert] = 'このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。'
+        flash.now[:alert] = "このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。"
       end
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   rescue ActiveRecord::RecordNotUnique
-    @client.errors.add(:email, 'は既に登録されています')
-    flash.now[:alert] = 'このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。'
-    render :edit, status: :unprocessable_entity
+    @client.errors.add(:email, "は既に登録されています")
+    flash.now[:alert] = "このメールアドレスは既に登録されています。別のメールアドレスをご利用ください。"
+    render :edit, status: :unprocessable_content
   end
 
   def destroy

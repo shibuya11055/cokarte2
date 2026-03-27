@@ -38,7 +38,12 @@
   <% end %>
   <h3>アカウント削除</h3>
   <div>
-    <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger" %>
+    <% if current_user.require_subscription_cancellation_before_destroy? %>
+      <p style="margin-bottom:0.6rem;">有料プランをご利用中のため、先に Customer Portal で解約を完了してください。</p>
+      <%= button_to "Customer Portal を開く", billing_portal_path, method: :post, class: "btn", data: { turbo: false } %>
+    <% else %>
+      <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger" %>
+    <% end %>
   </div>
   <%= link_to "戻る", root_path %>
 </div>

@@ -39,4 +39,18 @@ RSpec.describe '顧客の登録/編集/削除', type: :request do
     }.to change { Client.where(user_id: user.id).count }.by(-1)
     expect(response).to redirect_to(clients_path)
   end
+
+  it 'カルテが紐づく顧客も削除でき、カルテも連鎖削除される' do
+    user = create_user(email: 'crud4@example.com')
+    login_as user, scope: :user
+    client = create(:client, user: user)
+    create(:client_record, client: client)
+
+    expect {
+      delete client_path(client)
+    }.to change { Client.where(user_id: user.id).count }.by(-1)
+      .and change(ClientRecord, :count).by(-1)
+
+    expect(response).to redirect_to(clients_path)
+  end
 end

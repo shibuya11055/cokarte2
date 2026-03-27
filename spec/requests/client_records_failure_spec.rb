@@ -27,4 +27,28 @@ RSpec.describe 'カルテCRUDの失敗系', type: :request do
 
     expect(response.status).to eq 422
   end
+
+  it '登録: visited_atなしは422になる' do
+    user = create_user(email: 'failr3@example.com')
+    login_as user, scope: :user
+    client = create(:client, user: user)
+
+    expect {
+      post client_records_path, params: { client_record: { client_id: client.id, visited_at: nil, note: 'n' } }
+    }.not_to change(ClientRecord, :count)
+
+    expect(response.status).to eq 422
+  end
+
+  it '登録: 金額が負数だと422になる' do
+    user = create_user(email: 'failr4@example.com')
+    login_as user, scope: :user
+    client = create(:client, user: user)
+
+    expect {
+      post client_records_path, params: { client_record: { client_id: client.id, visited_at: Time.current, amount: -100 } }
+    }.not_to change(ClientRecord, :count)
+
+    expect(response.status).to eq 422
+  end
 end

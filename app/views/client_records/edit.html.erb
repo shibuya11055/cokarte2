@@ -19,7 +19,7 @@
             <select name="client_record[client_id]" id="client-select" class="client-select" required style="width:350px;max-width:100%;min-width:220px;"
                     data-controller="select2" data-select2-placeholder-value="選択してください" data-select2-width-value="100%">
               <option value="">選択してください</option>
-              <% Client.all.each do |c| %>
+              <% @clients.each do |c| %>
                 <option value="<%= c.id %>" <%= 'selected' if defined?(@client_record) && c.id == @client_record.client_id %>><%= c.last_name + c.first_name %></option>
               <% end %>
             </select>

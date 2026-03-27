@@ -7,6 +7,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def destroy
+    if current_user&.require_subscription_cancellation_before_destroy?
+      redirect_to edit_user_registration_path,
+                  alert: "有料プランをご利用中です。先に Customer Portal で解約を完了してください。"
+      return
+    end
+
+    super
+  end
+
   protected
 
   # 登録後はログイン画面にリダイレクト
