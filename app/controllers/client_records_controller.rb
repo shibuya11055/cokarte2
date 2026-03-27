@@ -1,4 +1,6 @@
 class ClientRecordsController < ApplicationController
+  before_action :set_available_clients, only: [ :new, :create, :edit, :update ]
+
   def index
     @client_records = client_records.includes(:client)
     if params[:q].present?
@@ -7,15 +9,15 @@ class ClientRecordsController < ApplicationController
     end
     case params[:sort]
     when "visited_at_asc"
-      @client_records = @client_records.order(Arel.sql('client_records.visited_at ASC, client_records.id ASC'))
+      @client_records = @client_records.order(Arel.sql("client_records.visited_at ASC, client_records.id ASC"))
     when "visited_at_desc"
-      @client_records = @client_records.order(Arel.sql('client_records.visited_at DESC, client_records.id DESC'))
+      @client_records = @client_records.order(Arel.sql("client_records.visited_at DESC, client_records.id DESC"))
     when "amount_asc"
-      @client_records = @client_records.order(Arel.sql('client_records.amount ASC, client_records.id ASC'))
+      @client_records = @client_records.order(Arel.sql("client_records.amount ASC, client_records.id ASC"))
     when "amount_desc"
-      @client_records = @client_records.order(Arel.sql('client_records.amount DESC, client_records.id DESC'))
+      @client_records = @client_records.order(Arel.sql("client_records.amount DESC, client_records.id DESC"))
     else
-      @client_records = @client_records.order(Arel.sql('client_records.visited_at DESC, client_records.id DESC'))
+      @client_records = @client_records.order(Arel.sql("client_records.visited_at DESC, client_records.id DESC"))
     end
     @client_records = @client_records.page(params[:page]).per(20)
   end
@@ -48,14 +50,13 @@ class ClientRecordsController < ApplicationController
     end
     files = photo_files
     if files.present? && !validate_photo_files(files, existing_count: 0)
-      render :new, status: :unprocessable_entity and return
+      render :new, status: :unprocessable_content and return
     end
 
-    if @client_record.save
-      attach_files_with_custom_key(@client_record, files) if files.present?
+    if save_with_photos(@client_record, files)
       redirect_to client_records_path, notice: "\u30AB\u30EB\u30C6\u3092\u767B\u9332\u3057\u307E\u3057\u305F"
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -72,17 +73,13 @@ class ClientRecordsController < ApplicationController
     effective_existing = @client_record.photos.count - to_remove.size
 
     if files.present? && !validate_photo_files(files, existing_count: effective_existing)
-      render :edit, status: :unprocessable_entity and return
+      render :edit, status: :unprocessable_content and return
     end
 
-    if @client_record.update(client_record_params)
-      ActiveRecord::Base.transaction do
-        to_remove.each(&:purge)
-        attach_files_with_custom_key(@client_record, files) if files.present?
-      end
+    if update_with_photos(@client_record, client_record_params, files, to_remove)
       redirect_to client_record_path(@client_record), notice: "\u30AB\u30EB\u30C6\u60C5\u5831\u3092\u66F4\u65B0\u3057\u307E\u3057\u305F"
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -100,9 +97,9 @@ class ClientRecordsController < ApplicationController
     # プランで定義された画像枚数上限があればそれを優先して使用する
     max_photos = if @client_record.client&.user&.respond_to?(:photos_per_record)
                    @client_record.client.user.photos_per_record
-                 else
-                   ClientRecord::MAX_PHOTOS
-                 end
+                  else
+                    ClientRecord::MAX_PHOTOS
+                  end
     max_size = ClientRecord::MAX_PHOTO_SIZE_MB.megabytes
     if existing_count + files.size > max_photos
       @client_record.errors.add(:base, "画像は最大#{max_photos}枚まで保存できます")
@@ -128,27 +125,31 @@ class ClientRecordsController < ApplicationController
   end
 
   # Build and attach blobs with custom S3 object keys like "user_id/client_id/filename-xxxx.jpg"
-  def attach_files_with_custom_key(record, files)
+  def build_uploaded_blobs(record, files)
     user_id = current_user.id
     client_id = record.client_id
-    blobs = files.map do |file|
-      # 画像の最適化（失敗時はオリジナルを使用）
+    blobs = []
+
+    files.each do |file|
       optimized = ImageOptimizer.optimize(file)
 
       original = file.original_filename.to_s
       basename = File.basename(original, File.extname(original))
       ext = File.extname(optimized.filename).downcase.presence || ".jpg"
       safe_name = sanitize_filename(basename)
-      # add short random suffix to avoid accidental overwrite with same name
-      key = [user_id, client_id, "#{safe_name}-#{SecureRandom.hex(4)}#{ext}"].join("/")
-      ActiveStorage::Blob.create_and_upload!(
+      key = [ user_id, client_id, "#{safe_name}-#{SecureRandom.hex(4)}#{ext}" ].join("/")
+      blobs << ActiveStorage::Blob.create_and_upload!(
         io: optimized.io,
         filename: optimized.filename,
         content_type: optimized.content_type,
         key: key
       )
     end
-    record.photos.attach(blobs)
+
+    blobs
+  rescue StandardError => e
+    blobs.each(&:purge)
+    raise e
   end
 
   def sanitize_filename(name)
@@ -159,5 +160,58 @@ class ClientRecordsController < ApplicationController
 
   def client_records
     @client_records ||= ClientRecord.joins(:client).where(clients: { user_id: current_user.id })
+  end
+
+  def set_available_clients
+    @clients = current_user.clients.order(:last_name_kana, :first_name_kana, :last_name, :first_name, :id)
+  end
+
+  def save_with_photos(record, files)
+    uploaded_blobs = files.present? ? build_uploaded_blobs(record, files) : []
+
+    ActiveRecord::Base.transaction do
+      record.photos = uploaded_blobs if uploaded_blobs.present?
+      record.save!
+    end
+    true
+  rescue ActiveRecord::RecordInvalid
+    uploaded_blobs&.each(&:purge)
+    false
+  rescue StandardError => e
+    uploaded_blobs&.each(&:purge)
+    Rails.logger.error("[ClientRecord] create with photos failed: #{e.class}: #{e.message}")
+    record.errors.add(:base, "画像のアップロードに失敗しました。時間をおいて再度お試しください")
+    false
+  end
+
+  def update_with_photos(record, attrs, files, to_remove)
+    uploaded_blobs = files.present? ? build_uploaded_blobs(record, files) : []
+    kept_blobs = record.photos.attachments.reject { |attachment| to_remove.include?(attachment) }.map(&:blob)
+
+    ActiveRecord::Base.transaction do
+      record.assign_attributes(attrs)
+      record.photos = kept_blobs + uploaded_blobs
+      record.save!
+    end
+
+    purge_removed_blobs_safely(to_remove)
+    true
+  rescue ActiveRecord::RecordInvalid
+    uploaded_blobs&.each(&:purge)
+    false
+  rescue StandardError => e
+    uploaded_blobs&.each(&:purge)
+    Rails.logger.error("[ClientRecord] update with photos failed: #{e.class}: #{e.message}")
+    record.errors.add(:base, "画像のアップロードに失敗しました。時間をおいて再度お試しください")
+    false
+  end
+
+  def purge_removed_blobs_safely(attachments)
+    attachments.each do |attachment|
+      blob = attachment.blob
+      blob.purge if blob.attachments.reload.none?
+    rescue StandardError => e
+      Rails.logger.error("[ClientRecord] photo purge failed: #{e.class}: #{e.message}")
+    end
   end
 end

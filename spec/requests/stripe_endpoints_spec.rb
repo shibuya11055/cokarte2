@@ -38,4 +38,19 @@ RSpec.describe 'Stripe関連エンドポイント', type: :request do
     expect(u.reload.plan_tier).to eq 'free'
     expect(u.subscription_status).to eq 'canceled'
   end
+
+  it 'Webhook: test以外で秘密鍵が未設定なら500で拒否する' do
+    allow(Rails).to receive(:env).and_return(ActiveSupport::StringInquirer.new('staging'))
+    allow(ENV).to receive(:[]).and_call_original
+    allow(ENV).to receive(:[]).with('STRIPE_WEBHOOK_SECRET').and_return(nil)
+
+    payload = {
+      type: 'customer.subscription.deleted',
+      data: { object: { customer: 'cus_123' } }
+    }.to_json
+
+    post '/stripe/webhook', params: payload, headers: { 'CONTENT_TYPE' => 'application/json' }
+
+    expect(response.status).to eq 500
+  end
 end

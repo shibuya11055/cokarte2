@@ -5,24 +5,27 @@ class Stripe::WebhooksController < ApplicationController
 
   def create
     payload = request.body.read
-    sig = request.env['HTTP_STRIPE_SIGNATURE']
-    secret = ENV['STRIPE_WEBHOOK_SECRET']
+    sig = request.env["HTTP_STRIPE_SIGNATURE"]
+    secret = ENV["STRIPE_WEBHOOK_SECRET"]
+
+    unless Rails.env.test? || secret.present?
+      Rails.logger.error("[Stripe] STRIPE_WEBHOOK_SECRET is not configured")
+      return head :internal_server_error
+    end
 
     event = if Rails.env.test?
               # テストは署名検証をスキップして形だけのイベントを構築
               Stripe::Event.construct_from(JSON.parse(payload, symbolize_names: true))
-            elsif secret.present?
-              Stripe::Webhook.construct_event(payload, sig, secret)
             else
-              Stripe::Event.construct_from(JSON.parse(payload, symbolize_names: true))
+              Stripe::Webhook.construct_event(payload, sig, secret)
             end
 
     case event.type
-    when 'checkout.session.completed'
+    when "checkout.session.completed"
       on_checkout_completed(event.data.object)
-    when 'customer.subscription.created', 'customer.subscription.updated'
+    when "customer.subscription.created", "customer.subscription.updated"
       on_subscription_updated(event.data.object)
-    when 'customer.subscription.deleted'
+    when "customer.subscription.deleted"
       on_subscription_deleted(event.data.object)
     end
 
@@ -64,14 +67,14 @@ class Stripe::WebhooksController < ApplicationController
   def on_subscription_deleted(sub)
     user = User.find_by(stripe_customer_id: sub.customer)
     return unless user
-    user.update!(plan_tier: 'free', subscription_status: 'canceled')
+    user.update!(plan_tier: "free", subscription_status: "canceled")
   end
 
   def plan_from_subscription(sub)
     item = sub.items && sub.items.data.first
     price_id = item&.price&.id
-    return 'basic' if price_id.present? && price_id == ENV['STRIPE_PRICE_BASIC']
-    return 'pro'   if price_id.present? && price_id == ENV['STRIPE_PRICE_PRO']
+    return "basic" if price_id.present? && price_id == ENV["STRIPE_PRICE_BASIC"]
+    return "pro" if price_id.present? && price_id == ENV["STRIPE_PRICE_PRO"]
     nil
   end
 

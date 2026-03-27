@@ -22,6 +22,8 @@ class ClientRecord < ApplicationRecord
   MAX_PHOTOS = 3
   MAX_PHOTO_SIZE_MB = 5
 
+  validates :visited_at, presence: true
+  validates :amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
   validate :validate_photos
 
   private

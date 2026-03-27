@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  has_many :clients
+  has_many :clients, dependent: :destroy
 
   # 二要素認証（TOTP）
   def ensure_otp_secret!
@@ -24,6 +24,17 @@ class User < ApplicationRecord
     return false if otp_secret.blank?
     totp = ROTP::TOTP.new(otp_secret, issuer: 'cokarte')
     totp.verify(code.to_s, drift_behind: 30, drift_ahead: 30)
+  end
+
+  def subscription_canceled?
+    subscription_status.to_s == "canceled"
+  end
+
+  def require_subscription_cancellation_before_destroy?
+    stripe_customer_id.present? && (
+      plan_tier.to_s != "free" ||
+      (subscription_status.present? && !subscription_canceled?)
+    )
   end
 
   # 規約同意（新規登録時に必須）
